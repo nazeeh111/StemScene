@@ -67,6 +67,10 @@ Anchor spans must come from inspection of the mixed recording. They do not prove
 
 The engine currently rejects stereo inference. Core project arrays use `(samples, channels)` float64 and can support stereo edits/exports of estimates supplied through the core API. That separate capability is not evidence of stereo source separation.
 
+CPU is the default. To use the optional tested `device="mps"` path, start the
+script with `PYTORCH_ENABLE_MPS_FALLBACK=1 python your_script.py`. Set this before
+Python starts so unsupported operations can use the measured CPU fallback.
+
 ## Cancellation and progress
 
 ```python

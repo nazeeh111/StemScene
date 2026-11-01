@@ -26,7 +26,7 @@ uv run --locked stemscene serve \
 
 The bundled V1 refiner is the frozen beta artifact. Open the printed `127.0.0.1` URL. Import WAV/FLAC, request sound descriptions, listen to the estimates, select an event span and change its level. Revise a saved event without stacking another attenuation. Lock an estimate before adding requests that must not change it. Undo restores the preceding saved state.
 
-Setup downloads approximately **1.27 GB** of pinned public model/tokenizer/license files into a **new** directory. Normal extraction does not download models or upload recordings. CPU is the default. Tested Apple MPS execution is optional with `--device mps`; some operations fall back to CPU. SAM Audio is not required.
+Setup downloads approximately **1.27 GB** of pinned public model/tokenizer/license files into a **new** directory. Normal extraction does not download models or upload recordings. CPU is the default. For optional tested Apple MPS execution, prefix the command with `PYTORCH_ENABLE_MPS_FALLBACK=1` and add `--device mps`; some operations require CPU fallback. Set that environment variable before starting Python, including when using the API. SAM Audio is not required.
 
 See the [complete quickstart](docs/quickstart.md) for CLI editing, anchors, export, offline replay and the Linux CPU installation route. The [Python API](docs/python-api.md) uses the same engine.
 

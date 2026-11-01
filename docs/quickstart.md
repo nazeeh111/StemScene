@@ -160,6 +160,15 @@ Default output is DOUBLE WAV. `--subtype FLOAT` explicitly quantizes export arra
 
 ## Device and resource limits
 
-CLI extraction defaults to CPU and four CPU threads. On the tested Apple Silicon Mac, add `--device mps` to extraction or `serve` to use MPS. The `col2im` operation has an observed CPU fallback, so this is mixed CPU/GPU execution, not a promise of full GPU acceleration. No Linux/CUDA or other-hardware speed claim follows from that test.
+CLI extraction defaults to CPU and four CPU threads. On the tested Apple Silicon Mac, prefix the process with `PYTORCH_ENABLE_MPS_FALLBACK=1` and add `--device mps` to extraction or `serve`. For example:
+
+```sh
+PYTORCH_ENABLE_MPS_FALLBACK=1 uv run --locked stemscene serve \
+  --workspace "$HOME/.local/share/stemscene/browser-workspace" \
+  --checkpoint "$STEMSCENE_MODELS/audiosep_base_4M_steps.ckpt" \
+  --tokenizer-dir "$STEMSCENE_MODELS/roberta" --device mps --port 0
+```
+
+Set the variable before Python starts, including for API scripts. The `col2im` operation requires the observed CPU fallback, so this is mixed CPU/GPU execution, not a promise of full GPU acceleration. No Linux/CUDA or other-hardware speed claim follows from that test.
 
 The current product ceiling is 600 seconds and eight distinct requested classes, subject to 256 MiB source, 512 MiB decoded-array, 2 GiB project-array and inference-time bounds. Long-context processing is offline. Cancellation takes effect between bounded steps and before committing a new project state; it does not instantly interrupt an active native kernel. An admitted maximum is not a validated quality or latency guarantee.
