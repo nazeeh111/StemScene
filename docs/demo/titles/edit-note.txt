@@ -1,0 +1,1 @@
+Doorbell estimate x0.50, 5-7 s. 20 ms edge fades.

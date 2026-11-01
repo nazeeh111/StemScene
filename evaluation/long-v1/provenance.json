@@ -1,0 +1,310 @@
+{
+  "version": "one-fixed-development-case-v1",
+  "duration_seconds": 48,
+  "sample_rate": 32000,
+  "channels": 1,
+  "queries": [
+    "clock tick",
+    "rain",
+    "sneezing"
+  ],
+  "sources": [
+    {
+      "attribution": "clip derived from Ansonia Clock Strikes 11 (http://www.freesound.org/people/kangaroovindaloo/sounds/179984/) by kangaroovindaloo [CC0]",
+      "bytes": 441044,
+      "category": "clock_tick",
+      "dataset_license": "CC-BY-3.0 (official ESC-10 subset)",
+      "filename": "4-179984-A-38.wav",
+      "fold": 4,
+      "sha256": "c39eef951ebd527500e4c8bae4e7d5c6638017dc093125f0d46d462573a8fea5",
+      "source_url": "http://www.freesound.org/people/kangaroovindaloo/sounds/179984/",
+      "src_file": "179984",
+      "take": "A",
+      "target": 38,
+      "uploader": "kangaroovindaloo",
+      "url": "https://raw.githubusercontent.com/karolpiczak/ESC-50/33c8ce9eb2cf0b1c2f8bcf322eb349b6be34dbb6/audio/4-179984-A-38.wav",
+      "excerpt_samples_32000": [
+        32208,
+        41808
+      ]
+    },
+    {
+      "attribution": "clip derived from Heavy rain.wav (http://www.freesound.org/people/reelworldstudio/sounds/161127/) by reelworldstudio [CC0]",
+      "bytes": 441044,
+      "category": "rain",
+      "dataset_license": "CC-BY-3.0 (official ESC-10 subset)",
+      "filename": "4-161127-A-10.wav",
+      "fold": 4,
+      "sha256": "3ea9076dd2ee68b67bd0707652a0c0ca77811b0664426e10e6860c187401af89",
+      "source_url": "http://www.freesound.org/people/reelworldstudio/sounds/161127/",
+      "src_file": "161127",
+      "take": "A",
+      "target": 10,
+      "uploader": "reelworldstudio",
+      "url": "https://raw.githubusercontent.com/karolpiczak/ESC-50/33c8ce9eb2cf0b1c2f8bcf322eb349b6be34dbb6/audio/4-161127-A-10.wav"
+    },
+    {
+      "attribution": "clip derived from Sneeze Female x3 JGray.wav (http://www.freesound.org/people/JGrayArt/sounds/156844/) by JGrayArt [CC0]",
+      "bytes": 441044,
+      "category": "sneezing",
+      "dataset_license": "CC-BY-3.0 (official ESC-10 subset)",
+      "filename": "4-156844-A-21.wav",
+      "fold": 4,
+      "sha256": "6fbfe7a57440e68e7a3c1e46dc039df88cdf64f765c9eb2402e8352382078f78",
+      "source_url": "http://www.freesound.org/people/JGrayArt/sounds/156844/",
+      "src_file": "156844",
+      "take": "A",
+      "target": 21,
+      "uploader": "jgrayart",
+      "url": "https://raw.githubusercontent.com/karolpiczak/ESC-50/33c8ce9eb2cf0b1c2f8bcf322eb349b6be34dbb6/audio/4-156844-A-21.wav",
+      "excerpt_samples_32000": [
+        0,
+        32000
+      ]
+    }
+  ],
+  "source_split": "selection only",
+  "source_manifest_sha256": "bd19a599b3165a0648e1ed9fef17e085e18fd4878f090e25e24945454c3d0728",
+  "shared_peak_bound": 1.0,
+  "resampling": "scipy zero-phase polyphase FIR, Kaiser5, right trim/pad; 44.1k to32k once",
+  "events": [
+    {
+      "query": "rain",
+      "start_seconds": 0.0,
+      "end_seconds": 5.0,
+      "gain_before_shared_peak_bound": 0.4,
+      "kind": "background repetition, 100ms overlaps"
+    },
+    {
+      "query": "rain",
+      "start_seconds": 4.9,
+      "end_seconds": 9.9,
+      "gain_before_shared_peak_bound": 0.4,
+      "kind": "background repetition, 100ms overlaps"
+    },
+    {
+      "query": "rain",
+      "start_seconds": 9.8,
+      "end_seconds": 14.8,
+      "gain_before_shared_peak_bound": 0.4,
+      "kind": "background repetition, 100ms overlaps"
+    },
+    {
+      "query": "rain",
+      "start_seconds": 14.700000000000001,
+      "end_seconds": 19.7,
+      "gain_before_shared_peak_bound": 0.4,
+      "kind": "background repetition, 100ms overlaps"
+    },
+    {
+      "query": "rain",
+      "start_seconds": 19.6,
+      "end_seconds": 21.0,
+      "gain_before_shared_peak_bound": 0.4,
+      "kind": "background repetition, 100ms overlaps"
+    },
+    {
+      "query": "rain",
+      "start_seconds": 27.0,
+      "end_seconds": 32.0,
+      "gain_before_shared_peak_bound": 0.4,
+      "kind": "background repetition, 100ms overlaps"
+    },
+    {
+      "query": "rain",
+      "start_seconds": 31.9,
+      "end_seconds": 36.9,
+      "gain_before_shared_peak_bound": 0.4,
+      "kind": "background repetition, 100ms overlaps"
+    },
+    {
+      "query": "rain",
+      "start_seconds": 36.8,
+      "end_seconds": 41.8,
+      "gain_before_shared_peak_bound": 0.4,
+      "kind": "background repetition, 100ms overlaps"
+    },
+    {
+      "query": "rain",
+      "start_seconds": 41.699999999999996,
+      "end_seconds": 45.5,
+      "gain_before_shared_peak_bound": 0.4,
+      "kind": "background repetition, 100ms overlaps"
+    },
+    {
+      "query": "clock tick",
+      "start_seconds": 1.35,
+      "end_seconds": 1.65,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "clock tick",
+      "start_seconds": 2.85,
+      "end_seconds": 3.15,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "clock tick",
+      "start_seconds": 5.85,
+      "end_seconds": 6.15,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "clock tick",
+      "start_seconds": 11.85,
+      "end_seconds": 12.15,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "clock tick",
+      "start_seconds": 17.85,
+      "end_seconds": 18.15,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "clock tick",
+      "start_seconds": 19.85,
+      "end_seconds": 20.15,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "clock tick",
+      "start_seconds": 28.35,
+      "end_seconds": 28.65,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "clock tick",
+      "start_seconds": 35.85,
+      "end_seconds": 36.15,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "clock tick",
+      "start_seconds": 37.85,
+      "end_seconds": 38.15,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "clock tick",
+      "start_seconds": 43.35,
+      "end_seconds": 43.65,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "sneezing",
+      "start_seconds": 7.0,
+      "end_seconds": 8.0,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "sneezing",
+      "start_seconds": 17.49,
+      "end_seconds": 18.49,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "sneezing",
+      "start_seconds": 19.49,
+      "end_seconds": 20.49,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "sneezing",
+      "start_seconds": 31.0,
+      "end_seconds": 32.0,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "sneezing",
+      "start_seconds": 35.49,
+      "end_seconds": 36.49,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "sneezing",
+      "start_seconds": 37.49,
+      "end_seconds": 38.49,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    },
+    {
+      "query": "sneezing",
+      "start_seconds": 43.0,
+      "end_seconds": 44.0,
+      "gain_before_shared_peak_bound": 0.55,
+      "kind": "transient near chunk join or paired interior control"
+    }
+  ],
+  "all_class_silence_seconds": [
+    [
+      21.5,
+      26.5
+    ],
+    [
+      46.0,
+      48.0
+    ]
+  ],
+  "audiosep_starts_seconds": [
+    0,
+    3,
+    6,
+    9,
+    12,
+    15,
+    18,
+    21,
+    24,
+    27,
+    30,
+    33,
+    36,
+    39,
+    42,
+    45
+  ],
+  "audiosep_overlap_ends_seconds": [
+    5,
+    8,
+    11,
+    14,
+    17,
+    20,
+    23,
+    26,
+    29,
+    32,
+    35,
+    38,
+    41,
+    44,
+    47
+  ],
+  "refiner_starts_seconds": [
+    18.0,
+    36.0
+  ],
+  "refiner_overlap_ends_seconds": [
+    20.0,
+    38.0
+  ],
+  "ground_truth_limit": "Controlled edited repetitions of genuine class-labeled recordings, not pure physical-source or natural multitrack truth.",
+  "anchors": "No source-derived anchors. Any later negative anchor must be derived from mixed-signal silence alone.",
+  "license_sha256": "f6aec3a3283a2efdcbb1feff334adad7ab17c097bdec0cbb4eebdb9e16886074"
+}

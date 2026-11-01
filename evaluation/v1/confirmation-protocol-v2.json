@@ -1,0 +1,17 @@
+{
+  "protocol": "all-request-separate-and-simultaneous-v2",
+  "status": "declared before confirmation access; final model hash remains to be selected",
+  "data_manifest_sha256": "bd19a599b3165a0648e1ed9fef17e085e18fd4878f090e25e24945454c3d0728",
+  "confirmation_recipes": 20,
+  "requests_per_recipe": 3,
+  "primary": "For each scene, apply the existing 1-4 second, gain 0.25, 20 ms inside-span fade separately to every requested component, including absent requests. Average errors across requests within the scene, normalized by mixture mean power; then average scenes.",
+  "secondary": ["simultaneous attenuation of all requested components", "original frozen query-index-zero edit score", "present-target direct waveform SDR and SI-SDR", "target gain projection error", "retained-audio error projection", "absent extraction energy and false extraction", "excess pairwise covariance proxy", "activity and activity-change error", "outside-edit sample delta and resynthesis", "query permutation error", "per-scene wins and failures"],
+  "baselines": ["independent actual AudioSep", "actual forward residual extraction", "actual reverse residual extraction", "unweighted mixture consistency", "residual-aware Wiener", "fixed 0.75 gain", "selection-calibrated global gain 0.60", "FUSS present-only evaluator assignment, with matched present-only scores for other methods"],
+  "baseline_scalar_gain": 0.60,
+  "scalar_selection": "Selection-only grid 0.25 through 1.25 in 0.05 steps; chosen 0.60. Analytical selection optimum 0.5976823295097764 was diagnostic, not inference-time fitting.",
+  "absence_threshold": 0.01,
+  "candidate_selection": "Retain v1 and one predeclared 12-epoch v2 pilot. Select the final candidate from selection results before confirmation. Report gain and source distortion tradeoffs next to any mean improvement. Do not choose a new model, scalar, metric, edit subset or threshold after opening confirmation.",
+  "failure_capable_interpretation": "A nonpositive primary improvement over the strongest comparable non-oracle baseline does not establish the joint-refinement claim. A favorable mean alone is insufficient for broad or typical-case claims: retain win counts, median and source-reuse sensitivity, gain/absence/activity regressions and weak-source limits. No tuning or silent success after a negative confirmation result.",
+  "uncertainty": "Twenty controlled scenes are a small bounded study with possible within-split source reuse. Request slots are not independent samples. No base-pretraining isolation, human listening-panel quality, stereo quality, certified speaker isolation or general field novelty claim.",
+  "long_and_natural": "Supplementary operational and boundary tests use separately declared development inputs. Natural recordings have no clean-source accuracy scores. Their outcomes do not change the frozen source-reference primary metric."
+}

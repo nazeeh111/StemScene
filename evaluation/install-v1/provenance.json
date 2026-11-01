@@ -1,0 +1,16 @@
+{
+  "schema": "stemscene-install-evidence-provenance/1",
+  "prepared_utc": "2026-10-30T00:30:17.884266+00:00",
+  "original_task_report_sha256": "4866b00ce23ea3a9cf2c44cb4038874ff6247c82ea4b998cd9e9ca7cc5152f05",
+  "transformation": "compact explicit field selection; private absolute paths, temporary directory names and task-only source changes omitted; numerical results and immutable development artifact/core hashes retained",
+  "copied_exact_sha256": {
+    "model-download-manifest.json": "a48e5bd7f80c5c6c39570dce805d88673935da2173366e46be9656f3999637f1",
+    "recombination-report.json": "3c5631b6b9e099f1b8710026e0c0e23a72e0bd3a1934aa3837a87afd4b900fbb",
+    "installed-requirements.txt": "0fae6416e3b23b4ad04979396cfae6a07b276054098d2a4e5300a0d6d0d87075"
+  },
+  "final_beta_audit": "executed beta wheel installation update, full59-test suite and offline CLI/API/standalone replay; final archive checksums external to avoid self-reference",
+  "exact_beta_records_sha256": {
+    "beta-correctness.log": "cc0272d468860470a21eddf575e8901575211965d5b2c645db674bbe29c84c71",
+    "beta-recombination-report.json": "3c5631b6b9e099f1b8710026e0c0e23a72e0bd3a1934aa3837a87afd4b900fbb"
+  }
+}

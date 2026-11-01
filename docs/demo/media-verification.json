@@ -1,0 +1,56 @@
+{
+  "media": {
+    "master.mov": {
+      "sha256": "357e0e0c978b5b3a90538160084a728c127a9b11de9a8c62f76a01e5f714e162",
+      "bytes": 4886787,
+      "video_frames": 690,
+      "video_duration": 23.0,
+      "audio_duration": 23.0,
+      "video_codec": "h264",
+      "audio_codec": "pcm_f32le",
+      "full_decode_errors": 0,
+      "width": 1920,
+      "height": 1080,
+      "fps": "30/1",
+      "audio_sample_rate": 48000,
+      "audio_channels": 1
+    },
+    "stemscene-walkthrough.mp4": {
+      "sha256": "76432e35eb2882182b5ed9e1a3aa24faab80370263278a09524a9250cffb3c10",
+      "bytes": 704300,
+      "video_frames": 690,
+      "video_duration": 23.0,
+      "audio_duration": 23.0,
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "full_decode_errors": 0,
+      "width": 1920,
+      "height": 1080,
+      "fps": "30/1",
+      "audio_sample_rate": 48000,
+      "audio_channels": 1
+    }
+  },
+  "expected_audio_samples": 1104000,
+  "master_decoded_audio_samples": 1104000,
+  "master_audio_max_absolute_error": 0.0,
+  "aac_decoded_audio_samples_including_codec_padding": 1104896,
+  "aac_samples_beyond_presented_duration": 896,
+  "aac_presented_audio_alignment_lag_samples": 0,
+  "aac_presented_error_rms": 8.938881364883855e-05,
+  "aac_presented_peak": 0.2075314074754715,
+  "master_peak": 0.2073974609375,
+  "mp4_video_stream_matches_master": true,
+  "representative_frame_times": [
+    1,
+    5,
+    13,
+    17,
+    21
+  ],
+  "review_limits": [
+    "Full technical decode and timing checks; representative pixels inspected separately",
+    "No subjective normal-speed audiovisual listening judgment supplied by these checks",
+    "AAC is lossy; exact WAV/export checks remain separate"
+  ]
+}

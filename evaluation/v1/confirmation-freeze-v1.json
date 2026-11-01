@@ -1,0 +1,30 @@
+{
+  "frozen": true,
+  "selection_finished": true,
+  "created_utc": "2026-10-29T23:55:35.901057+00:00",
+  "checkpoint_sha256": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9",
+  "frozen_recipes_sha256": "bd19a599b3165a0648e1ed9fef17e085e18fd4878f090e25e24945454c3d0728",
+  "protocol_sha256": "ef9ba78a9ec0c002902fca4734b796f56b36a5bc1c37ea3e9783594ae6aa509b",
+  "edit_protocol": "all-request-separate-and-simultaneous-v2",
+  "primary_metric": "all_request_edit_nmse",
+  "baseline_scalar_gain": 0.6,
+  "absence_threshold": 0.01,
+  "evaluator_sha256": "cdff3c59ddedbd042644de941ad5f614333bb51578bc99e1bfba8fb13147b328",
+  "refiner_runtime_sha256": "2f4ac80775563c924164686429ccd29757b1ea2a05d428f1a3f32d9895a7b40d",
+  "selected_candidate": "v1, selected training epoch 8 of 12",
+  "retained_pilot_v2_sha256": "ef631022391812eae3b1f24af3ce780e0284a2b43a7d67feaaf92c645835ebf8",
+  "decision": "V1 has lower selection all-request and present-only edit error than V2. Keep V2 as a documented pilot; no switching or tuning after confirmation.",
+  "selection_evidence": [
+    "evidence/evaluation-review.md",
+    "evidence/model-selection-review.md",
+    "evidence/selection-v2-comparison/report.json"
+  ],
+  "known_limits_before_confirmation": [
+    "V1 worsens target gain accuracy and mean direct SDR relative to independent extraction",
+    "All three selection absent requests still exceed the false-extraction threshold",
+    "Source-level recordings have weak class labels; no physical-source purity guarantee",
+    "Only 10 selection scenes, with source reuse; no broad statistical or subjective-quality claim",
+    "Long/natural/stereo product evidence is separate from source-reference confirmation"
+  ],
+  "failure_interpretation": "Nonpositive all-request mean improvement over the strongest comparable non-oracle baseline does not establish efficacy. Keep present/absent strata, gains, per-scene/per-query failures and source-reuse sensitivity beside any positive bounded result. No retuning model/scalar/metrics/edit subset on confirmation."
+}

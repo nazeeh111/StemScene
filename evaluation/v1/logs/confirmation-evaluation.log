@@ -1,0 +1,22 @@
+{"recipe": "confirmation-000", "trained_edit_nmse": 0.02677361572505939, "failure_flags": ["trained_edit_worse_than_independent"]}
+{"recipe": "confirmation-001", "trained_edit_nmse": 0.04846967591885059, "failure_flags": []}
+{"recipe": "confirmation-002", "trained_edit_nmse": 0.004498500121170151, "failure_flags": ["trained_edit_worse_than_residual_wiener"]}
+{"recipe": "confirmation-003", "trained_edit_nmse": 0.01221660119691031, "failure_flags": ["trained_edit_worse_than_independent", "trained_edit_worse_than_residual_wiener"]}
+{"recipe": "confirmation-004", "trained_edit_nmse": 0.024179545551429937, "failure_flags": ["trained_edit_worse_than_residual_wiener"]}
+{"recipe": "confirmation-005", "trained_edit_nmse": 0.11127718766687857, "failure_flags": ["trained_edit_worse_than_residual_wiener"]}
+{"recipe": "confirmation-006", "trained_edit_nmse": 0.013663613414906324, "failure_flags": ["trained_edit_worse_than_residual_wiener"]}
+{"recipe": "confirmation-007", "trained_edit_nmse": 0.024945059397505454, "failure_flags": []}
+{"recipe": "confirmation-008", "trained_edit_nmse": 0.04339094328560757, "failure_flags": []}
+{"recipe": "confirmation-009", "trained_edit_nmse": 0.011285185824550127, "failure_flags": ["trained_edit_worse_than_independent", "trained_edit_worse_than_residual_wiener"]}
+{"recipe": "confirmation-010", "trained_edit_nmse": 0.015362157432800632, "failure_flags": ["trained_edit_worse_than_independent"]}
+{"recipe": "confirmation-011", "trained_edit_nmse": 0.0617331402125507, "failure_flags": ["trained_edit_worse_than_independent"]}
+{"recipe": "confirmation-012", "trained_edit_nmse": 0.05166007409792003, "failure_flags": ["trained_edit_worse_than_independent"]}
+{"recipe": "confirmation-013", "trained_edit_nmse": 0.012227921182859086, "failure_flags": ["trained_edit_worse_than_independent", "trained_edit_worse_than_residual_wiener"]}
+{"recipe": "confirmation-014", "trained_edit_nmse": 0.0023875365721912623, "failure_flags": ["trained_edit_worse_than_independent", "trained_edit_worse_than_residual_wiener"]}
+{"recipe": "confirmation-015", "trained_edit_nmse": 0.035535038059411446, "failure_flags": ["trained_edit_worse_than_residual_wiener"]}
+{"recipe": "confirmation-016", "trained_edit_nmse": 0.057018204317823694, "failure_flags": ["trained_edit_worse_than_residual_wiener"]}
+{"recipe": "confirmation-017", "trained_edit_nmse": 0.1659091512983344, "failure_flags": []}
+{"recipe": "confirmation-018", "trained_edit_nmse": 0.08266756681470802, "failure_flags": []}
+{"recipe": "confirmation-019", "trained_edit_nmse": 0.04617499235092284, "failure_flags": ["trained_edit_worse_than_independent"]}
+      389.80 real        58.90 user        10.06 sys
+time: sysctl kern.clockrate: Operation not permitted

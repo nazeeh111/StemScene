@@ -1,0 +1,28 @@
+{
+  "historical_final_task_runner_sha256": "fe975a66fe3d75b1e7d5e52d71015033dd20cc75754c402ef52072b660c20d70",
+  "portable_runner_sha256": "0fae47c09f84f7b48d74404529895e439a3b73f914fd10da04772754f3789344",
+  "mixture_sha256": "e17acb13a102364809a4fafb548a36e70abee34311a788649beafd308ab74ebe",
+  "v1_checkpoint_sha256": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9",
+  "runtime_source_hashes": {
+    "src/stemscene/engine.py": "3026b490195b6d6e2436cd29cc9195c83b058425e7ca25295b51c642129b2527",
+    "src/stemscene/backend.py": "a471e0771fe50aad22698ff4a283cdbf7c9fa1bd2a849f54d3e2d8ccc9b265d4",
+    "src/stemscene/joint.py": "2f4ac80775563c924164686429ccd29757b1ea2a05d428f1a3f32d9895a7b40d",
+    "src/stemscene/project.py": "22b6b40829f6713353a05e8e259797490b0a82e74f08b535a7674123ced55278"
+  },
+  "license_sha256": "f6aec3a3283a2efdcbb1feff334adad7ab17c097bdec0cbb4eebdb9e16886074",
+  "original_sources": {
+    "4-179984-A-38.wav": "c39eef951ebd527500e4c8bae4e7d5c6638017dc093125f0d46d462573a8fea5",
+    "4-161127-A-10.wav": "3ea9076dd2ee68b67bd0707652a0c0ca77811b0664426e10e6860c187401af89",
+    "4-156844-A-21.wav": "6fbfe7a57440e68e7a3c1e46dc039df88cdf64f765c9eb2402e8352382078f78"
+  },
+  "parameterization": "Path bindings, CLI arguments, output-parent creation and frozen model/manifest argument validation. Stimulus and scoring arithmetic, seeds, model settings and stage implementations retained. Final historical runner includes later-added scoring/silence stages; it is not asserted to have been a single pre-inference source freeze.",
+  "preparation_equivalence": "Decoded mixture and all float64 references exact; timestamp-variant WAV whole-file hashes recorded separately in preparation-check.json.",
+  "producer_soundfile_version": "0.13.1",
+  "producer_libsndfile_version": "1.2.2",
+  "stage_function_ast_equivalence": {
+    "infer": true,
+    "evaluate": true,
+    "extras": true,
+    "prepare": "Only source-cache path binding and frozen-manifest argument guard differ; current fresh numerical equivalence independently verified."
+  }
+}

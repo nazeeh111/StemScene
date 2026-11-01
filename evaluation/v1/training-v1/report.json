@@ -1,0 +1,183 @@
+{
+  "seed": 1729,
+  "epochs_executed": 12,
+  "selected_epoch": 8,
+  "learning_rate": 0.002,
+  "weight_decay": 0.0001,
+  "threads": 4,
+  "trainer_sha256": "99d22d7625e03cb7c48248eb6964c44cfb69c765a6a103deec2f638d5103530e",
+  "joint_module_sha256": "a252f5f2c62a036381a2adabbcb75e83539b99586cad80b87e45ecc3e3938c12",
+  "initial_selection_loss": 0.23428167030215263,
+  "selected_selection_loss": 0.13820480480790137,
+  "frozen_recipes_sha256": "bd19a599b3165a0648e1ed9fef17e085e18fd4878f090e25e24945454c3d0728",
+  "backend_checkpoint_sha256": "f8cda01bfd0ebd141eef45d41db7a3ada23a56568465840d3cff04b8010ce82c",
+  "training_records": [
+    {
+      "recipe_id": "train-000",
+      "sha256": "45c8bde4353408b61ade17eecf61eb6761a335a9f538d653d25725138b26c1ca"
+    },
+    {
+      "recipe_id": "train-001",
+      "sha256": "85563aa92367fd963a94e5ac43e33dd445d684a326b6202fff0769827d25eae7"
+    },
+    {
+      "recipe_id": "train-002",
+      "sha256": "860eb0378d24e19c8bee615974f991dc17b8602a3ae8267475c407ce51e81701"
+    },
+    {
+      "recipe_id": "train-003",
+      "sha256": "0177f1746655dba054f0a78b0c84acd3690c625375736b81bcdfa1662878ff9d"
+    },
+    {
+      "recipe_id": "train-004",
+      "sha256": "8d9fda417733818f513efab1ea06e0f4239d2e7ef7f8039f4a0b70e3f57b8df0"
+    },
+    {
+      "recipe_id": "train-005",
+      "sha256": "90527bcc652e3f6f67579cc0684d55b40845f9040c224c96fb89e5c137046b69"
+    },
+    {
+      "recipe_id": "train-006",
+      "sha256": "6c741c840443f68c0747bf019bcc0b83d2aeecd6ea74eabc91d14e805bb5eac4"
+    },
+    {
+      "recipe_id": "train-007",
+      "sha256": "dbdcd4303443a55f4076a94be049c4492ec64e728e4bc892b228e0a544b909ec"
+    },
+    {
+      "recipe_id": "train-008",
+      "sha256": "bbea63239b57079b991a675c48ef3b3a94bf5ce4701f0f364065908ffcfba02e"
+    },
+    {
+      "recipe_id": "train-009",
+      "sha256": "2cc59d1c49f13ba0bd6c643f662c20f192f56a24e684f4ae424decaa55352bad"
+    },
+    {
+      "recipe_id": "train-010",
+      "sha256": "64f79321716db4dfdbe4fb5d0c9e6e2b28363814b96f3d8e2f2737432644cd84"
+    },
+    {
+      "recipe_id": "train-011",
+      "sha256": "2a011dd5e2aa634953a6805167ee00ce346a43471b207b68275e1587d4e6b660"
+    },
+    {
+      "recipe_id": "train-012",
+      "sha256": "4ba76b5096b6ed98f088ac38df1d96c6ee5cefc2df6f50d3e1bc02400bad720d"
+    },
+    {
+      "recipe_id": "train-013",
+      "sha256": "d70e57c3c82909dc4589409ace6eb78d2ebb6545a732f59ea0883a65cd4e1f2a"
+    },
+    {
+      "recipe_id": "train-014",
+      "sha256": "e67dd6138339b04f48e6343d691d35438906ef4626c5f8a9eba39bd257b8fdad"
+    },
+    {
+      "recipe_id": "train-015",
+      "sha256": "1a60dc9e4dd40be86d264d36fd41e713e2c902eb386c4da8788e4ecd5227b91e"
+    },
+    {
+      "recipe_id": "train-016",
+      "sha256": "09bcae4021c1f41aecee6f03ef02bbbf0f43df15c6b85f10418f8f6f386f4989"
+    },
+    {
+      "recipe_id": "train-017",
+      "sha256": "7ba909e5b1b314a4ae379d9be8205bb274b71db31bdfe95e2adfb4f3949fb434"
+    },
+    {
+      "recipe_id": "train-018",
+      "sha256": "3ee43c2369186ce086ad14ad69c09813650aee8e77b1ed210bfc8f0a865b1393"
+    },
+    {
+      "recipe_id": "train-019",
+      "sha256": "7eabefdc21751f51abea99e661714ad3aaa243c4c5da469561188bd8c11982fb"
+    },
+    {
+      "recipe_id": "train-020",
+      "sha256": "f5d82db80eaabdf8f7e8dce30b0a323e88e0dae92784597ec6d62740f5dd1e82"
+    },
+    {
+      "recipe_id": "train-021",
+      "sha256": "6223680cdf3e76d78849b4056a7dfcb639ba0565baf898baf8708d4503ff3cf3"
+    },
+    {
+      "recipe_id": "train-022",
+      "sha256": "c42318c1a5b74991642850648848c6def6253918965efb2be9d6a5d22d9b7b1b"
+    },
+    {
+      "recipe_id": "train-023",
+      "sha256": "ab6b04ba95773e9b0ae092adaa347f76e95d964009672f8f573c4322dcc2523c"
+    },
+    {
+      "recipe_id": "train-024",
+      "sha256": "a1195d432b8f940c491000fb37ff08ef26d75d0dbd1a0d359b238535aa979ae5"
+    },
+    {
+      "recipe_id": "train-025",
+      "sha256": "2bedbe058567edb5a158bb77a35a1695ad209cb7c72f8005c8ee93c9b5f5ce58"
+    },
+    {
+      "recipe_id": "train-026",
+      "sha256": "a49487df16335f285d1157a62540c1afdfb091537d7ea42b3d11198ccbae7ad8"
+    },
+    {
+      "recipe_id": "train-027",
+      "sha256": "2c937233c29e0b35794f78dd143a0657abfabea8e077b64d6bf968f8ac3c3426"
+    },
+    {
+      "recipe_id": "train-028",
+      "sha256": "31f9e8458936f68169d3de57d13fad66cd7cc1f863926847b6d4178310e0964d"
+    },
+    {
+      "recipe_id": "train-029",
+      "sha256": "db4e13cf2df4b52ee715ad7d707c8f400224cd9544d83c6a97feb4f6de2a973a"
+    }
+  ],
+  "selection_records": [
+    {
+      "recipe_id": "selection-000",
+      "sha256": "9c8b1aef4510cc837e117db7d776a51ea542c292fde3257a5da07647af9034ad"
+    },
+    {
+      "recipe_id": "selection-001",
+      "sha256": "6dfd89d72f3222aac25d35ed9bbf88a5c024c6bbbd0932368d3550c071d8ff0a"
+    },
+    {
+      "recipe_id": "selection-002",
+      "sha256": "0d843ff32f778b488772af83b08d99adb1b9179c09cbe8d0b08b47566caa6db2"
+    },
+    {
+      "recipe_id": "selection-003",
+      "sha256": "759de369da4da40e075ee80800e6ad89ad825ef41182ae0b77e7225424a73603"
+    },
+    {
+      "recipe_id": "selection-004",
+      "sha256": "07f715cb0099be5b24817f5638d55fdcab3da3db3a26af817366c376c1d106f3"
+    },
+    {
+      "recipe_id": "selection-005",
+      "sha256": "005109cb8c1335c5203d18bf1fb208a8343cef284861df44be58962b2d8491a0"
+    },
+    {
+      "recipe_id": "selection-006",
+      "sha256": "2286b50ef9d4e9099ab181779245cf2c5836c8abf4a4d50479b599bb0c245cc2"
+    },
+    {
+      "recipe_id": "selection-007",
+      "sha256": "69c220b6507fe69b7a2a0d79aa71ba5be0c6b45d33efaf2b8b09e988f8c2c100"
+    },
+    {
+      "recipe_id": "selection-008",
+      "sha256": "57f71a464be1f9a5d7b3d04a0687889ddc81b1ae618590a7f5cdca96b077e969"
+    },
+    {
+      "recipe_id": "selection-009",
+      "sha256": "e389b78476d7083bae428c29525360ec2515f528cb9905081b68c75af245ef83"
+    }
+  ],
+  "confirmation_opened": false,
+  "seconds": 653.2455907079857,
+  "parameters": 579,
+  "selection_improved": true,
+  "note": "Controlled genuine-source mixtures; no human quality judgment or unseen foundation-pretraining claim."
+}

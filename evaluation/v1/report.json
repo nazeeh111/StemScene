@@ -1,0 +1,1718 @@
+{
+  "schema_version": 1,
+  "split": "confirmation",
+  "checkpoint_sha256": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9",
+  "primary_metric": "all_request_edit_nmse",
+  "edit_protocol": "all-request-separate-and-simultaneous-v2",
+  "baseline_scalar_gain": 0.6,
+  "frozen_coverage": {
+    "expected_recipes": 20,
+    "observed_recipes": 20,
+    "complete": true
+  },
+  "checkpoint_training_selection": {
+    "epochs_executed": 12,
+    "selected_epoch": 8,
+    "selection_improved": true,
+    "initial_selection_loss": 0.23428167030215263,
+    "selected_selection_loss": 0.13820480480790137
+  },
+  "frozen_recipes_sha256": "bd19a599b3165a0648e1ed9fef17e085e18fd4878f090e25e24945454c3d0728",
+  "decision_freeze": {
+    "path": "confirmation-freeze-v1.json",
+    "sha256": "467770cb9889b2b2229c8eda7fb21ef6a3fe096e4e65dc4dd99fe9da95702541",
+    "record": {
+      "frozen": true,
+      "selection_finished": true,
+      "created_utc": "2026-10-29T23:55:35.901057+00:00",
+      "checkpoint_sha256": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9",
+      "frozen_recipes_sha256": "bd19a599b3165a0648e1ed9fef17e085e18fd4878f090e25e24945454c3d0728",
+      "protocol_sha256": "ef9ba78a9ec0c002902fca4734b796f56b36a5bc1c37ea3e9783594ae6aa509b",
+      "edit_protocol": "all-request-separate-and-simultaneous-v2",
+      "primary_metric": "all_request_edit_nmse",
+      "baseline_scalar_gain": 0.6,
+      "absence_threshold": 0.01,
+      "evaluator_sha256": "cdff3c59ddedbd042644de941ad5f614333bb51578bc99e1bfba8fb13147b328",
+      "refiner_runtime_sha256": "2f4ac80775563c924164686429ccd29757b1ea2a05d428f1a3f32d9895a7b40d",
+      "selected_candidate": "v1, selected training epoch 8 of 12",
+      "retained_pilot_v2_sha256": "ef631022391812eae3b1f24af3ce780e0284a2b43a7d67feaaf92c645835ebf8",
+      "decision": "V1 has lower selection all-request and present-only edit error than V2. Keep V2 as a documented pilot; no switching or tuning after confirmation.",
+      "selection_evidence": [
+        "evidence/evaluation-review.md",
+        "evidence/model-selection-review.md",
+        "evidence/selection-v2-comparison/report.json"
+      ],
+      "known_limits_before_confirmation": [
+        "V1 worsens target gain accuracy and mean direct SDR relative to independent extraction",
+        "All three selection absent requests still exceed the false-extraction threshold",
+        "Source-level recordings have weak class labels; no physical-source purity guarantee",
+        "Only 10 selection scenes, with source reuse; no broad statistical or subjective-quality claim",
+        "Long/natural/stereo product evidence is separate from source-reference confirmation"
+      ],
+      "failure_interpretation": "Nonpositive all-request mean improvement over the strongest comparable non-oracle baseline does not establish efficacy. Keep present/absent strata, gains, per-scene/per-query failures and source-reuse sensitivity beside any positive bounded result. No retuning model/scalar/metrics/edit subset on confirmation."
+    }
+  },
+  "absence_threshold": 0.01,
+  "aggregate": {
+    "fuss_present_evaluator_oracle": {
+      "recipes": 20,
+      "metrics": {
+        "absence_energy_over_mixture": null,
+        "absence_false_extraction_rate": null,
+        "activity_change_nmse": {
+          "mean": 0.07705992476102755,
+          "median": 0.015624288325492097,
+          "minimum": 0.004355529433667517,
+          "maximum": 0.5914541534566842,
+          "recipes_measured": 20
+        },
+        "activity_envelope_nmse": {
+          "mean": 0.10476602932704467,
+          "median": 0.05537114217686255,
+          "minimum": 0.006393206221627906,
+          "maximum": 0.4784512488307695,
+          "recipes_measured": 20
+        },
+        "all_request_absent_edit_nmse": null,
+        "all_request_edit_nmse": {
+          "mean": 0.05122657732609739,
+          "median": 0.05139850516658817,
+          "minimum": 0.0025919118753763913,
+          "maximum": 0.11285441867584572,
+          "recipes_measured": 20
+        },
+        "all_request_orthogonal_edit_nmse": {
+          "mean": 0.025318735494615153,
+          "median": 0.021972811233683075,
+          "minimum": 0.0003951286486032412,
+          "maximum": 0.07669883192941232,
+          "recipes_measured": 20
+        },
+        "all_request_present_edit_nmse": {
+          "mean": 0.05122657732609739,
+          "median": 0.05139850516658817,
+          "minimum": 0.0025919118753763913,
+          "maximum": 0.11285441867584572,
+          "recipes_measured": 20
+        },
+        "all_request_retained_projection_nmse": {
+          "mean": 0.025244585417264938,
+          "median": 0.013126358222410707,
+          "minimum": 6.843006643172936e-07,
+          "maximum": 0.09695908704575239,
+          "recipes_measured": 20
+        },
+        "all_request_target_projection_edit_nmse": {
+          "mean": 0.025907841831482238,
+          "median": 0.0242717990892575,
+          "minimum": 0.0001255666146825448,
+          "maximum": 0.0611020687031414,
+          "recipes_measured": 20
+        },
+        "boundary_error_nmse": null,
+        "edit_mse": {
+          "mean": 0.0004750785963003425,
+          "median": 0.0003210117214410509,
+          "minimum": 1.3947940214733884e-08,
+          "maximum": 0.0015522973002242172,
+          "recipes_measured": 18
+        },
+        "edit_nmse": {
+          "mean": 0.051095379969790564,
+          "median": 0.04780915166087864,
+          "minimum": 3.023509337987288e-06,
+          "maximum": 0.12824592187003558,
+          "recipes_measured": 18
+        },
+        "excess_pairwise_attribution": {
+          "mean": 0.002016856392258513,
+          "median": 3.0500904362827107e-05,
+          "minimum": 0.0,
+          "maximum": 0.01803473841159824,
+          "recipes_measured": 20
+        },
+        "nonboundary_error_nmse": null,
+        "outside_edit_max_delta": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 18
+        },
+        "residual_energy_over_mixture": {
+          "mean": 0.1973593690557557,
+          "median": 0.04136667829905652,
+          "minimum": 0.0010688860602974357,
+          "maximum": 0.9758600596395345,
+          "recipes_measured": 20
+        },
+        "resynthesis_max_absolute_error": {
+          "mean": 8.803721640582296e-18,
+          "median": 3.469446951953614e-18,
+          "minimum": 0.0,
+          "maximum": 5.551115123125783e-17,
+          "recipes_measured": 20
+        },
+        "retained_source_projection_nmse": {
+          "mean": 0.010734929074454856,
+          "median": 0.00010258368586306518,
+          "minimum": 1.1243814086345611e-10,
+          "maximum": 0.059172127479993404,
+          "recipes_measured": 18
+        },
+        "simultaneous_edit_nmse": null,
+        "source_attribution_condition": {
+          "mean": 97.06291284211648,
+          "median": 8.113046927007392,
+          "minimum": 1.3465315513388614,
+          "maximum": 879.8382271698156,
+          "recipes_measured": 20
+        },
+        "source_duplicate_energy_over_mixture": {
+          "mean": 0.027111287037097132,
+          "median": 0.001667295813560392,
+          "minimum": 1.1287828990284863e-11,
+          "maximum": 0.13405727830474917,
+          "recipes_measured": 20
+        },
+        "target_gain_absolute_error": {
+          "mean": 0.6020532236283149,
+          "median": 0.6075897179190379,
+          "minimum": 0.23064065371919235,
+          "maximum": 0.9778272941830876,
+          "recipes_measured": 20
+        },
+        "target_sdr_db": {
+          "mean": 2.397451649288107,
+          "median": 2.2881303503071635,
+          "minimum": 0.14845057285011684,
+          "maximum": 6.988672858246234,
+          "recipes_measured": 20
+        },
+        "target_si_sdr_db": {
+          "mean": -14.373580351123561,
+          "median": -14.948110022720737,
+          "minimum": -32.28663413562128,
+          "maximum": 1.3837451882050322,
+          "recipes_measured": 20
+        },
+        "waveform_nmse": {
+          "mean": 0.16129578431318128,
+          "median": 0.1599795952263251,
+          "minimum": 0.01857468325503534,
+          "maximum": 0.3359084986017773,
+          "recipes_measured": 20
+        }
+      }
+    },
+    "independent": {
+      "recipes": 20,
+      "metrics": {
+        "absence_energy_over_mixture": {
+          "mean": 0.2451124431280979,
+          "median": 0.09402158854886772,
+          "minimum": 0.0020168648947793077,
+          "maximum": 0.8383257907594132,
+          "recipes_measured": 6
+        },
+        "absence_false_extraction_rate": {
+          "mean": 0.8333333333333334,
+          "median": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "recipes_measured": 6
+        },
+        "activity_change_nmse": {
+          "mean": 0.0784717679447573,
+          "median": 0.020767157875538546,
+          "minimum": 0.00011385399927600368,
+          "maximum": 0.45710671043666745,
+          "recipes_measured": 20
+        },
+        "activity_envelope_nmse": {
+          "mean": 0.12219013876499144,
+          "median": 0.08014153316202366,
+          "minimum": 8.900120258062781e-05,
+          "maximum": 0.42260106651393253,
+          "recipes_measured": 20
+        },
+        "all_request_absent_edit_nmse": {
+          "mean": 0.08583684787318252,
+          "median": 0.03809691681253238,
+          "minimum": 0.0005149428670867414,
+          "maximum": 0.30523945069873964,
+          "recipes_measured": 6
+        },
+        "all_request_edit_nmse": {
+          "mean": 0.05937774962429081,
+          "median": 0.053771223793263115,
+          "minimum": 0.0009456529265115896,
+          "maximum": 0.1415161092447926,
+          "recipes_measured": 20
+        },
+        "all_request_orthogonal_edit_nmse": {
+          "mean": 0.048178366904611344,
+          "median": 0.04445141733380188,
+          "minimum": 0.0009420425862836428,
+          "maximum": 0.1119160243112764,
+          "recipes_measured": 20
+        },
+        "all_request_present_edit_nmse": {
+          "mean": 0.05584124505517248,
+          "median": 0.046902200261979554,
+          "minimum": 0.0009456529265115896,
+          "maximum": 0.15486480389424886,
+          "recipes_measured": 20
+        },
+        "all_request_retained_projection_nmse": {
+          "mean": 0.02939349941292768,
+          "median": 0.020054443251718408,
+          "minimum": 3.5484348680672884e-05,
+          "maximum": 0.09799955203123346,
+          "recipes_measured": 20
+        },
+        "all_request_target_projection_edit_nmse": {
+          "mean": 0.011199382719679473,
+          "median": 0.002698193539582854,
+          "minimum": 3.6103402279470687e-06,
+          "maximum": 0.04879472212713214,
+          "recipes_measured": 20
+        },
+        "boundary_error_nmse": null,
+        "edit_mse": {
+          "mean": 0.0007172278728457173,
+          "median": 0.00020047046268623314,
+          "minimum": 1.3401971791279595e-06,
+          "maximum": 0.007846975901786511,
+          "recipes_measured": 20
+        },
+        "edit_nmse": {
+          "mean": 0.05967144581110014,
+          "median": 0.04115518815809465,
+          "minimum": 0.00041292711909467764,
+          "maximum": 0.30523945069873964,
+          "recipes_measured": 20
+        },
+        "excess_pairwise_attribution": {
+          "mean": 0.04475804599866983,
+          "median": 0.02283614636175274,
+          "minimum": 3.1245494018918136e-05,
+          "maximum": 0.20810555322869534,
+          "recipes_measured": 20
+        },
+        "nonboundary_error_nmse": null,
+        "outside_edit_max_delta": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "residual_energy_over_mixture": {
+          "mean": 0.33069443324191733,
+          "median": 0.25529162458346266,
+          "minimum": 0.010992727662946622,
+          "maximum": 1.0223869810741621,
+          "recipes_measured": 20
+        },
+        "resynthesis_max_absolute_error": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "retained_source_projection_nmse": {
+          "mean": 0.03074607212291376,
+          "median": 0.014741507096278642,
+          "minimum": 1.628607619208049e-06,
+          "maximum": 0.23842266005349824,
+          "recipes_measured": 20
+        },
+        "simultaneous_edit_nmse": {
+          "mean": 0.12573176334556901,
+          "median": 0.09076335520506032,
+          "minimum": 0.0037802960703524568,
+          "maximum": 0.40355775920950254,
+          "recipes_measured": 20
+        },
+        "source_attribution_condition": {
+          "mean": 97.06291284211648,
+          "median": 8.113046927007392,
+          "minimum": 1.3465315513388614,
+          "maximum": 879.8382271698156,
+          "recipes_measured": 20
+        },
+        "source_duplicate_energy_over_mixture": {
+          "mean": 0.25050930879332484,
+          "median": 0.2090418343354964,
+          "minimum": 0.008035952259922189,
+          "maximum": 0.7523913053315449,
+          "recipes_measured": 20
+        },
+        "target_gain_absolute_error": {
+          "mean": 0.2262985650473373,
+          "median": 0.20337879602936418,
+          "minimum": 0.04836181621252692,
+          "maximum": 0.4398706317366036,
+          "recipes_measured": 20
+        },
+        "target_sdr_db": {
+          "mean": 3.605928648534122,
+          "median": 3.332083895367319,
+          "minimum": -2.423094204722655,
+          "maximum": 9.51385179524834,
+          "recipes_measured": 20
+        },
+        "target_si_sdr_db": {
+          "mean": 1.4425652624691847,
+          "median": 1.6952574182191456,
+          "minimum": -5.7703591357183415,
+          "maximum": 9.192466898923692,
+          "recipes_measured": 20
+        },
+        "waveform_nmse": {
+          "mean": 0.17507272066880158,
+          "median": 0.17945204395026987,
+          "minimum": 0.003993388228695195,
+          "maximum": 0.35062767039933046,
+          "recipes_measured": 20
+        }
+      }
+    },
+    "residual_wiener": {
+      "recipes": 20,
+      "metrics": {
+        "absence_energy_over_mixture": {
+          "mean": 0.1315603513467719,
+          "median": 0.031965047463772434,
+          "minimum": 0.00012767670914487473,
+          "maximum": 0.6368667075727426,
+          "recipes_measured": 6
+        },
+        "absence_false_extraction_rate": {
+          "mean": 0.6666666666666666,
+          "median": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "recipes_measured": 6
+        },
+        "activity_change_nmse": {
+          "mean": 0.07845192001133613,
+          "median": 0.017393930297934384,
+          "minimum": 0.00010031843446137458,
+          "maximum": 0.42039541521454926,
+          "recipes_measured": 20
+        },
+        "activity_envelope_nmse": {
+          "mean": 0.1390667334338422,
+          "median": 0.08089830116390541,
+          "minimum": 7.040677409476428e-05,
+          "maximum": 0.374766537993356,
+          "recipes_measured": 20
+        },
+        "all_request_absent_edit_nmse": {
+          "mean": 0.04350688146798653,
+          "median": 0.012493526017820424,
+          "minimum": 3.0261905562471943e-05,
+          "maximum": 0.20957167029105347,
+          "recipes_measured": 6
+        },
+        "all_request_edit_nmse": {
+          "mean": 0.04842809599213581,
+          "median": 0.04288554068940574,
+          "minimum": 0.0005458723673931644,
+          "maximum": 0.13332613148617212,
+          "recipes_measured": 20
+        },
+        "all_request_orthogonal_edit_nmse": {
+          "mean": 0.021926340695770496,
+          "median": 0.013487292167892951,
+          "minimum": 0.00016221341118395163,
+          "maximum": 0.0715903800102391,
+          "recipes_measured": 20
+        },
+        "all_request_present_edit_nmse": {
+          "mean": 0.04897816583264004,
+          "median": 0.04288554068940574,
+          "minimum": 0.0005458723673931644,
+          "maximum": 0.13332613148617212,
+          "recipes_measured": 20
+        },
+        "all_request_retained_projection_nmse": {
+          "mean": 0.00953575150538514,
+          "median": 0.006442222938029037,
+          "minimum": 5.9017212627889655e-06,
+          "maximum": 0.03321634158172184,
+          "recipes_measured": 20
+        },
+        "all_request_target_projection_edit_nmse": {
+          "mean": 0.026501755296365316,
+          "median": 0.017367370925891218,
+          "minimum": 0.0001465599908380314,
+          "maximum": 0.07281273779967071,
+          "recipes_measured": 20
+        },
+        "boundary_error_nmse": null,
+        "edit_mse": {
+          "mean": 0.0006133830259989327,
+          "median": 0.00026459348726860706,
+          "minimum": 7.876003934049999e-08,
+          "maximum": 0.005387586180968825,
+          "recipes_measured": 20
+        },
+        "edit_nmse": {
+          "mean": 0.04846842657932221,
+          "median": 0.04277304381059414,
+          "minimum": 3.0261905562471943e-05,
+          "maximum": 0.20957167029105347,
+          "recipes_measured": 20
+        },
+        "excess_pairwise_attribution": {
+          "mean": 0.0012696739046450898,
+          "median": 0.0007706441686609713,
+          "minimum": 1.4805865881270412e-07,
+          "maximum": 0.0043282980057828754,
+          "recipes_measured": 20
+        },
+        "nonboundary_error_nmse": null,
+        "outside_edit_max_delta": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "residual_energy_over_mixture": {
+          "mean": 0.11796245556478738,
+          "median": 0.04710777135350164,
+          "minimum": 0.0010928119999648654,
+          "maximum": 0.7501477779978709,
+          "recipes_measured": 20
+        },
+        "resynthesis_max_absolute_error": {
+          "mean": 1.0234868508263162e-17,
+          "median": 6.938893903907228e-18,
+          "minimum": 1.734723475976807e-18,
+          "maximum": 2.7755575615628914e-17,
+          "recipes_measured": 20
+        },
+        "retained_source_projection_nmse": {
+          "mean": 0.010922836161188422,
+          "median": 0.0019354401272429096,
+          "minimum": 4.9146789090816694e-08,
+          "maximum": 0.09959139064064343,
+          "recipes_measured": 20
+        },
+        "simultaneous_edit_nmse": {
+          "mean": 0.04152003896940845,
+          "median": 0.017755539576644087,
+          "minimum": 0.0003812347216173746,
+          "maximum": 0.21387944754826843,
+          "recipes_measured": 20
+        },
+        "source_attribution_condition": {
+          "mean": 97.06291284211648,
+          "median": 8.113046927007392,
+          "minimum": 1.3465315513388614,
+          "maximum": 879.8382271698156,
+          "recipes_measured": 20
+        },
+        "source_duplicate_energy_over_mixture": {
+          "mean": 0.043816789918378354,
+          "median": 0.04167503140697131,
+          "minimum": 0.0006507304075434054,
+          "maximum": 0.10479785063459893,
+          "recipes_measured": 20
+        },
+        "target_gain_absolute_error": {
+          "mean": 0.4893810662433117,
+          "median": 0.4855794175089976,
+          "minimum": 0.35571781399550645,
+          "maximum": 0.7182086931593517,
+          "recipes_measured": 20
+        },
+        "target_sdr_db": {
+          "mean": 3.6056461114668616,
+          "median": 3.2377636169640702,
+          "minimum": -3.5327395521913636,
+          "maximum": 10.49304554784109,
+          "recipes_measured": 20
+        },
+        "target_si_sdr_db": {
+          "mean": 0.7870611350695675,
+          "median": 0.9804986563009748,
+          "minimum": -9.280139645348969,
+          "maximum": 9.26342722921051,
+          "recipes_measured": 20
+        },
+        "waveform_nmse": {
+          "mean": 0.144053913538227,
+          "median": 0.1340549342479211,
+          "minimum": 0.002472584761041977,
+          "maximum": 0.3741820324352027,
+          "recipes_measured": 20
+        }
+      }
+    },
+    "scalar_calibrated": {
+      "recipes": 20,
+      "metrics": {
+        "absence_energy_over_mixture": {
+          "mean": 0.08824047952611525,
+          "median": 0.03384777187759239,
+          "minimum": 0.0007260713621205507,
+          "maximum": 0.30179728467338873,
+          "recipes_measured": 6
+        },
+        "absence_false_extraction_rate": {
+          "mean": 0.8333333333333334,
+          "median": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "recipes_measured": 6
+        },
+        "activity_change_nmse": {
+          "mean": 0.10720726222487528,
+          "median": 0.026934412598412266,
+          "minimum": 0.007878069639294185,
+          "maximum": 0.7819727451667661,
+          "recipes_measured": 20
+        },
+        "activity_envelope_nmse": {
+          "mean": 0.1875603711462706,
+          "median": 0.13443977490215592,
+          "minimum": 0.06489759711505848,
+          "maximum": 0.5900205060398753,
+          "recipes_measured": 20
+        },
+        "all_request_absent_edit_nmse": {
+          "mean": 0.030901265234345717,
+          "median": 0.013714890052511657,
+          "minimum": 0.0001853794321512269,
+          "maximum": 0.10988620225154633,
+          "recipes_measured": 6
+        },
+        "all_request_edit_nmse": {
+          "mean": 0.047738018106278854,
+          "median": 0.044186055921367914,
+          "minimum": 0.010998045590108418,
+          "maximum": 0.0977693839406457,
+          "recipes_measured": 20
+        },
+        "all_request_orthogonal_edit_nmse": {
+          "mean": 0.01734421208566008,
+          "median": 0.016002510240168667,
+          "minimum": 0.00033913533106211133,
+          "maximum": 0.0402897687520595,
+          "recipes_measured": 20
+        },
+        "all_request_present_edit_nmse": {
+          "mean": 0.04926999222333557,
+          "median": 0.04355385128345478,
+          "minimum": 0.013768867268922107,
+          "maximum": 0.0977693839406457,
+          "recipes_measured": 20
+        },
+        "all_request_retained_projection_nmse": {
+          "mean": 0.010593012089948233,
+          "median": 0.007028669229673153,
+          "minimum": 1.376352885656001e-05,
+          "maximum": 0.035104760975002085,
+          "recipes_measured": 20
+        },
+        "all_request_target_projection_edit_nmse": {
+          "mean": 0.03039380602061878,
+          "median": 0.026098507013037814,
+          "minimum": 0.007927111546060626,
+          "maximum": 0.06944008153786056,
+          "recipes_measured": 20
+        },
+        "boundary_error_nmse": null,
+        "edit_mse": {
+          "mean": 0.0004955576791845073,
+          "median": 0.00029597144203586794,
+          "minimum": 4.824709844860654e-07,
+          "maximum": 0.002824911324643145,
+          "recipes_measured": 20
+        },
+        "edit_nmse": {
+          "mean": 0.04395953836125967,
+          "median": 0.04461784221003923,
+          "minimum": 0.0001853794321512269,
+          "maximum": 0.1241544436855126,
+          "recipes_measured": 20
+        },
+        "excess_pairwise_attribution": {
+          "mean": 0.005718675120307476,
+          "median": 0.002931200082321581,
+          "minimum": 3.997962659236385e-06,
+          "maximum": 0.02670881694924034,
+          "recipes_measured": 20
+        },
+        "nonboundary_error_nmse": null,
+        "outside_edit_max_delta": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "residual_energy_over_mixture": {
+          "mean": 0.17881954436544042,
+          "median": 0.1397484641627129,
+          "minimum": 0.03343787052043106,
+          "maximum": 0.7802211721243758,
+          "recipes_measured": 20
+        },
+        "resynthesis_max_absolute_error": {
+          "mean": 1.509209424099822e-17,
+          "median": 1.3877787807814457e-17,
+          "minimum": 3.469446951953614e-18,
+          "maximum": 5.551115123125783e-17,
+          "recipes_measured": 20
+        },
+        "retained_source_projection_nmse": {
+          "mean": 0.011047716813541697,
+          "median": 0.005373751642272041,
+          "minimum": 5.862987429148936e-07,
+          "maximum": 0.08553805594004639,
+          "recipes_measured": 20
+        },
+        "simultaneous_edit_nmse": {
+          "mean": 0.05129754273629382,
+          "median": 0.0420099413118282,
+          "minimum": 0.012700139544427197,
+          "maximum": 0.15233969539860975,
+          "recipes_measured": 20
+        },
+        "source_attribution_condition": {
+          "mean": 97.06291284211648,
+          "median": 8.113046927007392,
+          "minimum": 1.3465315513388614,
+          "maximum": 879.8382271698156,
+          "recipes_measured": 20
+        },
+        "source_duplicate_energy_over_mixture": {
+          "mean": 0.09018335116559688,
+          "median": 0.07525506036077864,
+          "minimum": 0.002892942813571971,
+          "maximum": 0.270860869919356,
+          "recipes_measured": 20
+        },
+        "target_gain_absolute_error": {
+          "mean": 0.5357743296604001,
+          "median": 0.5220272776176209,
+          "minimum": 0.42901708972751534,
+          "maximum": 0.6639223790419614,
+          "recipes_measured": 20
+        },
+        "target_sdr_db": {
+          "mean": 2.560475539734137,
+          "median": 2.984813713012036,
+          "minimum": -2.2510564895934824,
+          "maximum": 6.402505409961803,
+          "recipes_measured": 20
+        },
+        "target_si_sdr_db": {
+          "mean": 1.442565262469181,
+          "median": 1.6952574182191014,
+          "minimum": -5.7703591357182935,
+          "maximum": 9.19246689892355,
+          "recipes_measured": 20
+        },
+        "waveform_nmse": {
+          "mean": 0.14310104083202596,
+          "median": 0.13995768229686484,
+          "minimum": 0.03110433558386939,
+          "maximum": 0.27741439653892536,
+          "recipes_measured": 20
+        }
+      }
+    },
+    "scalar_fixed_0_75": {
+      "recipes": 20,
+      "metrics": {
+        "absence_energy_over_mixture": {
+          "mean": 0.1378757492595551,
+          "median": 0.05288714355873812,
+          "minimum": 0.0011344865033133605,
+          "maximum": 0.4715582573021698,
+          "recipes_measured": 6
+        },
+        "absence_false_extraction_rate": {
+          "mean": 0.8333333333333334,
+          "median": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "recipes_measured": 6
+        },
+        "activity_change_nmse": {
+          "mean": 0.07712512059666353,
+          "median": 0.022674808670025894,
+          "minimum": 0.005532925681850331,
+          "maximum": 0.5115234809510977,
+          "recipes_measured": 20
+        },
+        "activity_envelope_nmse": {
+          "mean": 0.1295409964934217,
+          "median": 0.10113037340045078,
+          "minimum": 0.04344568323216915,
+          "maximum": 0.4077029022578389,
+          "recipes_measured": 20
+        },
+        "all_request_absent_edit_nmse": {
+          "mean": 0.04828322692866518,
+          "median": 0.021429515707049464,
+          "minimum": 0.00028965536273629206,
+          "maximum": 0.1716971910180411,
+          "recipes_measured": 6
+        },
+        "all_request_edit_nmse": {
+          "mean": 0.04763914468354274,
+          "median": 0.04642681370566029,
+          "minimum": 0.006452099406845366,
+          "maximum": 0.10747332724280305,
+          "recipes_measured": 20
+        },
+        "all_request_orthogonal_edit_nmse": {
+          "mean": 0.02710033138384388,
+          "median": 0.025003922250263547,
+          "minimum": 0.000529898954784549,
+          "maximum": 0.06295276367509298,
+          "recipes_measured": 20
+        },
+        "all_request_present_edit_nmse": {
+          "mean": 0.04700003260143038,
+          "median": 0.04202353854114767,
+          "minimum": 0.006452099406845366,
+          "maximum": 0.10747332724280305,
+          "recipes_measured": 20
+        },
+        "all_request_retained_projection_nmse": {
+          "mean": 0.016541950528052757,
+          "median": 0.01112885908446187,
+          "minimum": 2.0701772063390854e-05,
+          "maximum": 0.05498781840275029,
+          "recipes_measured": 20
+        },
+        "all_request_target_projection_edit_nmse": {
+          "mean": 0.020538813299698862,
+          "median": 0.012848116399290902,
+          "minimum": 0.0033791417431229685,
+          "maximum": 0.06095074305515637,
+          "recipes_measured": 20
+        },
+        "boundary_error_nmse": null,
+        "edit_mse": {
+          "mean": 0.0005186092587532492,
+          "median": 0.0002325092905236476,
+          "minimum": 7.538609132594773e-07,
+          "maximum": 0.004413923944754913,
+          "recipes_measured": 20
+        },
+        "edit_nmse": {
+          "mean": 0.04483884607820957,
+          "median": 0.03667838365000531,
+          "minimum": 0.00028965536273629206,
+          "maximum": 0.1716971910180411,
+          "recipes_measured": 20
+        },
+        "excess_pairwise_attribution": {
+          "mean": 0.014073504912201143,
+          "median": 0.007194754183260077,
+          "minimum": 9.830847791373444e-06,
+          "maximum": 0.0655656692435655,
+          "recipes_measured": 20
+        },
+        "nonboundary_error_nmse": null,
+        "outside_edit_max_delta": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "residual_energy_over_mixture": {
+          "mean": 0.17021057838478956,
+          "median": 0.10061799520519904,
+          "minimum": 0.03380771828719094,
+          "maximum": 0.7618186330570567,
+          "recipes_measured": 20
+        },
+        "resynthesis_max_absolute_error": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "retained_source_projection_nmse": {
+          "mean": 0.017277991487820686,
+          "median": 0.00838288942218553,
+          "minimum": 9.160917858045086e-07,
+          "maximum": 0.13388288076293162,
+          "recipes_measured": 20
+        },
+        "simultaneous_edit_nmse": {
+          "mean": 0.05637385870788144,
+          "median": 0.04185871658997868,
+          "minimum": 0.009829784353053223,
+          "maximum": 0.16233840651933754,
+          "recipes_measured": 20
+        },
+        "source_attribution_condition": {
+          "mean": 97.06291284211648,
+          "median": 8.113046927007392,
+          "minimum": 1.3465315513388614,
+          "maximum": 879.8382271698156,
+          "recipes_measured": 20
+        },
+        "source_duplicate_energy_over_mixture": {
+          "mean": 0.14091148619624516,
+          "median": 0.11758603181371673,
+          "minimum": 0.004520223146206224,
+          "maximum": 0.42322010924899495,
+          "recipes_measured": 20
+        },
+        "target_gain_absolute_error": {
+          "mean": 0.41971791207549936,
+          "median": 0.4025340970220257,
+          "minimum": 0.2862713621593976,
+          "maximum": 0.5799029738024531,
+          "recipes_measured": 20
+        },
+        "target_sdr_db": {
+          "mean": 3.0896550719415297,
+          "median": 3.240579111763136,
+          "minimum": -2.324361660271008,
+          "maximum": 8.278168505174607,
+          "recipes_measured": 20
+        },
+        "target_si_sdr_db": {
+          "mean": 1.4425652624691867,
+          "median": 1.69525741821916,
+          "minimum": -5.770359135718316,
+          "maximum": 9.192466898923602,
+          "recipes_measured": 20
+        },
+        "waveform_nmse": {
+          "mean": 0.14239047166187652,
+          "median": 0.15326494012451763,
+          "minimum": 0.023185303578982595,
+          "maximum": 0.2946971964201288,
+          "recipes_measured": 20
+        }
+      }
+    },
+    "sequential_forward": {
+      "recipes": 20,
+      "metrics": {
+        "absence_energy_over_mixture": {
+          "mean": 0.14614315406360795,
+          "median": 0.002226159474984494,
+          "minimum": 9.016160069006425e-06,
+          "maximum": 0.8383259714357372,
+          "recipes_measured": 6
+        },
+        "absence_false_extraction_rate": {
+          "mean": 0.3333333333333333,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "recipes_measured": 6
+        },
+        "activity_change_nmse": {
+          "mean": 0.08353840991687958,
+          "median": 0.015251344406917916,
+          "minimum": 6.593360878805044e-05,
+          "maximum": 0.7273271021429643,
+          "recipes_measured": 20
+        },
+        "activity_envelope_nmse": {
+          "mean": 0.1531269199934403,
+          "median": 0.07520125830676715,
+          "minimum": 5.170916666323548e-05,
+          "maximum": 0.5029804484513634,
+          "recipes_measured": 20
+        },
+        "all_request_absent_edit_nmse": {
+          "mean": 0.05309344256804624,
+          "median": 0.0009096268536425403,
+          "minimum": 4.321540627240396e-06,
+          "maximum": 0.30523946126461293,
+          "recipes_measured": 6
+        },
+        "all_request_edit_nmse": {
+          "mean": 0.05865984498537682,
+          "median": 0.04123753578831385,
+          "minimum": 0.0002740370813043847,
+          "maximum": 0.18562590539781434,
+          "recipes_measured": 20
+        },
+        "all_request_orthogonal_edit_nmse": {
+          "mean": 0.028425466984879792,
+          "median": 0.01814742430391371,
+          "minimum": 0.00026779400999428374,
+          "maximum": 0.1026892224246702,
+          "recipes_measured": 20
+        },
+        "all_request_present_edit_nmse": {
+          "mean": 0.06077102194142414,
+          "median": 0.041420633037275376,
+          "minimum": 0.0002740370813043847,
+          "maximum": 0.2727200944290127,
+          "recipes_measured": 20
+        },
+        "all_request_retained_projection_nmse": {
+          "mean": 0.016118896274712927,
+          "median": 0.006574075646369247,
+          "minimum": 1.2076507632044187e-05,
+          "maximum": 0.08024414234660797,
+          "recipes_measured": 20
+        },
+        "all_request_target_projection_edit_nmse": {
+          "mean": 0.030234378000497036,
+          "median": 0.023056092841554663,
+          "minimum": 6.243071310101049e-06,
+          "maximum": 0.09464903633271655,
+          "recipes_measured": 20
+        },
+        "boundary_error_nmse": null,
+        "edit_mse": {
+          "mean": 0.0007172278059034477,
+          "median": 0.00020047045184706845,
+          "minimum": 1.3401969698336513e-06,
+          "maximum": 0.00784697617340983,
+          "recipes_measured": 20
+        },
+        "edit_nmse": {
+          "mean": 0.05967144057422184,
+          "median": 0.04115519191240593,
+          "minimum": 0.0004129271431318272,
+          "maximum": 0.30523946126461293,
+          "recipes_measured": 20
+        },
+        "excess_pairwise_attribution": {
+          "mean": 0.0008458976483482657,
+          "median": 0.00029433108037385113,
+          "minimum": 4.6270053320502005e-07,
+          "maximum": 0.0039854616017271915,
+          "recipes_measured": 20
+        },
+        "nonboundary_error_nmse": null,
+        "outside_edit_max_delta": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "residual_energy_over_mixture": {
+          "mean": 0.11977291457732028,
+          "median": 0.051756176659419006,
+          "minimum": 4.757490627313738e-05,
+          "maximum": 0.745002569814608,
+          "recipes_measured": 20
+        },
+        "resynthesis_max_absolute_error": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "retained_source_projection_nmse": {
+          "mean": 0.030746069807663784,
+          "median": 0.014741504270905658,
+          "minimum": 1.6286051923747248e-06,
+          "maximum": 0.23842265235033563,
+          "recipes_measured": 20
+        },
+        "simultaneous_edit_nmse": {
+          "mean": 0.03618173551746049,
+          "median": 0.010902985016058943,
+          "minimum": 3.32059752370771e-07,
+          "maximum": 0.20409013094501505,
+          "recipes_measured": 20
+        },
+        "source_attribution_condition": {
+          "mean": 97.06291284211648,
+          "median": 8.113046927007392,
+          "minimum": 1.3465315513388614,
+          "maximum": 879.8382271698156,
+          "recipes_measured": 20
+        },
+        "source_duplicate_energy_over_mixture": {
+          "mean": 0.02517141044084356,
+          "median": 0.012856122257648504,
+          "minimum": 0.0014776404011950983,
+          "maximum": 0.08509697379391018,
+          "recipes_measured": 20
+        },
+        "target_gain_absolute_error": {
+          "mean": 0.46668406339479895,
+          "median": 0.4941341423864316,
+          "minimum": 0.09434865628658107,
+          "maximum": 0.7796014814853286,
+          "recipes_measured": 20
+        },
+        "target_sdr_db": {
+          "mean": 3.2489564366110892,
+          "median": 2.85837401655104,
+          "minimum": -4.508991678105988,
+          "maximum": 12.038208710694997,
+          "recipes_measured": 20
+        },
+        "target_si_sdr_db": {
+          "mean": -0.9992701237737528,
+          "median": -0.2303874007308803,
+          "minimum": -19.213315955194865,
+          "maximum": 10.573615724672813,
+          "recipes_measured": 20
+        },
+        "waveform_nmse": {
+          "mean": 0.1694982656927238,
+          "median": 0.13606662177379802,
+          "minimum": 0.0023162018012362813,
+          "maximum": 0.4334005619408614,
+          "recipes_measured": 20
+        }
+      }
+    },
+    "sequential_reverse": {
+      "recipes": 20,
+      "metrics": {
+        "absence_energy_over_mixture": {
+          "mean": 0.14534742170880308,
+          "median": 0.05125423877238497,
+          "minimum": 2.6460650060861795e-06,
+          "maximum": 0.3885836831126111,
+          "recipes_measured": 6
+        },
+        "absence_false_extraction_rate": {
+          "mean": 0.6666666666666666,
+          "median": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "recipes_measured": 6
+        },
+        "activity_change_nmse": {
+          "mean": 0.04797641554512204,
+          "median": 0.022473036303713854,
+          "minimum": 0.00015106287976029606,
+          "maximum": 0.387854233860475,
+          "recipes_measured": 20
+        },
+        "activity_envelope_nmse": {
+          "mean": 0.10615412790497433,
+          "median": 0.07776670002786071,
+          "minimum": 0.00011767926037471143,
+          "maximum": 0.33101535995828957,
+          "recipes_measured": 20
+        },
+        "all_request_absent_edit_nmse": {
+          "mean": 0.042772414513863544,
+          "median": 0.02483271934190956,
+          "minimum": 7.545063378552766e-07,
+          "maximum": 0.1036549545530741,
+          "recipes_measured": 6
+        },
+        "all_request_edit_nmse": {
+          "mean": 0.04769894187341389,
+          "median": 0.0395460148208515,
+          "minimum": 0.0009747695032055977,
+          "maximum": 0.17489905645855444,
+          "recipes_measured": 20
+        },
+        "all_request_orthogonal_edit_nmse": {
+          "mean": 0.02361776200843844,
+          "median": 0.017982078694381072,
+          "minimum": 0.0005696454763044594,
+          "maximum": 0.07051124987692621,
+          "recipes_measured": 20
+        },
+        "all_request_present_edit_nmse": {
+          "mean": 0.047752797057462715,
+          "median": 0.041298583703593975,
+          "minimum": 0.0009747695032055977,
+          "maximum": 0.17489905645855444,
+          "recipes_measured": 20
+        },
+        "all_request_retained_projection_nmse": {
+          "mean": 0.011990527173897298,
+          "median": 0.009669357815661125,
+          "minimum": 5.3333121191718166e-05,
+          "maximum": 0.04547498877627367,
+          "recipes_measured": 20
+        },
+        "all_request_target_projection_edit_nmse": {
+          "mean": 0.024081179864975457,
+          "median": 0.016771370411965504,
+          "minimum": 0.00013099354077797566,
+          "maximum": 0.10438780658162829,
+          "recipes_measured": 20
+        },
+        "boundary_error_nmse": null,
+        "edit_mse": {
+          "mean": 0.0005675726964514054,
+          "median": 0.0002936097807918923,
+          "minimum": 1.9636882657459472e-09,
+          "maximum": 0.0026441174633547596,
+          "recipes_measured": 20
+        },
+        "edit_nmse": {
+          "mean": 0.04785921776415457,
+          "median": 0.04777929578444792,
+          "minimum": 7.545063378552766e-07,
+          "maximum": 0.16059838707948912,
+          "recipes_measured": 20
+        },
+        "excess_pairwise_attribution": {
+          "mean": 0.0016318028888807814,
+          "median": 0.0004222970555386919,
+          "minimum": 1.7048077170588562e-07,
+          "maximum": 0.009200288309969398,
+          "recipes_measured": 20
+        },
+        "nonboundary_error_nmse": null,
+        "outside_edit_max_delta": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "residual_energy_over_mixture": {
+          "mean": 0.08922943242751649,
+          "median": 0.021443066627769555,
+          "minimum": 6.223769542618455e-05,
+          "maximum": 0.7377516326189048,
+          "recipes_measured": 20
+        },
+        "resynthesis_max_absolute_error": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "retained_source_projection_nmse": {
+          "mean": 0.0026349831506288237,
+          "median": 9.238029124809265e-05,
+          "minimum": 6.412319777448201e-10,
+          "maximum": 0.02979870199150285,
+          "recipes_measured": 20
+        },
+        "simultaneous_edit_nmse": {
+          "mean": 0.030308881361407615,
+          "median": 0.0066993662683650515,
+          "minimum": 1.3858346345091712e-05,
+          "maximum": 0.12366154163967007,
+          "recipes_measured": 20
+        },
+        "source_attribution_condition": {
+          "mean": 97.06291284211648,
+          "median": 8.113046927007392,
+          "minimum": 1.3465315513388614,
+          "maximum": 879.8382271698156,
+          "recipes_measured": 20
+        },
+        "source_duplicate_energy_over_mixture": {
+          "mean": 0.036033173759127096,
+          "median": 0.01826425195593936,
+          "minimum": 0.00011802986427459933,
+          "maximum": 0.13496996397898425,
+          "recipes_measured": 20
+        },
+        "target_gain_absolute_error": {
+          "mean": 0.4431081462390611,
+          "median": 0.4091239364296292,
+          "minimum": 0.08535899443484024,
+          "maximum": 0.7680079168467382,
+          "recipes_measured": 20
+        },
+        "target_sdr_db": {
+          "mean": 4.00660692549129,
+          "median": 3.8913164021362583,
+          "minimum": -5.6528052062788205,
+          "maximum": 9.746424528645724,
+          "recipes_measured": 20
+        },
+        "target_si_sdr_db": {
+          "mean": -0.16943483451965685,
+          "median": 0.9740734102604454,
+          "minimum": -14.549380182503716,
+          "maximum": 8.501523669870764,
+          "recipes_measured": 20
+        },
+        "waveform_nmse": {
+          "mean": 0.14884332034381495,
+          "median": 0.14049915329150017,
+          "minimum": 0.004412513710771755,
+          "maximum": 0.4996053990314863,
+          "recipes_measured": 20
+        }
+      }
+    },
+    "trained": {
+      "recipes": 20,
+      "metrics": {
+        "absence_energy_over_mixture": {
+          "mean": 0.11700219436885954,
+          "median": 0.031403207098736535,
+          "minimum": 0.005276398161181106,
+          "maximum": 0.4715355188841354,
+          "recipes_measured": 6
+        },
+        "absence_false_extraction_rate": {
+          "mean": 0.8333333333333334,
+          "median": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "recipes_measured": 6
+        },
+        "activity_change_nmse": {
+          "mean": 0.07522685222502741,
+          "median": 0.02356165405882059,
+          "minimum": 0.005517507425062994,
+          "maximum": 0.4371315380262023,
+          "recipes_measured": 20
+        },
+        "activity_envelope_nmse": {
+          "mean": 0.13106510428148424,
+          "median": 0.11495488394748192,
+          "minimum": 0.035304412540165496,
+          "maximum": 0.36554045980441047,
+          "recipes_measured": 20
+        },
+        "all_request_absent_edit_nmse": {
+          "mean": 0.04044490651911744,
+          "median": 0.014137478507802493,
+          "minimum": 0.0023875365721912623,
+          "maximum": 0.1659091512983344,
+          "recipes_measured": 6
+        },
+        "all_request_edit_nmse": {
+          "mean": 0.044184318588688216,
+          "median": 0.042467321264506946,
+          "minimum": 0.004131382687323568,
+          "maximum": 0.10568919741235104,
+          "recipes_measured": 20
+        },
+        "all_request_orthogonal_edit_nmse": {
+          "mean": 0.021491723950633874,
+          "median": 0.018497879872164197,
+          "minimum": 0.00023529146503330805,
+          "maximum": 0.057476138208545594,
+          "recipes_measured": 20
+        },
+        "all_request_present_edit_nmse": {
+          "mean": 0.04425366517947798,
+          "median": 0.038948951058891935,
+          "minimum": 0.004131382687323568,
+          "maximum": 0.10568919741235104,
+          "recipes_measured": 20
+        },
+        "all_request_retained_projection_nmse": {
+          "mean": 0.01197825107192531,
+          "median": 0.008916741683587187,
+          "minimum": 0.00021732041981630557,
+          "maximum": 0.031344638349981545,
+          "recipes_measured": 20
+        },
+        "all_request_target_projection_edit_nmse": {
+          "mean": 0.02269259463805435,
+          "median": 0.01708285042240057,
+          "minimum": 0.0033717674610791062,
+          "maximum": 0.06235659767893124,
+          "recipes_measured": 20
+        },
+        "boundary_error_nmse": null,
+        "edit_mse": {
+          "mean": 0.0005081498555070264,
+          "median": 0.0003035006461491401,
+          "minimum": 6.213834550652337e-06,
+          "maximum": 0.004265127293158432,
+          "recipes_measured": 20
+        },
+        "edit_nmse": {
+          "mean": 0.042568785522119526,
+          "median": 0.03115432689223542,
+          "minimum": 0.0023875365721912623,
+          "maximum": 0.1659091512983344,
+          "recipes_measured": 20
+        },
+        "excess_pairwise_attribution": {
+          "mean": 0.005667556930356414,
+          "median": 0.0035397954525468807,
+          "minimum": 1.4803609950352663e-06,
+          "maximum": 0.026926652246825333,
+          "recipes_measured": 20
+        },
+        "nonboundary_error_nmse": null,
+        "outside_edit_max_delta": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "residual_energy_over_mixture": {
+          "mean": 0.06894087754396398,
+          "median": 0.03445923922697571,
+          "minimum": 0.004722759001039494,
+          "maximum": 0.45378113903612755,
+          "recipes_measured": 20
+        },
+        "resynthesis_max_absolute_error": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "retained_source_projection_nmse": {
+          "mean": 0.012523429793656943,
+          "median": 0.004779767332318944,
+          "minimum": 1.6412226468337594e-05,
+          "maximum": 0.09109075116844981,
+          "recipes_measured": 20
+        },
+        "simultaneous_edit_nmse": {
+          "mean": 0.028478279906749192,
+          "median": 0.011229043071104627,
+          "minimum": 0.001799906905691959,
+          "maximum": 0.13933699724757337,
+          "recipes_measured": 20
+        },
+        "source_attribution_condition": {
+          "mean": 97.06291284211648,
+          "median": 8.113046927007392,
+          "minimum": 1.3465315513388614,
+          "maximum": 879.8382271698156,
+          "recipes_measured": 20
+        },
+        "source_duplicate_energy_over_mixture": {
+          "mean": 0.09328940355784784,
+          "median": 0.0817574693795767,
+          "minimum": 0.001756953749276003,
+          "maximum": 0.27065995564176903,
+          "recipes_measured": 20
+        },
+        "target_gain_absolute_error": {
+          "mean": 0.47243442432536875,
+          "median": 0.46642085229870667,
+          "minimum": 0.34479482855198557,
+          "maximum": 0.5850405957846737,
+          "recipes_measured": 20
+        },
+        "target_sdr_db": {
+          "mean": 3.1446944795856213,
+          "median": 3.5405769520080796,
+          "minimum": -2.5188780097298267,
+          "maximum": 6.77979870350398,
+          "recipes_measured": 20
+        },
+        "target_si_sdr_db": {
+          "mean": 1.5060407429743616,
+          "median": 1.4113502791658106,
+          "minimum": -5.583361880555233,
+          "maximum": 8.443359110212564,
+          "recipes_measured": 20
+        },
+        "waveform_nmse": {
+          "mean": 0.1318745106957578,
+          "median": 0.13704712710560124,
+          "minimum": 0.014733413165768063,
+          "maximum": 0.2993308746062202,
+          "recipes_measured": 20
+        }
+      }
+    },
+    "unweighted_consistency": {
+      "recipes": 20,
+      "metrics": {
+        "absence_energy_over_mixture": {
+          "mean": 0.1874125485785083,
+          "median": 0.07534564470743345,
+          "minimum": 0.0252223999062511,
+          "maximum": 0.7022625401643283,
+          "recipes_measured": 6
+        },
+        "absence_false_extraction_rate": {
+          "mean": 1.0,
+          "median": 1.0,
+          "minimum": 1.0,
+          "maximum": 1.0,
+          "recipes_measured": 6
+        },
+        "activity_change_nmse": {
+          "mean": 0.05781714975310352,
+          "median": 0.01341816546316334,
+          "minimum": 7.804198222073245e-05,
+          "maximum": 0.3398413890440891,
+          "recipes_measured": 20
+        },
+        "activity_envelope_nmse": {
+          "mean": 0.09576840404629505,
+          "median": 0.07085614511272034,
+          "minimum": 4.471772518115227e-05,
+          "maximum": 0.3691683637561891,
+          "recipes_measured": 20
+        },
+        "all_request_absent_edit_nmse": {
+          "mean": 0.06638658264374031,
+          "median": 0.03472441892118985,
+          "minimum": 0.013306936680014057,
+          "maximum": 0.24395147230205227,
+          "recipes_measured": 6
+        },
+        "all_request_edit_nmse": {
+          "mean": 0.04964823692935234,
+          "median": 0.04289561128103847,
+          "minimum": 0.00046731846106637815,
+          "maximum": 0.12315010346051113,
+          "recipes_measured": 20
+        },
+        "all_request_orthogonal_edit_nmse": {
+          "mean": 0.0348722631297987,
+          "median": 0.03402015176140755,
+          "minimum": 0.0002983683096561706,
+          "maximum": 0.08752754341941872,
+          "recipes_measured": 20
+        },
+        "all_request_present_edit_nmse": {
+          "mean": 0.04782905793103413,
+          "median": 0.041309016782609134,
+          "minimum": 0.00046731846106637815,
+          "maximum": 0.12315010346051113,
+          "recipes_measured": 20
+        },
+        "all_request_retained_projection_nmse": {
+          "mean": 0.018432701434018428,
+          "median": 0.016035896198362584,
+          "minimum": 4.092083242260966e-05,
+          "maximum": 0.04479842958855638,
+          "recipes_measured": 20
+        },
+        "all_request_target_projection_edit_nmse": {
+          "mean": 0.014775973799553638,
+          "median": 0.009414402242462004,
+          "minimum": 8.922252356131867e-05,
+          "maximum": 0.053222439741650675,
+          "recipes_measured": 20
+        },
+        "boundary_error_nmse": null,
+        "edit_mse": {
+          "mean": 0.0006484422431639913,
+          "median": 0.0002764540759600451,
+          "minimum": 8.903196020951956e-07,
+          "maximum": 0.00627140862682547,
+          "recipes_measured": 20
+        },
+        "edit_nmse": {
+          "mean": 0.05221956842928445,
+          "median": 0.03738738733347591,
+          "minimum": 0.00030395923018012574,
+          "maximum": 0.24395147230205227,
+          "recipes_measured": 20
+        },
+        "excess_pairwise_attribution": {
+          "mean": 0.012504389860936821,
+          "median": 0.007994886580889803,
+          "minimum": 2.1018262321172342e-06,
+          "maximum": 0.05946629878181776,
+          "recipes_measured": 20
+        },
+        "nonboundary_error_nmse": null,
+        "outside_edit_max_delta": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "residual_energy_over_mixture": {
+          "mean": 9.486841475598739e-33,
+          "median": 9.508489587899615e-33,
+          "minimum": 5.341974105692034e-34,
+          "maximum": 2.2042726096222688e-32,
+          "recipes_measured": 20
+        },
+        "resynthesis_max_absolute_error": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "recipes_measured": 20
+        },
+        "retained_source_projection_nmse": {
+          "mean": 0.01949227253474852,
+          "median": 0.010204779871012525,
+          "minimum": 5.9156255920132826e-08,
+          "maximum": 0.13231542921534625,
+          "recipes_measured": 20
+        },
+        "simultaneous_edit_nmse": {
+          "mean": 0.03816614909112275,
+          "median": 4.352561986214478e-16,
+          "minimum": 6.831756788604042e-17,
+          "maximum": 0.35338410097177814,
+          "recipes_measured": 20
+        },
+        "source_attribution_condition": {
+          "mean": 97.06291284211648,
+          "median": 8.113046927007392,
+          "minimum": 1.3465315513388614,
+          "maximum": 879.8382271698156,
+          "recipes_measured": 20
+        },
+        "source_duplicate_energy_over_mixture": {
+          "mean": 0.14925603163839973,
+          "median": 0.1444012405709976,
+          "minimum": 0.001969663941662029,
+          "maximum": 0.40431083446214555,
+          "recipes_measured": 20
+        },
+        "target_gain_absolute_error": {
+          "mean": 0.3586416806742402,
+          "median": 0.35314464762459197,
+          "minimum": 0.21765407993835784,
+          "maximum": 0.4983799985845479,
+          "recipes_measured": 20
+        },
+        "target_sdr_db": {
+          "mean": 2.972502314644957,
+          "median": 3.3021883377302634,
+          "minimum": -7.239231544625985,
+          "maximum": 10.64514182357105,
+          "recipes_measured": 20
+        },
+        "target_si_sdr_db": {
+          "mean": 0.7146455752822838,
+          "median": 0.6736552726812544,
+          "minimum": -11.020499013428536,
+          "maximum": 8.340474521276539,
+          "recipes_measured": 20
+        },
+        "waveform_nmse": {
+          "mean": 0.14518180044381263,
+          "median": 0.1367849812693579,
+          "minimum": 0.0022771455527734372,
+          "maximum": 0.3393901349364974,
+          "recipes_measured": 20
+        }
+      }
+    }
+  },
+  "trained_improvement_over_independent_edit_nmse": 0.017102660288980612,
+  "trained_improvement_over_wiener_edit_nmse": 0.005899641057202679,
+  "failure_recipes": [
+    {
+      "recipe_id": "confirmation-000",
+      "flags": [
+        "trained_edit_worse_than_independent"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-002",
+      "flags": [
+        "trained_edit_worse_than_residual_wiener"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-003",
+      "flags": [
+        "trained_edit_worse_than_independent",
+        "trained_edit_worse_than_residual_wiener"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-004",
+      "flags": [
+        "trained_edit_worse_than_residual_wiener"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-005",
+      "flags": [
+        "trained_edit_worse_than_residual_wiener"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-006",
+      "flags": [
+        "trained_edit_worse_than_residual_wiener"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-009",
+      "flags": [
+        "trained_edit_worse_than_independent",
+        "trained_edit_worse_than_residual_wiener"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-010",
+      "flags": [
+        "trained_edit_worse_than_independent"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-011",
+      "flags": [
+        "trained_edit_worse_than_independent"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-012",
+      "flags": [
+        "trained_edit_worse_than_independent"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-013",
+      "flags": [
+        "trained_edit_worse_than_independent",
+        "trained_edit_worse_than_residual_wiener"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-014",
+      "flags": [
+        "trained_edit_worse_than_independent",
+        "trained_edit_worse_than_residual_wiener"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-015",
+      "flags": [
+        "trained_edit_worse_than_residual_wiener"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-016",
+      "flags": [
+        "trained_edit_worse_than_residual_wiener"
+      ]
+    },
+    {
+      "recipe_id": "confirmation-019",
+      "flags": [
+        "trained_edit_worse_than_independent"
+      ]
+    }
+  ],
+  "unmeasured_or_limited": [
+    "No listening-panel judgment",
+    "No natural multitrack reference accuracy",
+    "No certified speaker/session or base-pretraining isolation",
+    "Boundary metrics require observed boundary metadata",
+    "No long-clip/stereo/lock/undo product evidence in this source-reference run",
+    "Sequential/FUSS baselines absent unless actual output arrays supplied",
+    "Latency/memory are unavailable where record metadata lacks observations",
+    "Small recipe aggregate; no source-cluster confidence interval implemented",
+    "FUSS reference assignment, if present, is evaluator-only oracle and not text extraction"
+  ]
+}

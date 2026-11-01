@@ -1,0 +1,370 @@
+{
+  "long": {
+    "simultaneous_vs_sequential_request_batches": {
+      "maximum_sample_difference": 0.0,
+      "route": "first2classes then add third, unchanged original proposals, full canonical-set refinement; not sequential residual extraction"
+    },
+    "locked_add": {
+      "locked_rain_bytes_unchanged": true,
+      "layer_count": 3,
+      "locked_refinement_versus_primary_rms": 0.0031026264071586716,
+      "locked_asset_path_unchanged": true,
+      "locked_asset_sha256_unchanged_and_verified": true
+    },
+    "reverse_query_order_max_error": 5.960464477539063e-08,
+    "mixed_only_negative_anchor": {
+      "mixed_interval_max_amplitude": 0.0,
+      "anchor": [
+        22.0,
+        25.0,
+        false
+      ],
+      "estimated_interval_interior_max_amplitude": 0.0,
+      "limit": "Only a deterministic silence-grounded absent anchor; no positive-source isolation or anchor-quality claim."
+    },
+    "cancel": {
+      "raised": true,
+      "message": "refinement cancelled between bounded windows",
+      "calls": 33,
+      "project_revision_unchanged": true,
+      "manifest_bytes_unchanged": true
+    },
+    "edit_locality": {
+      "outside_edit_max_delta": 0.0
+    },
+    "undo_original_max_error": 0.0,
+    "source_bytes_preserved": true
+  },
+  "silence_and_duplicates": {
+    "scope": "Actual 5s all-zero AudioSep MPS + frozen V1, operational numerical smoke; not absence-detection accuracy",
+    "new_process_model_load_seconds": 14.43747383300797,
+    "duplicate_grouping_warmup": {
+      "requested": [
+        "rain",
+        " RAIN ",
+        "rain",
+        "clock tick",
+        "sneezing"
+      ],
+      "actual_layers": [
+        "clock tick",
+        "rain",
+        "sneezing"
+      ],
+      "rain_ids_equal": true,
+      "distinct_layer_count": 3,
+      "backend_calls": [
+        {
+          "queries": [
+            "clock tick"
+          ],
+          "frames": 160000,
+          "seconds": 4.897399999987101
+        },
+        {
+          "queries": [
+            "rain"
+          ],
+          "frames": 160000,
+          "seconds": 0.8033356250089128
+        },
+        {
+          "queries": [
+            "sneezing"
+          ],
+          "frames": 160000,
+          "seconds": 0.42228429100941867
+        }
+      ]
+    },
+    "warm_three_query_silence": {
+      "warm_three_query_seconds": 6.137699459010037,
+      "actual_backend_calls": [
+        {
+          "queries": [
+            "clock tick"
+          ],
+          "frames": 160000,
+          "seconds": 1.1287081250047777
+        },
+        {
+          "queries": [
+            "rain"
+          ],
+          "frames": 160000,
+          "seconds": 0.8485972090275027
+        },
+        {
+          "queries": [
+            "sneezing"
+          ],
+          "frames": 160000,
+          "seconds": 0.47167783399345353
+        }
+      ],
+      "source_max_amplitude": 0.0,
+      "proposal_max_amplitude": 0.0,
+      "proposal_per_query_mean_energy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "refined_max_amplitude": 0.0,
+      "refined_per_query_mean_energy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_max_amplitude": 0.0,
+      "residual_mean_energy": 0.0,
+      "render_original_max_delta": 0.0,
+      "no_edit_records": true,
+      "original_bytes_unchanged": true,
+      "refiner_sha256": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9"
+    },
+    "embedding_overlap": {
+      "prompts": [
+        "rain",
+        "rainfall",
+        "sound of rain",
+        "clock tick",
+        "clock ticking",
+        "sneezing",
+        "sneeze",
+        "a person sneezing"
+      ],
+      "threshold": 0.98,
+      "pairs": [
+        {
+          "queries": [
+            "rain",
+            "rainfall"
+          ],
+          "cosine": 0.8853248357772827,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rain",
+            "sound of rain"
+          ],
+          "cosine": 0.6895421743392944,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rain",
+            "clock tick"
+          ],
+          "cosine": 0.24595054984092712,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rain",
+            "clock ticking"
+          ],
+          "cosine": 0.269430011510849,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rain",
+            "sneezing"
+          ],
+          "cosine": 0.09045174717903137,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rain",
+            "sneeze"
+          ],
+          "cosine": 0.18845243752002716,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rain",
+            "a person sneezing"
+          ],
+          "cosine": 0.20377904176712036,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rainfall",
+            "sound of rain"
+          ],
+          "cosine": 0.6186131238937378,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rainfall",
+            "clock tick"
+          ],
+          "cosine": 0.26142311096191406,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rainfall",
+            "clock ticking"
+          ],
+          "cosine": 0.3123639225959778,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rainfall",
+            "sneezing"
+          ],
+          "cosine": 0.0407535657286644,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rainfall",
+            "sneeze"
+          ],
+          "cosine": 0.12276789546012878,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "rainfall",
+            "a person sneezing"
+          ],
+          "cosine": 0.1324877142906189,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "sound of rain",
+            "clock tick"
+          ],
+          "cosine": 0.17491959035396576,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "sound of rain",
+            "clock ticking"
+          ],
+          "cosine": 0.2293790578842163,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "sound of rain",
+            "sneezing"
+          ],
+          "cosine": 0.1683347523212433,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "sound of rain",
+            "sneeze"
+          ],
+          "cosine": 0.19375376403331757,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "sound of rain",
+            "a person sneezing"
+          ],
+          "cosine": 0.5219321250915527,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "clock tick",
+            "clock ticking"
+          ],
+          "cosine": 0.9567545652389526,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "clock tick",
+            "sneezing"
+          ],
+          "cosine": 0.18436995148658752,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "clock tick",
+            "sneeze"
+          ],
+          "cosine": 0.1685577630996704,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "clock tick",
+            "a person sneezing"
+          ],
+          "cosine": 0.16790229082107544,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "clock ticking",
+            "sneezing"
+          ],
+          "cosine": 0.21155217289924622,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "clock ticking",
+            "sneeze"
+          ],
+          "cosine": 0.14684069156646729,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "clock ticking",
+            "a person sneezing"
+          ],
+          "cosine": 0.21816331148147583,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "sneezing",
+            "sneeze"
+          ],
+          "cosine": 0.8080620765686035,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "sneezing",
+            "a person sneezing"
+          ],
+          "cosine": 0.7725735902786255,
+          "above_uncertainty_threshold": false
+        },
+        {
+          "queries": [
+            "sneeze",
+            "a person sneezing"
+          ],
+          "cosine": 0.7075732946395874,
+          "above_uncertainty_threshold": false
+        }
+      ],
+      "exposed_uncertainty_pairs": [],
+      "limit": "Embedding overlap is prompt similarity, not correct separation, physical-source identity, or a calibrated semantic detector. No threshold was changed."
+    },
+    "peak_process_rss_bytes": 943194112,
+    "mps_memory_current_bytes": 156249344,
+    "mps_driver_current_bytes": 2233188352
+  }
+}

@@ -1,0 +1,22 @@
+flowchart LR
+    Browser["Loopback browser mixer"] --> API["Installed SceneEngine"]
+    CLI["Typed Python API / CLI"] --> API
+    Input["Preserved original bytes + SHA256"] --> Decode["Bounded WAV / FLAC decode"]
+    Decode --> Original["Immutable decoded original"]
+    Original --> Proposals["AudioSep proposals: unchanged mixture per query"]
+    Anchors["User anchors in mixed-recording time"] --> Joint
+    Queries["Canonical query set + stable class IDs"] --> Proposals
+    Queries --> Joint["Trained shared joint mask / residual refiner"]
+    Proposals --> Joint
+    Joint --> Layers["Persistent estimated stems"]
+    Locks["Locked stem bytes"] --> Layers
+    Original --> Residual["Explicit residual = original - sum of stems"]
+    Layers --> Residual
+    Layers --> Edit["Selected-span gains + inside-span fades"]
+    Original --> Edit
+    Edit --> Mix["Original + sum of selected component changes"]
+    Mix --> Export["Aligned WAVs + envelopes + manifest"]
+    Layers --> Export
+    Residual --> Export
+    Export --> Verify["Independent WAV recombination + replay"]
+    API --> Proposals

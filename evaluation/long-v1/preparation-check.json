@@ -1,0 +1,72 @@
+{
+  "status": "passed_sample_and_reference_equivalence",
+  "mixture_sha256_executed": "e17acb13a102364809a4fafb548a36e70abee34311a788649beafd308ab74ebe",
+  "mixture_sha256_portable": "36894002d1eb5546bf29c092e482e6a41542c885f14046c91a54eb08148df622",
+  "decoded_mixture_exact": true,
+  "decoded_mixture_max_absolute_difference": 0.0,
+  "references_exact": true,
+  "references_max_absolute_difference": 0.0,
+  "per_query_reference_max_absolute_difference": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "reference_shape": [
+    3,
+    1536000
+  ],
+  "sample_rate_executed": 32000,
+  "sample_rate_portable": 32000,
+  "meaning": "Numerical stimulus reproducibility passes. Timestamp-dependent whole-file WAV identity is not claimed.",
+  "same_source_entries": true,
+  "same_events": true,
+  "shared_peak_bound_executed": 1.0,
+  "shared_peak_bound_portable": 1.0,
+  "diagnosis": "Header-only nondeterminism: libsndfile DOUBLE WAV PEAK chunk timestamp. Decoded samples and references are exact; no path or numerical drift observed.",
+  "differing_byte_offsets": [
+    60,
+    61
+  ],
+  "peak_timestamp_field_byte_offset": 60,
+  "peak_timestamp_executed": 1793318848,
+  "peak_timestamp_fresh": 1793319721,
+  "riff_fmt_fact_data_chunks_equal": true,
+  "initial_whole_file_hash_check_failed": true,
+  "whole_file_byte_identity": false,
+  "accepted_scope": "Decoded mixture samples and all float64 references are exact. Newly generated controlled WAV header timestamps may differ; original input/source bytes are preserved unchanged. No inference rerun or timestamp normalization.",
+  "producer_soundfile_version": "0.13.1",
+  "producer_libsndfile_version": "1.2.2",
+  "reference_array_little_endian_f64_sha256": "9b5ba383b7399986aba76ec743a56e1ea9ee6168b58174084d92f0e9c784b36d",
+  "all_other_wav_bytes_exact": true,
+  "wav_byte_length": 12288080,
+  "riff_chunks": [
+    {
+      "tag": "fmt ",
+      "offset": 12,
+      "size": 16
+    },
+    {
+      "tag": "fact",
+      "offset": 36,
+      "size": 4
+    },
+    {
+      "tag": "PEAK",
+      "offset": 48,
+      "size": 16
+    },
+    {
+      "tag": "data",
+      "offset": 72,
+      "size": 12288000
+    }
+  ],
+  "current_portable_runner_check": {
+    "runner_sha256": "0fae47c09f84f7b48d74404529895e439a3b73f914fd10da04772754f3789344",
+    "fresh_mixture_file_sha256": "b1cbcc9aa1715eff574e929c171aa5939256d1b5e6fdc62f2d362c19b23abba2",
+    "decoded_mixture_exact": true,
+    "reference_values_exact": true,
+    "reference_array_little_endian_f64_sha256": "9b5ba383b7399986aba76ec743a56e1ea9ee6168b58174084d92f0e9c784b36d",
+    "scope": "Current CLI and frozen-input guards; prepare only, no inference rerun."
+  }
+}

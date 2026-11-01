@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "purpose": "Portable frozen confirmation study bundle; metadata and exact source snapshots, no heavy predictions or source audio.",
+  "raw_report_sha256": "51be09afc6917cccd5319b1f7ae05ccd68abe75780b49fb7149fa72733744b12",
+  "published_report_sha256": "c46ee66b67528fb6d2e53c0fe53184a3b225f6821303cee8b1b5f9ae8410ca6b",
+  "report_change_allowlist": [
+    "decision_freeze.path"
+  ],
+  "report_path_value": "confirmation-freeze-v1.json",
+  "selected_checkpoint_path": "../../src/stemscene/artifacts/joint-refiner-v1.pt",
+  "selected_checkpoint_sha256": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9",
+  "freeze_sha256": "467770cb9889b2b2229c8eda7fb21ef6a3fe096e4e65dc4dd99fe9da95702541",
+  "protocol_sha256": "ef9ba78a9ec0c002902fca4734b796f56b36a5bc1c37ea3e9783594ae6aa509b",
+  "manifest_repository_path": "../../data/esc10-split.json",
+  "manifest_sha256": "bd19a599b3165a0648e1ed9fef17e085e18fd4878f090e25e24945454c3d0728",
+  "files": [
+    {
+      "source_label": "protocols/confirmation-protocol-v2.json",
+      "published_file": "confirmation-protocol-v2.json",
+      "raw_sha256": "ef9ba78a9ec0c002902fca4734b796f56b36a5bc1c37ea3e9783594ae6aa509b",
+      "published_sha256": "ef9ba78a9ec0c002902fca4734b796f56b36a5bc1c37ea3e9783594ae6aa509b",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "protocols/confirmation-freeze-v1.json",
+      "published_file": "confirmation-freeze-v1.json",
+      "raw_sha256": "467770cb9889b2b2229c8eda7fb21ef6a3fe096e4e65dc4dd99fe9da95702541",
+      "published_sha256": "467770cb9889b2b2229c8eda7fb21ef6a3fe096e4e65dc4dd99fe9da95702541",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/confirmation-v1/per-recipe.jsonl",
+      "published_file": "per-recipe.jsonl",
+      "raw_sha256": "89c2606f59937de810d14f284344cc56eda8f441cb9ad83b8bdc9c6077dc55e3",
+      "published_sha256": "89c2606f59937de810d14f284344cc56eda8f441cb9ad83b8bdc9c6077dc55e3",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/confirmation-v1/source/sha256.json",
+      "published_file": "source-capture/sha256.json",
+      "raw_sha256": "e95352bbf078bb994f276625147fcfd1a1a861c5537da9461f6f095e055244cc",
+      "published_sha256": "e95352bbf078bb994f276625147fcfd1a1a861c5537da9461f6f095e055244cc",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/confirmation-v1/source/scripts/evaluate_refiner.py",
+      "published_file": "source-capture/scripts/evaluate_refiner.py",
+      "raw_sha256": "cdff3c59ddedbd042644de941ad5f614333bb51578bc99e1bfba8fb13147b328",
+      "published_sha256": "cdff3c59ddedbd042644de941ad5f614333bb51578bc99e1bfba8fb13147b328",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/confirmation-v1/source/scripts/prepare_proposals.py",
+      "published_file": "source-capture/scripts/prepare_proposals.py",
+      "raw_sha256": "b0581ff381cf189b756f6eeb5f7f2596920a1dafcf009918b6ef2290a80e1cb3",
+      "published_sha256": "b0581ff381cf189b756f6eeb5f7f2596920a1dafcf009918b6ef2290a80e1cb3",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/confirmation-v1/source/scripts/prepare_fuss_proposals.py",
+      "published_file": "source-capture/scripts/prepare_fuss_proposals.py",
+      "raw_sha256": "884e61e720457792759a37cef75ac9a925e371368f298008c62f47169011320b",
+      "published_sha256": "884e61e720457792759a37cef75ac9a925e371368f298008c62f47169011320b",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/confirmation-v1/source/scripts/prepare_sequential_proposals.py",
+      "published_file": "source-capture/scripts/prepare_sequential_proposals.py",
+      "raw_sha256": "55515cd044ec1763aefaac19880f101b1ece1f6bbb5ca9744f362d76d8ae4d28",
+      "published_sha256": "55515cd044ec1763aefaac19880f101b1ece1f6bbb5ca9744f362d76d8ae4d28",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/confirmation-v1/source/src/stemscene/fuss.py",
+      "published_file": "source-capture/src/stemscene/fuss.py",
+      "raw_sha256": "18445b3c171a02d4a294458b472af17f3b30c358e9ca9bd90ebb215dd0f7c06c",
+      "published_sha256": "18445b3c171a02d4a294458b472af17f3b30c358e9ca9bd90ebb215dd0f7c06c",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/confirmation-v1/source/src/stemscene/joint.py",
+      "published_file": "source-capture/src/stemscene/joint.py",
+      "raw_sha256": "2f4ac80775563c924164686429ccd29757b1ea2a05d428f1a3f32d9895a7b40d",
+      "published_sha256": "2f4ac80775563c924164686429ccd29757b1ea2a05d428f1a3f32d9895a7b40d",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/training-v1/report.json",
+      "published_file": "training-v1/report.json",
+      "raw_sha256": "a289e45fd749836bc9416a01eef7e59361a1bc96cc9eb4210e49329baf057468",
+      "published_sha256": "a289e45fd749836bc9416a01eef7e59361a1bc96cc9eb4210e49329baf057468",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/training-v1/training-log.json",
+      "published_file": "training-v1/training-log.json",
+      "raw_sha256": "4e47802fadcbb094c3b41a4171abb1eae9060995d27fe021810ebd2ba5b9ba2f",
+      "published_sha256": "4e47802fadcbb094c3b41a4171abb1eae9060995d27fe021810ebd2ba5b9ba2f",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/training-v1/source/train_refiner.py",
+      "published_file": "training-v1/source/train_refiner.py",
+      "raw_sha256": "99d22d7625e03cb7c48248eb6964c44cfb69c765a6a103deec2f638d5103530e",
+      "published_sha256": "99d22d7625e03cb7c48248eb6964c44cfb69c765a6a103deec2f638d5103530e",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/training-v1/source/joint.py",
+      "published_file": "training-v1/source/joint.py",
+      "raw_sha256": "a252f5f2c62a036381a2adabbcb75e83539b99586cad80b87e45ecc3e3938c12",
+      "published_sha256": "a252f5f2c62a036381a2adabbcb75e83539b99586cad80b87e45ecc3e3938c12",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/model-selection-review.md",
+      "published_file": "model-selection-review.md",
+      "raw_sha256": "bd931315129bfd5853bbd4cb8f4c0b838cac5cb06afeb31bc146861b84c0fc49",
+      "published_sha256": "bd931315129bfd5853bbd4cb8f4c0b838cac5cb06afeb31bc146861b84c0fc49",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/fuss-environment.json",
+      "published_file": "fuss-environment.json",
+      "raw_sha256": "735f4c10240cd163e81d5b385258618036f8ff1289b96bd15ede7bf7e8af3a96",
+      "published_sha256": "735f4c10240cd163e81d5b385258618036f8ff1289b96bd15ede7bf7e8af3a96",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "fuss-augmentation.json",
+      "published_file": "fuss-augmentation.json",
+      "raw_sha256": "d500ca707bc6faba1558e684ae46a56ca8b1545f9329f2166f8e4d62cc710a16",
+      "published_sha256": "d500ca707bc6faba1558e684ae46a56ca8b1545f9329f2166f8e4d62cc710a16",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "sequential-augmentation.json",
+      "published_file": "sequential-augmentation.json",
+      "raw_sha256": "3af8023778b154316751a22d3b8fa57987697a60a706b182486e23ec219a42eb",
+      "published_sha256": "3af8023778b154316751a22d3b8fa57987697a60a706b182486e23ec219a42eb",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/confirmation-v1/report.json",
+      "published_file": "report.json",
+      "raw_sha256": "51be09afc6917cccd5319b1f7ae05ccd68abe75780b49fb7149fa72733744b12",
+      "published_sha256": "c46ee66b67528fb6d2e53c0fe53184a3b225f6821303cee8b1b5f9ae8410ca6b",
+      "transformation": "Only decision_freeze.path replaced with confirmation-freeze-v1.json; all other parsed values preserved."
+    },
+    {
+      "source_label": "evidence/confirmation-run-summary.md",
+      "published_file": "summary.md",
+      "raw_sha256": "c511f7aae7b649fb4eab6526830cc55c68b92b0d2b00a4df90bfbb6cbfb35bf4",
+      "published_sha256": "4b910df2168967a956176e6e699273720f7e7d83979f2f7239b01747bb4d92c4",
+      "transformation": "Human summary adapted to portable paths/links; all recorded numerical results and 60 request outcomes retained; supplementary limitations may be appended."
+    },
+    {
+      "source_label": "evidence/confirmation-fuss-generation.log",
+      "published_file": "logs/confirmation-fuss-generation.log",
+      "raw_sha256": "3c6e4a4231d05f8ce342736a59a90f4eb7b6923b50a023fc1a93da159012516d",
+      "published_sha256": "f2a573759eb5cd3521d22e6d1060576737dc194d85564acc4834b2ca23633754",
+      "transformation": "Private repository/task prefixes replaced by logical REPO/WORK in traceback/warning paths; numeric observations unchanged."
+    },
+    {
+      "source_label": "evidence/confirmation-fuss-generation-retry1.log",
+      "published_file": "logs/confirmation-fuss-generation-retry1.log",
+      "raw_sha256": "027cd5c10e94177e4370d47f7ae76cfc75868813cbca657bb93adfd9c93445b0",
+      "published_sha256": "027cd5c10e94177e4370d47f7ae76cfc75868813cbca657bb93adfd9c93445b0",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "evidence/confirmation-sequential-generation.log",
+      "published_file": "logs/confirmation-sequential-generation.log",
+      "raw_sha256": "983c20a641f9fba1ead48c9edfd496ab954d604903910705291fad16de424fdb",
+      "published_sha256": "bf0aff65bba6c63530386eb59d82118554d0202531ab1b5ed82cd7af7b013f61",
+      "transformation": "Private task/repository prefixes and upstream CI build-source prefix replaced with logical WORK/REPO/UPSTREAM_BUILD labels; numeric observations unchanged."
+    },
+    {
+      "source_label": "evidence/confirmation-evaluation.log",
+      "published_file": "logs/confirmation-evaluation.log",
+      "raw_sha256": "739d72ee443ae3af50b1423c5a61579a399a1e4ba1fdc27b52d61cafff9c24d8",
+      "published_sha256": "739d72ee443ae3af50b1423c5a61579a399a1e4ba1fdc27b52d61cafff9c24d8",
+      "transformation": "none; byte-exact copy"
+    },
+    {
+      "source_label": "portable-bundle authoring from retained frozen evidence",
+      "published_file": "README.md",
+      "published_sha256": "bfe5c7ce07917766fd8ec2cecd77a1bafa12b2b422c8c3d6bb20366f6af6f959",
+      "transformation": "New explanatory index/run recipe; no new inference, training or data generation."
+    }
+  ],
+  "notes": [
+    "Protocol wording predates final candidate selection; the exact later freeze selects V1.",
+    "Training source/joint.py is the exact training-era implementation; source-capture/src/stemscene/joint.py is the exact confirmation runtime. Their different hashes are preserved.",
+    "The exact pre-repair FUSS adapter is captured. A later startup-only import of existing setuptools has no place in this frozen snapshot.",
+    "Historical relative selection_evidence paths in the unchanged freeze identify prospective task evidence; model-selection-review.md supplies the included selection context.",
+    "Large source WAVs, proposal NPZs, base checkpoints/tokenizer and V2 candidate are excluded. Frozen recipes retain download attribution and checksums in repository data/esc10-split.json.",
+    "Published summary adds qualifications from independent arithmetic review; it does not modify frozen outputs or change the metric."
+  ],
+  "comparison_document": {
+    "repository_path": "docs/comparisons.md",
+    "sha256": "e17037437c84925b24c6bc560670274f91775696a88cbb171b7bde5262f3914b",
+    "basis": "Arithmetic readback of frozen report/per-recipe values; prospective protocol and independent review. No new empirical run."
+  }
+}

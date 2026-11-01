@@ -1,0 +1,177 @@
+{
+  "duration_seconds": 23,
+  "fps": 30,
+  "size": [
+    1920,
+    1080
+  ],
+  "capture_crop": [
+    0,
+    76,
+    1280,
+    560
+  ],
+  "shots": [
+    {
+      "start": 0,
+      "end": 3,
+      "audio": "silence",
+      "label": "actual session capture"
+    },
+    {
+      "start": 3,
+      "end": 11,
+      "audio": "original source0-8s"
+    },
+    {
+      "start": 11,
+      "end": 19,
+      "audio": "edited same source0-8s"
+    },
+    {
+      "start": 19,
+      "end": 23,
+      "audio": "silence",
+      "label": "executed export checks"
+    }
+  ],
+  "text": [
+    {
+      "name": "brand",
+      "text": "STEMSCENE",
+      "x": 160,
+      "y": 42,
+      "size": 32,
+      "enable": "lt(t,19)"
+    },
+    {
+      "name": "intro",
+      "text": "Edit an estimated event. Keep the original.",
+      "x": 160,
+      "y": 101,
+      "size": 49,
+      "enable": "lt(t,3)"
+    },
+    {
+      "name": "original",
+      "text": "Original recording | source 0-8 s",
+      "x": 160,
+      "y": 101,
+      "size": 49,
+      "enable": "gte(t,3)*lt(t,11)"
+    },
+    {
+      "name": "edited",
+      "text": "Edited mix | same source 0-8 s",
+      "x": 160,
+      "y": 101,
+      "size": 49,
+      "enable": "gte(t,11)*lt(t,19)"
+    },
+    {
+      "name": "intro-note",
+      "text": "Actual saved session. Source and output keep their gain.",
+      "x": 160,
+      "y": 937,
+      "size": 30,
+      "enable": "lt(t,3)"
+    },
+    {
+      "name": "original-note",
+      "text": "Natural domestic scene. Three estimated sound layers.",
+      "x": 160,
+      "y": 937,
+      "size": 30,
+      "enable": "gte(t,3)*lt(t,11)"
+    },
+    {
+      "name": "edit-note",
+      "text": "Doorbell estimate x0.50, 5-7 s. 20 ms edge fades.",
+      "x": 160,
+      "y": 937,
+      "size": 30,
+      "enable": "gte(t,11)*lt(t,19)"
+    },
+    {
+      "name": "capture-note",
+      "text": "Session capture with audio excerpts. Inference and waiting omitted. No normalization.",
+      "x": 160,
+      "y": 1015,
+      "size": 23,
+      "enable": "lt(t,19)"
+    },
+    {
+      "name": "end-brand",
+      "text": "STEMSCENE",
+      "x": 160,
+      "y": 140,
+      "size": 32,
+      "enable": "gte(t,19)"
+    },
+    {
+      "name": "end-title",
+      "text": "Export an aligned, reproducible mix.",
+      "x": 160,
+      "y": 245,
+      "size": 58,
+      "enable": "gte(t,19)"
+    },
+    {
+      "name": "end-files",
+      "text": "3 estimated stems + residual + gain envelopes + edit manifest",
+      "x": 160,
+      "y": 370,
+      "size": 34,
+      "enable": "gte(t,19)"
+    },
+    {
+      "name": "end-replay",
+      "text": "Independent edited replay: 0 max amplitude error",
+      "x": 160,
+      "y": 450,
+      "size": 30,
+      "enable": "gte(t,19)"
+    },
+    {
+      "name": "end-unity",
+      "text": "Unity reconstruction: 1.11e-16 max amplitude error",
+      "x": 160,
+      "y": 507,
+      "size": 30,
+      "enable": "gte(t,19)"
+    },
+    {
+      "name": "end-locality",
+      "text": "Outside 5-7 s: decoded samples remain identical.",
+      "x": 160,
+      "y": 590,
+      "size": 30,
+      "enable": "gte(t,19)"
+    },
+    {
+      "name": "credit-a",
+      "text": "Audio: RealDESED 001738.wav, CC0.",
+      "x": 160,
+      "y": 830,
+      "size": 24,
+      "enable": "gte(t,19)"
+    },
+    {
+      "name": "credit-b",
+      "text": "Annotations/metadata: Florian Schmid et al. | DOI 10.5281/zenodo.20056072 | CC BY 4.0",
+      "x": 160,
+      "y": 877,
+      "size": 23,
+      "enable": "gte(t,19)"
+    },
+    {
+      "name": "end-limit",
+      "text": "Estimated layers are not clean ground truth. No subjective-quality rating.",
+      "x": 160,
+      "y": 988,
+      "size": 24,
+      "enable": "gte(t,19)"
+    }
+  ],
+  "font_family": "Arial"
+}

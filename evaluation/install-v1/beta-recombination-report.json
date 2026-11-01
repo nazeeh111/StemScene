@@ -1,0 +1,14 @@
+{
+  "engine_imported": false,
+  "models_required": false,
+  "stems": 3,
+  "frames": 753664,
+  "channels": 1,
+  "sample_rate": 48000,
+  "tolerance": 1e-12,
+  "source_sha256": "4163c9933885cc72d71695d280ee56cb87b8cbf7965ed2932a32bc362dee8e53",
+  "unity_max_abs_error": 1.3877787807814457e-17,
+  "edited_mix_max_abs_error": 0.0,
+  "envelope_recipe_max_abs_error": 0.0,
+  "original_decode_max_abs_error": 0.0
+}

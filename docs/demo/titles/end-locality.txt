@@ -1,0 +1,1 @@
+Outside 5-7 s: decoded samples remain identical.

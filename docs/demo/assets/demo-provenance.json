@@ -1,0 +1,62 @@
+{
+  "source_recording": "001738.wav",
+  "dataset": "RealDESED",
+  "dataset_url": "https://zenodo.org/records/20056072",
+  "source_sha256": "7d85ef8b3c89bbd042d1bb340d0e029c50f3d31abaff7f15c7402ebc2dbc0f50",
+  "audio_license": "CC0",
+  "annotation_metadata_license": "CC-BY-4.0",
+  "credit": "Audio: RealDESED test recording 001738.wav, CC0. Event annotations and dataset metadata: Florian Schmid et al., RealDESED (2026), DOI 10.5281/zenodo.20056072, CC BY 4.0.",
+  "source_frames": 750528,
+  "source_sample_rate": 48000,
+  "source_channels": 1,
+  "estimated_queries": [
+    "a door opening and closing",
+    "doorbell ringing",
+    "keys jangling"
+  ],
+  "backend_checkpoint_sha256": "f8cda01bfd0ebd141eef45d41db7a3ada23a56568465840d3cff04b8010ce82c",
+  "refinement_method": "joint-mask-residual-v1",
+  "session_export_revision": 11,
+  "screenshot_revision": 9,
+  "snapshot_revision": 11,
+  "session_capture_note": "Screenshot revision 9; its recorded event and preserved layers render identically to revision 11. Processing/waiting omitted.",
+  "edit": {
+    "start_seconds": 5,
+    "end_seconds": 7,
+    "gain": 0.5,
+    "fade_seconds": 0.02
+  },
+  "verification": {
+    "unity_max_abs_error": 1.1102230246251565e-16,
+    "edited_replay_max_abs_error": 0.0,
+    "outside_edit_sample_exact": true
+  },
+  "delivery_audio": "Original gain; no normalization/music. WAV excerpts are FLOAT32; master audio is PCM float32; MP4 AAC at 320 kbps is lossy.",
+  "limits": [
+    "Estimated layer modification, not proven clean-source attenuation",
+    "Natural recording has no clean-reference stems",
+    "No subjective listening-panel judgment"
+  ],
+  "files": {
+    "stemscene-walkthrough.mp4": "76432e35eb2882182b5ed9e1a3aa24faab80370263278a09524a9250cffb3c10",
+    "original-0-8s.wav": "dbfa2633aa5074709f956804046d12d96aa4c9c64deb627ef28efcb65f6b1908",
+    "edited-0-8s.wav": "20f47d6ff7027a12438937c100d38f5324bde95235e735def0a16e06ef690987",
+    "source-001738.wav": "7d85ef8b3c89bbd042d1bb340d0e029c50f3d31abaff7f15c7402ebc2dbc0f50",
+    "ui-session.jpg": "8869d85d71595d3a4eecbc9e8c99fb3f8bc2a498cb4a5c79b1b6a64d2d913334",
+    "captions.vtt": "df749fe3324c51ddc83d9da9f8e0b01b73e49ee1e79f6aa70feaada511ee4506",
+    "CREDITS.txt": "865dfef6134e3ebb0d69cafe12d22b11d06608c423360c2f6f4e077ab3e415f6",
+    "poster.jpg": "97721667fea017df284ce4ad7eca28162ed23db44f4f9885593979485459d8b7"
+  },
+  "render_sources": [
+    "../render_demo.py",
+    "../composition.json",
+    "../shotlist.md"
+  ],
+  "full_export_note": "The complete aligned export is prepared separately as stemscene-demo-export.zip (16,859,044 bytes); it is not duplicated in this small demo source folder.",
+  "aligned_export_archive": {
+    "name": "stemscene-demo-export.zip",
+    "bytes": 16859044,
+    "sha256": "dc2d08cca26ea43bf18ff3b671849639086533ee13108f8edca77238cb5d25be",
+    "availability": "Prepared local review artifact; publication requires owner approval."
+  }
+}

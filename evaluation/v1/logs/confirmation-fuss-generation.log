@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "REPO/scripts/prepare_fuss_proposals.py", line 217, in <module>
+    main()
+  File "REPO/scripts/prepare_fuss_proposals.py", line 153, in main
+    backend = FUSS.FussSeparator(args.model_dir, max_seconds=30, cpu_threads=args.threads)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "REPO/src/stemscene/fuss.py", line 48, in __init__
+    import tensorflow.compat.v1 as tf
+  File "WORK/.venv-fuss/lib/python3.12/site-packages/tensorflow/__init__.py", line 30, in <module>
+    import distutils as _distutils
+ModuleNotFoundError: No module named 'distutils'

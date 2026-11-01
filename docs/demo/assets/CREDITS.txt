@@ -1,0 +1,2 @@
+Audio: RealDESED test recording 001738.wav, CC0. Event annotations and dataset metadata: Florian Schmid et al., RealDESED (2026), DOI 10.5281/zenodo.20056072, CC BY 4.0.
+No clean multitrack references or subjective-quality rating. Session excerpts, not a live inference recording.

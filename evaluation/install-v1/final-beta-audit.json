@@ -1,0 +1,170 @@
+{
+  "schema": "stemscene-final-beta-audit/1",
+  "package_version": "0.1.0b1",
+  "status": "passed_local_source_package_and_installed_checks",
+  "verified_utc": "2026-10-30T00:41:59.749326+00:00",
+  "platform": "macOS arm64 Python3.12.13",
+  "wheel": {
+    "filename": "stemscene-0.1.0b1-py3-none-any.whl",
+    "sha256": "281523ec1c6b6da10064c760e8e84aef561711147f77047b5ee5199aba892a1b",
+    "bytes": 91291,
+    "members": 33,
+    "non_editable_installed_update": true,
+    "installed_package_files_byte_exact": 25,
+    "installed_cli_version": "stemscene 0.1.0b1"
+  },
+  "dependency_check": {
+    "uv_lock": "only first-party version changed; all other76package records unchanged",
+    "marker_aware_locked_requirements_used": true,
+    "installed_distributions": 34,
+    "uv_pip_check": "All installed packages are compatible",
+    "production_dependency_versions_unchanged": true
+  },
+  "source_parity": {
+    "actual_cpu_run": "development-cpu-run.json",
+    "heavy_inference_repeated": false,
+    "core_math_processing_and_model_files_exact": 13,
+    "unchanged_installed_package_files": 22,
+    "changed_runtime_files": {
+      "src/stemscene/server.py": {
+        "development_sha256": "849750a55aac42eaacbfdb43a7bd2ebae9ee1d6859bb6e3e0b66d539f10bb171",
+        "beta_sha256": "65257e61e756747f457ee5d79d5414611e30bae5347a9f67d9b726e0d6efea3a"
+      },
+      "src/stemscene/__init__.py": {
+        "development_sha256": "d6986fae609550786c795a9d6020c7783c1424eff976005c11e782a6f88f04cb",
+        "beta_sha256": "768f8c5d20d1f256b098575a78df903d9eab8650b0bd7aea3144da39542391eb"
+      },
+      "src/stemscene/fuss.py": {
+        "development_sha256": "18445b3c171a02d4a294458b472af17f3b30c358e9ca9bd90ebb215dd0f7c06c",
+        "beta_sha256": "ff2aaca225ebc7ef7a5ff0c01c468e415cce97d84afb0740e4d9e8c1e0418e1b"
+      }
+    },
+    "change_scope": {
+      "src/stemscene/__init__.py": "package version only",
+      "src/stemscene/server.py": "browser session admission and mutation concurrency repair",
+      "src/stemscene/fuss.py": "optional subprocess startup import ordering for existing setuptools/TensorFlow runtime"
+    },
+    "core_sha256": {
+      "src/stemscene/audio.py": "ca93791cc4e8852ae994bce46e4610ea26f7637296233d0293520159147bd3e3",
+      "src/stemscene/backend.py": "a471e0771fe50aad22698ff4a283cdbf7c9fa1bd2a849f54d3e2d8ccc9b265d4",
+      "src/stemscene/cli.py": "2607941f5b251fe10bb19d3c835637e650f2945e90a747daa7de364cf131969a",
+      "src/stemscene/engine.py": "3026b490195b6d6e2436cd29cc9195c83b058425e7ca25295b51c642129b2527",
+      "src/stemscene/export.py": "33f8dd0e4d9cd58e4ca0cea668509bcd4d9f350c0d0f8f14e83db3be4879cfcc",
+      "src/stemscene/joint.py": "2f4ac80775563c924164686429ccd29757b1ea2a05d428f1a3f32d9895a7b40d",
+      "src/stemscene/joint_v2.py": "683e6b6b6fff04753efca9aa4a35435356ad84e65702df6c76886694ed64ac23",
+      "src/stemscene/models.py": "44b2806322cfb9d032e5150e25e41229e46c75d1077990a103d5de7a7fae4a16",
+      "src/stemscene/project.py": "22b6b40829f6713353a05e8e259797490b0a82e74f08b535a7674123ced55278",
+      "src/stemscene/_vendor/audiosep/base.py": "3b092d52a187f1e1de976b9cc88a5d8e475db735a54dd6098e73c80fb1adc3fb",
+      "src/stemscene/_vendor/audiosep/resunet.py": "a20834d5220d92ed0e0b73cbd3190e653e8aec3defb99e7b2b81c6595fd89438",
+      "src/stemscene/_vendor/audiosep/stft.py": "93b01ba32534c5ee33d9472642a00b873d184373639f5e64d8c7f92268af8201",
+      "src/stemscene/artifacts/joint-refiner-v1.pt": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9"
+    },
+    "beta_package_sha256": {
+      "src/stemscene/server.py": "65257e61e756747f457ee5d79d5414611e30bae5347a9f67d9b726e0d6efea3a",
+      "src/stemscene/backend.py": "a471e0771fe50aad22698ff4a283cdbf7c9fa1bd2a849f54d3e2d8ccc9b265d4",
+      "src/stemscene/models.py": "44b2806322cfb9d032e5150e25e41229e46c75d1077990a103d5de7a7fae4a16",
+      "src/stemscene/__init__.py": "768f8c5d20d1f256b098575a78df903d9eab8650b0bd7aea3144da39542391eb",
+      "src/stemscene/export.py": "33f8dd0e4d9cd58e4ca0cea668509bcd4d9f350c0d0f8f14e83db3be4879cfcc",
+      "src/stemscene/engine.py": "3026b490195b6d6e2436cd29cc9195c83b058425e7ca25295b51c642129b2527",
+      "src/stemscene/cli.py": "2607941f5b251fe10bb19d3c835637e650f2945e90a747daa7de364cf131969a",
+      "src/stemscene/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/stemscene/fuss.py": "ff2aaca225ebc7ef7a5ff0c01c468e415cce97d84afb0740e4d9e8c1e0418e1b",
+      "src/stemscene/joint.py": "2f4ac80775563c924164686429ccd29757b1ea2a05d428f1a3f32d9895a7b40d",
+      "src/stemscene/audio.py": "ca93791cc4e8852ae994bce46e4610ea26f7637296233d0293520159147bd3e3",
+      "src/stemscene/joint_v2.py": "683e6b6b6fff04753efca9aa4a35435356ad84e65702df6c76886694ed64ac23",
+      "src/stemscene/__main__.py": "bf223149494f36f893f407bc14e63047e79253c174b23a45db07378517bf490f",
+      "src/stemscene/project.py": "22b6b40829f6713353a05e8e259797490b0a82e74f08b535a7674123ced55278",
+      "src/stemscene/artifacts/joint-refiner-v1.pt": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9",
+      "src/stemscene/_vendor/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/stemscene/web/index.html": "504efca6e88c660a1c4f522f34853e65d6286bfb74f5735c24e5e478bb31a81a",
+      "src/stemscene/web/styles.css": "a82915a3dbf3e1e90285d99b2201af74f2f595908c8bfc566b944a98ef825a8d",
+      "src/stemscene/web/app.js": "1c3b1e83431bc556b0f2b88e141af943e2ac6a3ca4f96f947f311f6737151f28",
+      "src/stemscene/_vendor/audiosep/resunet.py": "a20834d5220d92ed0e0b73cbd3190e653e8aec3defb99e7b2b81c6595fd89438",
+      "src/stemscene/_vendor/audiosep/LICENSE": "f38c0f36eebc626636decda302388054a78c0e89af440d3936ba626e0db05ead",
+      "src/stemscene/_vendor/audiosep/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/stemscene/_vendor/audiosep/stft.py": "93b01ba32534c5ee33d9472642a00b873d184373639f5e64d8c7f92268af8201",
+      "src/stemscene/_vendor/audiosep/TORCHLIBROSA_LICENSE": "ed54db13809b82568eaa17e585dbae2cfcf040081172db914edb6bac8abd5ecc",
+      "src/stemscene/_vendor/audiosep/base.py": "3b092d52a187f1e1de976b9cc88a5d8e475db735a54dd6098e73c80fb1adc3fb"
+    }
+  },
+  "correctness_suite": {
+    "passed": 59,
+    "failed": 0,
+    "pytest_reported_seconds": 4.38,
+    "full_process_seconds": 4.958773958001984,
+    "result_log": "beta-correctness.log",
+    "source": "frozen final runtime/test sources; normal imports use installed package, CLI fixtures explicitly prepend frozen source src; independent installed smoke separately checks wheel imports",
+    "test_source_sha256": {
+      "tests/test_audio_contract.py": "dbfb1862003e426e4f32b0a9c075ebcf0a678b8cc7c88a6ef2cc6b463eca8183",
+      "tests/test_cli.py": "7b8c8b8280c8b0af93fcf812b34823ec9321034c33896a18c026f02d307edfee",
+      "tests/test_engine_contract.py": "b0ed214d2fc8dc716bc85fa1cee04afb2754b91ff506b0d9b3c2e3b08eb3203e",
+      "tests/test_evaluation.py": "81b46b3cc2e257c9a4d36451b05eff398bfce24bbdaf7a81eef5c6ffa2d740d9",
+      "tests/test_joint.py": "bfd0b42bdf8654f1a1c2aaf72a4231f9973fe171c2103634939dd199b0c14a69",
+      "tests/test_joint_v2.py": "9836b7b7bf7e609ddc985ca298efe28be7574ab8caf83e2d303ec23753140a13",
+      "tests/test_server_session.py": "2e3170eb88788f0ee6c65dbd73cc904acb3b61389bf85a01e893556d34fa89ce"
+    }
+  },
+  "installed_offline_smoke": {
+    "site_packages_import_verified": true,
+    "bundled_refiner_loaded_parameters": 579,
+    "bundled_refiner_sha256": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9",
+    "root_and_vendor_license_bytes_verified": true,
+    "source_sha256": "4163c9933885cc72d71695d280ee56cb87b8cbf7965ed2932a32bc362dee8e53",
+    "reuses_saved_estimates_from_actual_development_cpu_run": true,
+    "new_inference_performed": false,
+    "event_replace_remove_undo": true,
+    "all_stem_arrays_and_typing_lock_preserved": true,
+    "outside_selected_span_max_abs_error": 0.0,
+    "export": "DOUBLE WAV, explicit clipping preserve",
+    "installed_cli_render_replay_and_standalone_equal_mix_decoded": true,
+    "replay_wave_hashes": {
+      "rendered-beta.wav": {
+        "decoded_max_abs_error": 0.0,
+        "sha256": "fe19789298ec3dc95d3e1d541eb624eb0e4bb29dfe56cb7ebaaa4aa7d7e306c0"
+      },
+      "recombined-cli-beta.wav": {
+        "decoded_max_abs_error": 0.0,
+        "sha256": "8d08e3e1250b5a949af7574ec5982d6e2abab705e484c35eff058efe5dd1f6ef"
+      },
+      "recombined-independent-beta.wav": {
+        "decoded_max_abs_error": 0.0,
+        "sha256": "8d08e3e1250b5a949af7574ec5982d6e2abab705e484c35eff058efe5dd1f6ef"
+      }
+    },
+    "standalone_model_modules_imported": false,
+    "standalone_report": "beta-recombination-report.json"
+  },
+  "distribution_contents": {
+    "private_plan_present_at_build_input": true,
+    "private_plan_excluded": true,
+    "required_artifact_and_license_files_byte_exact": 7,
+    "all_packaged_files_checked_against_source": true,
+    "private_absolute_paths_found": 0,
+    "historical_relative_task_prefixes_found": 0,
+    "source_demo_wav_count": 3,
+    "source_demo_video_present": true,
+    "source_archive_checksum": "recorded outside source archive to avoid self-reference; final source archive is repacked after this report and audited again externally"
+  },
+  "remote_checks": {
+    "remote_ci": "not_executed",
+    "public_clean_clone": "not_executed",
+    "versioned_release_download": "not_executed"
+  },
+  "limits": [
+    "Final beta offline smoke replays saved real estimates; actual changed-input CPU inference belongs to the separately hashed development wheel.",
+    "No new source-isolation quality, subjective listening, additional-platform, or public-release success claim follows from these package checks.",
+    "The final sdist is repacked after this portable record; exact final wheel/sdist checksums and final all-member audit are retained externally."
+  ],
+  "git_evidence_admission": {
+    "public_logs": [
+      "evaluation/v1/logs/confirmation-evaluation.log",
+      "evaluation/v1/logs/confirmation-fuss-generation.log",
+      "evaluation/v1/logs/confirmation-fuss-generation-retry1.log",
+      "evaluation/v1/logs/confirmation-sequential-generation.log",
+      "evaluation/install-v1/beta-correctness.log"
+    ],
+    "all_admitted_to_git": true,
+    "scope": "Five exact local .gitignore exceptions; no global ignore setting changed",
+    "runtime_or_model_changed": false
+  }
+}

@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00.000 --> 00:03.000
+Actual saved session. Inference and waiting are omitted.
+
+00:03.000 --> 00:11.000
+[Original recording, source 0-8 seconds: doorbell, door and keys.]
+
+00:11.000 --> 00:19.000
+[Same scene with the estimated doorbell layer at 50% from source 5-7 seconds.]
+
+00:19.000 --> 00:23.000
+Aligned export independently replayed. Samples outside the edit remain identical.

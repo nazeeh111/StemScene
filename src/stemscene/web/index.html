@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="stemscene-token" content="__SESSION_TOKEN__">
+  <meta name="color-scheme" content="dark">
+  <title>STEMSCENE · Local sound layers</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to recording</a>
+  <header class="app-header">
+    <a class="brand" href="/" aria-label="STEMSCENE home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>STEMSCENE</span></a>
+    <span class="header-caption">A recording. Persistent layers. Your mix.</span>
+    <span class="local-badge"><span aria-hidden="true"></span> On this computer</span>
+  </header>
+  <div id="error-panel" class="notice error-notice" role="alert" hidden><div><strong>That action could not finish.</strong><p id="error-message"></p></div><button id="dismiss-error" class="icon-button" aria-label="Dismiss error">×</button></div>
+  <div id="model-notice" class="notice model-notice" role="status" hidden><span class="notice-dot" aria-hidden="true"></span><p id="model-message"></p></div>
+  <main class="app-shell">
+    <aside class="library" aria-label="Recording and sound layers">
+      <div class="section-heading"><h2>Recording</h2><span class="eyebrow">SOURCE</span></div>
+      <label class="visually-hidden" for="project-picker">Open a saved recording</label>
+      <select id="project-picker"><option value="">Choose a saved recording</option></select>
+      <button id="import-button" class="button secondary full-width"><span aria-hidden="true">＋</span> Import recording</button>
+      <input id="file-input" type="file" accept=".wav,.flac,audio/wav,audio/flac" hidden>
+      <p class="small muted import-note">WAV or FLAC. Your source bytes stay intact.</p>
+      <div class="section-heading layers-heading"><h2>Sound layers</h2><span id="layer-count" class="count">0</span></div>
+      <div id="layers-empty" class="layers-empty"><span class="empty-lines" aria-hidden="true"></span><p>Request sounds in your recording to build an editable set of estimates.</p></div>
+      <div id="layer-list" class="layer-list"></div>
+      <form id="request-form" class="request-form"><fieldset id="request-fields" disabled>
+        <label for="queries">What would you like to separate?</label>
+        <textarea id="queries" rows="3" placeholder="Speech, wind, a passing vehicle" maxlength="4096" aria-describedby="query-help"></textarea>
+        <p id="query-help" class="small muted">Separate descriptions with commas or new lines. Similar requests may need an anchor.</p>
+        <button id="compute-button" class="button primary full-width" type="submit">Estimate layers <span aria-hidden="true">↗</span></button>
+      </fieldset></form>
+      <p class="library-footnote">Layers are sound estimates. A description can refer to a class of sounds, rather than one physical source.</p>
+    </aside>
+    <section id="workspace" class="workspace" aria-labelledby="recording-title">
+      <div class="workspace-topline"><span class="eyebrow">EDIT SESSION</span><span id="revision-label" class="mono muted">NO RECORDING</span></div>
+      <div class="recording-heading"><div><h1 id="recording-title">Bring a scene into focus.</h1><p id="recording-meta" class="muted">Import an authorized recording to begin.</p></div><button id="undo-button" class="button quiet" disabled><span aria-hidden="true">↶</span> Undo</button></div>
+      <section id="empty-recording" class="empty-recording" aria-label="Import a recording">
+        <div class="empty-recording-symbol" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <h2>Start with the original.</h2><p>Import audio, estimate the sounds you need, then change a selected event while keeping the rest of the decoded recording.</p>
+        <button id="empty-import-button" class="button primary">Import WAV or FLAC <span aria-hidden="true">↗</span></button>
+        <p class="small muted">Processing stays local. Use audio you are authorized to edit.</p>
+      </section>
+      <div id="recording-content" hidden>
+        <section class="timeline-panel" aria-labelledby="timeline-heading">
+          <div class="timeline-toolbar"><h2 id="timeline-heading"><span class="source-dot" aria-hidden="true"></span> Original recording</h2><span id="duration-label" class="mono muted"></span></div>
+          <div id="waveform-wrap" class="waveform-wrap"><canvas id="waveform" role="img" aria-label="Original recording waveform. Drag to select a time span, or use the start and end fields."></canvas><div id="waveform-empty" class="small muted" hidden>No waveform bins are available for this recording.</div></div>
+          <div id="timeline-ticks" class="timeline-ticks mono" aria-hidden="true"></div>
+          <div class="selection-summary"><span class="selection-key" aria-hidden="true"></span><span id="selection-summary">Select a time span to edit.</span><span class="small muted">Drag on the waveform or enter times.</span></div>
+        </section>
+        <div class="playback-panel">
+          <div class="playback-heading"><span class="eyebrow">LISTEN</span><span id="playback-label" class="small muted">Choose original, mix, or a layer.</span></div>
+          <div class="playback-actions"><button id="listen-original" class="button secondary">Original</button><button id="listen-mix" class="button secondary">Edited mix</button><button id="stop-button" class="button quiet" disabled>Stop</button></div>
+          <audio id="audio-player" controls preload="none" aria-label="Recording playback" hidden></audio>
+        </div>
+        <section class="saved-events" aria-labelledby="events-heading"><div class="section-heading"><h2 id="events-heading">Saved events</h2><span id="event-count" class="count">0</span></div><p id="events-empty" class="small muted">Level changes appear here. Select a saved event to update it.</p><div id="event-list"></div><p id="events-limit" class="small muted" hidden>Showing the 100 most recent events. Every saved operation remains in the export manifest and API.</p><p class="small muted event-note">Updating an event replaces its gain. Separate events multiply where their spans overlap.</p></section>
+        <section id="job-panel" class="job-panel" aria-labelledby="job-heading" hidden>
+          <div><h2 id="job-heading">Estimating sound layers</h2><p id="job-detail" class="small muted">The engine is computing from your original recording.</p></div>
+          <div class="job-controls"><progress id="job-progress" aria-label="Layer estimation progress"></progress><button id="cancel-button" class="button secondary">Cancel</button></div>
+        </section>
+        <section class="session-notes" aria-label="Session information"><div><span class="note-number">01</span><p><strong>Edits change selected estimates.</strong><span>Use your ears to check what a layer contains before reducing it.</span></p></div><div><span class="note-number">02</span><p><strong>Keep the original in reach.</strong><span>Undo restores earlier edits. Aligned stems and a residual travel with your export.</span></p></div></section>
+      </div>
+      <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+    </section>
+    <aside class="inspector" aria-label="Selected layer controls">
+      <div class="section-heading"><h2>Selected event</h2><span class="eyebrow">CONTROL</span></div>
+      <div id="inspector-empty" class="inspector-empty"><span aria-hidden="true">↖</span><p>Select a sound layer to change an event or add an anchor.</p></div>
+      <div id="inspector-content" hidden>
+        <div class="selected-layer-heading"><span id="selected-color" class="layer-color" aria-hidden="true"></span><div><h3 id="selected-query"></h3><span id="selected-id" class="mono muted"></span></div></div>
+        <p id="selected-uncertainty" class="small muted"></p>
+        <div class="edit-mode"><span id="event-mode">New event</span><button id="new-event" class="button quiet" type="button" disabled>New event</button></div><form id="edit-form"><fieldset id="edit-fields" disabled>
+          <div class="time-fields"><label for="start-time">Start <span>seconds</span><input id="start-time" type="number" min="0" step="any" required></label><label for="end-time">End <span>seconds</span><input id="end-time" type="number" min="0" step="any" required></label></div>
+          <div class="gain-label"><label for="gain-range">Layer level</label><output id="gain-output" for="gain-range">25%</output></div>
+          <input id="gain-range" type="range" min="0" max="1" step="0.01" value="0.25" aria-describedby="gain-help"><div class="range-labels"><span>Silent</span><span id="gain-maximum">Original level</span></div>
+          <p id="gain-help" class="small muted">Applies to this estimated layer inside the selected span.</p>
+          <label class="fade-label" for="fade-time">Fade at each edge <span>seconds</span><input id="fade-time" type="number" min="0" max="10" step="0.005" value="0.02" required></label>
+          <button id="apply-edit" class="button primary full-width" type="submit">Apply level change</button>
+        </fieldset></form>
+        <div class="anchor-section"><div class="section-heading"><h3>Mixed-recording anchors</h3><span class="eyebrow">GUIDE</span></div><p class="small muted">Mark a span where this sound is present or absent, then estimate again. Present spans can contain other sounds.</p><div class="anchor-actions"><button id="anchor-present" class="button secondary" disabled>Present here</button><button id="anchor-absent" class="button secondary" disabled>Absent here</button></div><ul id="anchor-list" class="anchor-list"></ul></div>
+        <p class="small muted lock-explanation">Locking protects the estimate when you add requests. Level edits remain available. Unlock to change its separation anchors.</p>
+      </div>
+      <section class="export-section" aria-labelledby="export-heading"><div class="section-heading"><h2 id="export-heading">Take the mix with you</h2><span class="eyebrow">EXPORT</span></div><p class="small muted">Aligned WAV estimates, residual, gain envelopes and a reproducible edit manifest.</p><details class="export-options"><summary>Export options</summary><label for="clipping-policy">Mix peak policy<select id="clipping-policy"><option value="reject">Reject peaks above 1</option><option value="preserve">Preserve floating-point peaks</option><option value="hard">Hard clip the final mix</option></select></label><p class="small muted">64-bit float WAV. No loudness normalization.</p></details><button id="export-button" class="button secondary full-width" disabled>Export aligned WAVs <span aria-hidden="true">↓</span></button><p id="export-status" class="small muted" role="status"></p></section>
+    </aside>
+  </main>
+  <footer class="app-footer"><span>STEMSCENE <span class="muted">/</span> Local audio workspace</span><span>Estimated layers. Original-preserving edits.</span></footer>
+</body>
+</html>

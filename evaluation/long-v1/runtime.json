@@ -1,0 +1,125 @@
+{
+  "installed_module": "stemscene installed from source checkout (editable)",
+  "backend_device": "mps",
+  "threads": 4,
+  "checkpoint_sha256": "f8cda01bfd0ebd141eef45d41db7a3ada23a56568465840d3cff04b8010ce82c",
+  "refiner_sha256": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9",
+  "source_sha256": "e17acb13a102364809a4fafb548a36e70abee34311a788649beafd308ab74ebe",
+  "model_load_seconds": 15.486488417023793,
+  "three_query_extract_seconds": 81.1960297920159,
+  "extract_realtime_factor": 1.6915839540003315,
+  "export_seconds": 1.452248250017874,
+  "export_independent_replay_max_error": 0.0,
+  "export_verification": {
+    "method": "actual written aligned WAVs, read in blocks of at most 65536 frames",
+    "absolute_tolerance": 1e-12,
+    "units": "decoded waveform amplitude",
+    "unity_max_abs_error": 1.1102230246251565e-16,
+    "edit_replay_max_abs_error": 0.0,
+    "mix_render_max_abs_error": 0.0,
+    "original_decode_max_abs_error": 0.0
+  },
+  "primary_total_seconds": 126.07613691699225,
+  "peak_process_rss_bytes": 843169792,
+  "memory_scope": "Cumulative process high-water RSS incl imported runtimes, both models, project arrays; MPS samples every50ms are observed lower bounds, not a true allocator high-water peak.",
+  "mps_sampled_memory": {
+    "mps_allocated_peak_observed": 939035648,
+    "mps_driver_peak_observed": 2449113088
+  },
+  "source_hashes": {
+    "src/stemscene/engine.py": "3026b490195b6d6e2436cd29cc9195c83b058425e7ca25295b51c642129b2527",
+    "src/stemscene/backend.py": "a471e0771fe50aad22698ff4a283cdbf7c9fa1bd2a849f54d3e2d8ccc9b265d4",
+    "src/stemscene/joint.py": "2f4ac80775563c924164686429ccd29757b1ea2a05d428f1a3f32d9895a7b40d",
+    "src/stemscene/project.py": "22b6b40829f6713353a05e8e259797490b0a82e74f08b535a7674123ced55278"
+  },
+  "whole_smoke_process": {
+    "elapsed_seconds_including_smokes": 261.1786949999805,
+    "peak_process_rss_bytes": 961593344,
+    "mps_sampled_memory": {
+      "mps_allocated_peak_observed": 939035648,
+      "mps_driver_peak_observed": 2449113088
+    }
+  },
+  "long_refinement_diagnostics": {
+    "method": "joint-mask-residual-v1",
+    "mode": "bounded offline overlapping windows",
+    "context": "full-recording query-class profiles accumulated in bounded STFT passes",
+    "sample_rate": 32000,
+    "samples": 1536000,
+    "window_samples": 640000,
+    "overlap_samples": 64000,
+    "window_count": 3,
+    "step_samples": 576000,
+    "estimated_audio_array_bytes": 135174144,
+    "max_array_bytes": 4000000000,
+    "anchors": [],
+    "ambiguous_query_pairs": [],
+    "chunk_association": [
+      {
+        "start_sample": 576000,
+        "overlap_samples": 64000,
+        "observed_overlap_samples": 63999,
+        "same_query_zero_lag_correlation": [
+          0.9999889580986742,
+          0.9999943784881042,
+          0.9999892058469914
+        ],
+        "cross_query_correlation": [
+          [
+            0.9999889580986742,
+            0.07694407365585353,
+            0.8640630260434069
+          ],
+          [
+            0.07685484932634895,
+            0.9999943784881042,
+            0.07906874267079284
+          ],
+          [
+            0.8640280329222313,
+            0.07909724806711058,
+            0.9999892058469914
+          ]
+        ],
+        "ambiguous_pairs": [],
+        "assignment": "persistent query index; no waveform-based reassignment"
+      },
+      {
+        "start_sample": 1152000,
+        "overlap_samples": 64000,
+        "observed_overlap_samples": 63999,
+        "same_query_zero_lag_correlation": [
+          0.999987930877131,
+          0.9999965781513547,
+          0.9999862653652306
+        ],
+        "cross_query_correlation": [
+          [
+            0.999987930877131,
+            0.0058098092811282994,
+            0.9944743503915205
+          ],
+          [
+            0.005985850211407768,
+            0.9999965781513547,
+            -0.013637937331810752
+          ],
+          [
+            0.9943567115495269,
+            -0.013831088312860694,
+            0.9999862653652306
+          ]
+        ],
+        "ambiguous_pairs": [
+          [
+            0,
+            2
+          ]
+        ],
+        "assignment": "persistent query index; no waveform-based reassignment"
+      }
+    ],
+    "identity_limit": "Stable requested classes, not proven physical source identity or separation accuracy.",
+    "real_long_recording_quality": "requires measured real-proposal evaluation"
+  }
+}

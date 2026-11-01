@@ -1,0 +1,1 @@
+Session capture with audio excerpts. Inference and waiting omitted. No normalization.

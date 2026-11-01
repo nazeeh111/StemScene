@@ -1,0 +1,8 @@
+{
+  "scripts/prepare_proposals.py": "b0581ff381cf189b756f6eeb5f7f2596920a1dafcf009918b6ef2290a80e1cb3",
+  "scripts/prepare_fuss_proposals.py": "884e61e720457792759a37cef75ac9a925e371368f298008c62f47169011320b",
+  "scripts/prepare_sequential_proposals.py": "55515cd044ec1763aefaac19880f101b1ece1f6bbb5ca9744f362d76d8ae4d28",
+  "scripts/evaluate_refiner.py": "cdff3c59ddedbd042644de941ad5f614333bb51578bc99e1bfba8fb13147b328",
+  "src/stemscene/fuss.py": "18445b3c171a02d4a294458b472af17f3b30c358e9ca9bd90ebb215dd0f7c06c",
+  "src/stemscene/joint.py": "2f4ac80775563c924164686429ccd29757b1ea2a05d428f1a3f32d9895a7b40d"
+}

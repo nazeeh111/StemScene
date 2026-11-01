@@ -1,0 +1,3415 @@
+{
+  "scope": "Single fixed48-second selection-source development stress case, not confirmation; no tuning",
+  "sample_rate": 32000,
+  "frames": 1536000,
+  "channels": 1,
+  "methods": {
+    "independent": {
+      "per_query": [
+        {
+          "query": "clock tick",
+          "direct_waveform_sdr_db": -8.980658591159917,
+          "si_sdr_db": -31.369595399387045,
+          "gain_projection": 0.07170483023127523,
+          "edit_nmse_17_21": 0.018416537971818726
+        },
+        {
+          "query": "rain",
+          "direct_waveform_sdr_db": 5.6464016404616,
+          "si_sdr_db": 4.570440467901242,
+          "gain_projection": 0.6403582366159266,
+          "edit_nmse_17_21": 0.008748369660036217
+        },
+        {
+          "query": "sneezing",
+          "direct_waveform_sdr_db": 11.34232331191008,
+          "si_sdr_db": 11.011254661229001,
+          "gain_projection": 0.9274942173718987,
+          "edit_nmse_17_21": 0.001561165998908803
+        }
+      ],
+      "mean_all_query_edit_nmse_17_21": 0.009575357876921249,
+      "waveform_nmse": 0.13580730145183903,
+      "activity_power_nmse": 0.2431028896686004,
+      "activity_change_nmse": 0.19771240168229406,
+      "backend_boundary_windows": [
+        {
+          "center_seconds": 3,
+          "error_nmse": 0.38542022822386185,
+          "derivative_error_over_global_mixture_derivative_power": 0.003362133099548617,
+          "reference_power_over_mixture": 0.599181117586474
+        },
+        {
+          "center_seconds": 5,
+          "error_nmse": 0.4714013589374678,
+          "derivative_error_over_global_mixture_derivative_power": 0.0005048970390572668,
+          "reference_power_over_mixture": 0.5561886762498996
+        },
+        {
+          "center_seconds": 6,
+          "error_nmse": 0.32380533899531155,
+          "derivative_error_over_global_mixture_derivative_power": 0.00028939878254130764,
+          "reference_power_over_mixture": 0.42793616549235886
+        },
+        {
+          "center_seconds": 8,
+          "error_nmse": 0.00032240577633529656,
+          "derivative_error_over_global_mixture_derivative_power": 0.0002710405840732633,
+          "reference_power_over_mixture": 0.4229748781129355
+        },
+        {
+          "center_seconds": 9,
+          "error_nmse": 0.0037115668334011566,
+          "derivative_error_over_global_mixture_derivative_power": 0.00024488326075084994,
+          "reference_power_over_mixture": 0.6150827575427098
+        },
+        {
+          "center_seconds": 11,
+          "error_nmse": 0.17239484787623086,
+          "derivative_error_over_global_mixture_derivative_power": 0.000849501416216783,
+          "reference_power_over_mixture": 0.17839220729776384
+        },
+        {
+          "center_seconds": 12,
+          "error_nmse": 0.3062504390663392,
+          "derivative_error_over_global_mixture_derivative_power": 0.0013953015872162468,
+          "reference_power_over_mixture": 0.5221168894963198
+        },
+        {
+          "center_seconds": 14,
+          "error_nmse": 0.3339519340455362,
+          "derivative_error_over_global_mixture_derivative_power": 0.0007914012774193428,
+          "reference_power_over_mixture": 0.534087215244304
+        },
+        {
+          "center_seconds": 15,
+          "error_nmse": 0.30373386335700386,
+          "derivative_error_over_global_mixture_derivative_power": 0.0008187218435370162,
+          "reference_power_over_mixture": 0.22471307732552767
+        },
+        {
+          "center_seconds": 17,
+          "error_nmse": 0.009529888786559894,
+          "derivative_error_over_global_mixture_derivative_power": 0.00025055849757833493,
+          "reference_power_over_mixture": 0.30941569368547334
+        },
+        {
+          "center_seconds": 18,
+          "error_nmse": 0.8246335882658589,
+          "derivative_error_over_global_mixture_derivative_power": 0.800615246427462,
+          "reference_power_over_mixture": 1.0172466532114175
+        },
+        {
+          "center_seconds": 20,
+          "error_nmse": 0.6228542926728174,
+          "derivative_error_over_global_mixture_derivative_power": 0.5346172255052909,
+          "reference_power_over_mixture": 0.8383628710560049
+        },
+        {
+          "center_seconds": 21,
+          "error_nmse": 0.00010817583774415546,
+          "derivative_error_over_global_mixture_derivative_power": 0.0006244150931584825,
+          "reference_power_over_mixture": 0.06325044090290169
+        },
+        {
+          "center_seconds": 23,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 24,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 26,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 27,
+          "error_nmse": 6.979821007885714e-05,
+          "derivative_error_over_global_mixture_derivative_power": 0.0005463107287260949,
+          "reference_power_over_mixture": 0.06106366004426371
+        },
+        {
+          "center_seconds": 29,
+          "error_nmse": 0.10080284314486258,
+          "derivative_error_over_global_mixture_derivative_power": 0.0009968180614378583,
+          "reference_power_over_mixture": 0.2786056915704536
+        },
+        {
+          "center_seconds": 30,
+          "error_nmse": 0.15418956063026196,
+          "derivative_error_over_global_mixture_derivative_power": 0.0009527228875737466,
+          "reference_power_over_mixture": 0.3561158264680032
+        },
+        {
+          "center_seconds": 32,
+          "error_nmse": 0.041173894706801425,
+          "derivative_error_over_global_mixture_derivative_power": 0.0229301722231942,
+          "reference_power_over_mixture": 0.5562215888650146
+        },
+        {
+          "center_seconds": 33,
+          "error_nmse": 0.00023690795671179305,
+          "derivative_error_over_global_mixture_derivative_power": 0.0008149600073320099,
+          "reference_power_over_mixture": 0.1848708743738882
+        },
+        {
+          "center_seconds": 35,
+          "error_nmse": 0.004253485638568904,
+          "derivative_error_over_global_mixture_derivative_power": 0.00042879490751193797,
+          "reference_power_over_mixture": 0.42294196549782065
+        },
+        {
+          "center_seconds": 36,
+          "error_nmse": 0.8038272472717121,
+          "derivative_error_over_global_mixture_derivative_power": 0.7535096836982035,
+          "reference_power_over_mixture": 1.245133085953262
+        },
+        {
+          "center_seconds": 38,
+          "error_nmse": 0.809872829528752,
+          "derivative_error_over_global_mixture_derivative_power": 0.6672134969466249,
+          "reference_power_over_mixture": 0.8084425357083164
+        },
+        {
+          "center_seconds": 39,
+          "error_nmse": 0.0007725791491703002,
+          "derivative_error_over_global_mixture_derivative_power": 0.0004408114309662623,
+          "reference_power_over_mixture": 0.27905159837784904
+        },
+        {
+          "center_seconds": 41,
+          "error_nmse": 0.13431951343758494,
+          "derivative_error_over_global_mixture_derivative_power": 0.000617671236794441,
+          "reference_power_over_mixture": 0.534087215244304
+        },
+        {
+          "center_seconds": 42,
+          "error_nmse": 0.13258355259494933,
+          "derivative_error_over_global_mixture_derivative_power": 0.00020077667634736362,
+          "reference_power_over_mixture": 0.22471307732552767
+        },
+        {
+          "center_seconds": 44,
+          "error_nmse": 7.549455889029503e-05,
+          "derivative_error_over_global_mixture_derivative_power": 0.00028374888692190805,
+          "reference_power_over_mixture": 0.3094486063005883
+        },
+        {
+          "center_seconds": 45,
+          "error_nmse": 3.0179495062748253e-05,
+          "derivative_error_over_global_mixture_derivative_power": 0.0007209174250801589,
+          "reference_power_over_mixture": 0.38719632480086535
+        },
+        {
+          "center_seconds": 47,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        }
+      ],
+      "refiner_boundary_windows": [
+        {
+          "center_seconds": 18.0,
+          "error_nmse": 0.8246335882658589,
+          "derivative_error_over_global_mixture_derivative_power": 0.800615246427462,
+          "reference_power_over_mixture": 1.0172466532114175
+        },
+        {
+          "center_seconds": 20.0,
+          "error_nmse": 0.6228542926728174,
+          "derivative_error_over_global_mixture_derivative_power": 0.5346172255052909,
+          "reference_power_over_mixture": 0.8383628710560049
+        },
+        {
+          "center_seconds": 36.0,
+          "error_nmse": 0.8038272472717121,
+          "derivative_error_over_global_mixture_derivative_power": 0.7535096836982035,
+          "reference_power_over_mixture": 1.245133085953262
+        },
+        {
+          "center_seconds": 38.0,
+          "error_nmse": 0.809872829528752,
+          "derivative_error_over_global_mixture_derivative_power": 0.6672134969466249,
+          "reference_power_over_mixture": 0.8084425357083164
+        }
+      ],
+      "matched_interior_windows": [
+        {
+          "center_seconds": 1.5,
+          "error_nmse": 0.2439567129756042,
+          "derivative_error_over_global_mixture_derivative_power": 0.0022279765166890887,
+          "reference_power_over_mixture": 0.38368955639956576
+        },
+        {
+          "center_seconds": 4.5,
+          "error_nmse": 0.36680900791079774,
+          "derivative_error_over_global_mixture_derivative_power": 0.0007880168556481271,
+          "reference_power_over_mixture": 0.5333604750636635
+        },
+        {
+          "center_seconds": 7.5,
+          "error_nmse": 0.5531306264312708,
+          "derivative_error_over_global_mixture_derivative_power": 0.9878950022709099,
+          "reference_power_over_mixture": 0.7460638303668506
+        },
+        {
+          "center_seconds": 10.5,
+          "error_nmse": 0.15783067054177133,
+          "derivative_error_over_global_mixture_derivative_power": 0.0005473429361533682,
+          "reference_power_over_mixture": 0.16846316696985247
+        },
+        {
+          "center_seconds": 13.5,
+          "error_nmse": 0.14349545660405003,
+          "derivative_error_over_global_mixture_derivative_power": 0.0007735350378998188,
+          "reference_power_over_mixture": 0.35694191791953084
+        },
+        {
+          "center_seconds": 16.5,
+          "error_nmse": 0.06582765358350008,
+          "derivative_error_over_global_mixture_derivative_power": 0.0003361395626264643,
+          "reference_power_over_mixture": 0.38494299235510815
+        },
+        {
+          "center_seconds": 19.5,
+          "error_nmse": 0.0027796502513119156,
+          "derivative_error_over_global_mixture_derivative_power": 0.0005945292158361639,
+          "reference_power_over_mixture": 0.44718495691278765
+        },
+        {
+          "center_seconds": 22.5,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 25.5,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 28.5,
+          "error_nmse": 0.2879859740102339,
+          "derivative_error_over_global_mixture_derivative_power": 0.002536480809656452,
+          "reference_power_over_mixture": 0.38368955639956576
+        },
+        {
+          "center_seconds": 31.5,
+          "error_nmse": 0.4446212944280168,
+          "derivative_error_over_global_mixture_derivative_power": 0.7362162293056991,
+          "reference_power_over_mixture": 1.033217758208798
+        },
+        {
+          "center_seconds": 34.5,
+          "error_nmse": 0.017176527686103674,
+          "derivative_error_over_global_mixture_derivative_power": 0.00043100793771884145,
+          "reference_power_over_mixture": 0.24620654722171617
+        },
+        {
+          "center_seconds": 37.5,
+          "error_nmse": 0.0033121087086391975,
+          "derivative_error_over_global_mixture_derivative_power": 0.00046917407766051944,
+          "reference_power_over_mixture": 0.1684986544479966
+        },
+        {
+          "center_seconds": 40.5,
+          "error_nmse": 0.08959301885862904,
+          "derivative_error_over_global_mixture_derivative_power": 0.0006464826340121244,
+          "reference_power_over_mixture": 0.35694191791953084
+        },
+        {
+          "center_seconds": 43.5,
+          "error_nmse": 0.8881796433728738,
+          "derivative_error_over_global_mixture_derivative_power": 0.8671065072862915,
+          "reference_power_over_mixture": 1.1278655666187132
+        }
+      ],
+      "paired_transient_boundary_controls": [
+        {
+          "boundary_seconds": 3,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 3.0,
+          "matched_interior_center_seconds": 1.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 3,
+            "error_nmse": 0.38542022822386185,
+            "derivative_error_over_global_mixture_derivative_power": 0.003362133099548617,
+            "reference_power_over_mixture": 0.599181117586474
+          },
+          "interior_metrics": {
+            "center_seconds": 1.5,
+            "error_nmse": 0.2439567129756042,
+            "derivative_error_over_global_mixture_derivative_power": 0.0022279765166890887,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.14146351524825765
+        },
+        {
+          "boundary_seconds": 6,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 6.0,
+          "matched_interior_center_seconds": 1.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 6,
+            "error_nmse": 0.32380533899531155,
+            "derivative_error_over_global_mixture_derivative_power": 0.00028939878254130764,
+            "reference_power_over_mixture": 0.42793616549235886
+          },
+          "interior_metrics": {
+            "center_seconds": 1.5,
+            "error_nmse": 0.2439567129756042,
+            "derivative_error_over_global_mixture_derivative_power": 0.0022279765166890887,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.07984862601970735
+        },
+        {
+          "boundary_seconds": 12,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 12.0,
+          "matched_interior_center_seconds": 1.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 12,
+            "error_nmse": 0.3062504390663392,
+            "derivative_error_over_global_mixture_derivative_power": 0.0013953015872162468,
+            "reference_power_over_mixture": 0.5221168894963198
+          },
+          "interior_metrics": {
+            "center_seconds": 1.5,
+            "error_nmse": 0.2439567129756042,
+            "derivative_error_over_global_mixture_derivative_power": 0.0022279765166890887,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.062293726090735
+        },
+        {
+          "boundary_seconds": 18,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 18.0,
+          "matched_interior_center_seconds": 28.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 18,
+            "error_nmse": 0.8246335882658589,
+            "derivative_error_over_global_mixture_derivative_power": 0.800615246427462,
+            "reference_power_over_mixture": 1.0172466532114175
+          },
+          "interior_metrics": {
+            "center_seconds": 28.5,
+            "error_nmse": 0.2879859740102339,
+            "derivative_error_over_global_mixture_derivative_power": 0.002536480809656452,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.5366476142556249
+        },
+        {
+          "boundary_seconds": 20,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 20.0,
+          "matched_interior_center_seconds": 28.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 20,
+            "error_nmse": 0.6228542926728174,
+            "derivative_error_over_global_mixture_derivative_power": 0.5346172255052909,
+            "reference_power_over_mixture": 0.8383628710560049
+          },
+          "interior_metrics": {
+            "center_seconds": 28.5,
+            "error_nmse": 0.2879859740102339,
+            "derivative_error_over_global_mixture_derivative_power": 0.002536480809656452,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.33486831866258354
+        },
+        {
+          "boundary_seconds": 36,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 36.0,
+          "matched_interior_center_seconds": 28.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 36,
+            "error_nmse": 0.8038272472717121,
+            "derivative_error_over_global_mixture_derivative_power": 0.7535096836982035,
+            "reference_power_over_mixture": 1.245133085953262
+          },
+          "interior_metrics": {
+            "center_seconds": 28.5,
+            "error_nmse": 0.2879859740102339,
+            "derivative_error_over_global_mixture_derivative_power": 0.002536480809656452,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.5158412732614781
+        },
+        {
+          "boundary_seconds": 38,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 38.0,
+          "matched_interior_center_seconds": 43.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 38,
+            "error_nmse": 0.809872829528752,
+            "derivative_error_over_global_mixture_derivative_power": 0.6672134969466249,
+            "reference_power_over_mixture": 0.8084425357083164
+          },
+          "interior_metrics": {
+            "center_seconds": 43.5,
+            "error_nmse": 0.8881796433728738,
+            "derivative_error_over_global_mixture_derivative_power": 0.8671065072862915,
+            "reference_power_over_mixture": 1.1278655666187132
+          },
+          "boundary_minus_interior_nmse": -0.07830681384412186
+        }
+      ],
+      "silence": [
+        {
+          "seconds": [
+            21.5,
+            26.5
+          ],
+          "per_query_energy_over_global_mixture": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_amplitude": 0.0
+        },
+        {
+          "seconds": [
+            46.0,
+            48.0
+          ],
+          "per_query_energy_over_global_mixture": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_amplitude": 0.0
+        }
+      ],
+      "class_attribution_windows": [
+        {
+          "start_seconds": 0.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 12.79333093617549,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.13031222257162073,
+              0.14973374504253267
+            ],
+            [
+              0.01907705046379022,
+              0.28110626273529465
+            ],
+            [
+              0.00881201415235335,
+              0.008664824795127882
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 2.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 20.532264008789234,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.14462499599469406,
+              0.1257884362874041
+            ],
+            [
+              0.004705273387576551,
+              0.3735754635801676
+            ],
+            [
+              0.002534599110330727,
+              0.0057241890999766174
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 4.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 56.17371904814589,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.06946487390269561,
+              0.2498064133584308
+            ],
+            [
+              0.21728150165811225,
+              0.44344996472819154
+            ],
+            [
+              0.0009069197821592657,
+              0.0014646779607157786
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 6.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 25.728068599077506,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.01006521326996168,
+              0.05738165608750217,
+              0.9048533881964814
+            ],
+            [
+              0.03145767399950148,
+              0.7265213671052045,
+              0.06451993392104002
+            ],
+            [
+              -0.008199272293229191,
+              0.04560092725663084,
+              0.9386391902089881
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 8.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.04321447726903491
+            ],
+            [
+              0.9224254365573595
+            ],
+            [
+              0.0015043664090864002
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 10.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 30.0998809604221,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.3158811123372303,
+              0.519365559521415
+            ],
+            [
+              0.021874809638878737,
+              0.32731211340906036
+            ],
+            [
+              0.015536414638799434,
+              0.017619474931341167
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "clock tick"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 12.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 40.435166493926474,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.27236260066501067,
+              0.21535172313423076
+            ],
+            [
+              -0.0991158516628866,
+              0.416470092420515
+            ],
+            [
+              0.004921576508163866,
+              0.012960899395644643
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 14.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.4868701966615472
+            ],
+            [
+              0.43749052913960057
+            ],
+            [
+              0.05069595425420631
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 16.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 40.642304262472344,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.07775076399867055,
+              0.06897869319242426,
+              0.8765857683854236
+            ],
+            [
+              0.7235464398039025,
+              0.7377213621033424,
+              0.09263693642384412
+            ],
+            [
+              0.05247610368262051,
+              0.04570777851077835,
+              0.9314433464143518
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 18.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 27.536842104554157,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.01937798171903705,
+              0.021864681906436794,
+              0.6672942361955214
+            ],
+            [
+              0.41706708764798694,
+              0.7331332434606008,
+              0.17581156383598623
+            ],
+            [
+              0.0041274032191377175,
+              0.01871556152822406,
+              0.9305062489393591
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 20.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 11.104404873744127,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.012240256647378614,
+              0.005819555139391256
+            ],
+            [
+              0.5617613239043033,
+              0.8904717044276987
+            ],
+            [
+              0.0010022759069811032,
+              0.00806205991509183
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 26.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.03490329572632907
+            ],
+            [
+              0.8612658114842164
+            ],
+            [
+              0.0013254399135545247
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 28.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 14.03560496176325,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.009512955807463822,
+              0.013609020392993304
+            ],
+            [
+              0.1493015867770217,
+              0.47680253619594815
+            ],
+            [
+              0.0006352537528341255,
+              0.0011608149457210148
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 30.0,
+          "active_reference_queries": [
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 3.2032489699899154,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.08712646429939433,
+              0.5499324572686756
+            ],
+            [
+              0.5205289618220885,
+              0.14605151848880246
+            ],
+            [
+              0.04706990186341545,
+              0.8942166235249327
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 32.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.021760149619548162
+            ],
+            [
+              0.9464432000018835
+            ],
+            [
+              0.0011138316929303659
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 34.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 51.19368840298966,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.028836320690058925,
+              0.038134891157631017,
+              0.8502686667297836
+            ],
+            [
+              0.4894712376133861,
+              0.8103144947889943,
+              0.09021567979381916
+            ],
+            [
+              0.009879644981437948,
+              0.03393258107502627,
+              0.9097757966280594
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 36.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 22.610279501787538,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.018968139693720947,
+              0.026187491837804514,
+              0.9016833638149339
+            ],
+            [
+              0.6996190595753037,
+              0.7586408537102654,
+              0.0632671549677869
+            ],
+            [
+              0.004647009638571214,
+              0.018976058319398834,
+              0.9457721528255593
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 38.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 26.428812111686582,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.009461663374609314,
+              0.04150512084739215
+            ],
+            [
+              0.8972067903322245,
+              0.9061838995611526
+            ],
+            [
+              -0.0003072101266836588,
+              0.005890688262824972
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 40.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.049823205353869304
+            ],
+            [
+              0.5602869583242411
+            ],
+            [
+              0.0011393136722409778
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 42.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 13.031742648227658,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.019082835700255305,
+              0.04835679234402811,
+              0.9142529152577411
+            ],
+            [
+              0.783518042682262,
+              0.6585016239859445,
+              0.06054712246524041
+            ],
+            [
+              0.012728303363997634,
+              0.036991153622157685,
+              0.9524481310601587
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 44.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.0006550658636868259
+            ],
+            [
+              0.9904089131377014
+            ],
+            [
+              0.0004157226767104274
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        }
+      ],
+      "class_attribution_mismatches": 12,
+      "unity_resynthesis_max_error": 2.7755575615628914e-17,
+      "edit_cases": [
+        {
+          "name": "refiner_join_18",
+          "start_seconds": 17.0,
+          "end_seconds": 21.0,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.009575357876921247,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.11490608993071014,
+          "per_query_full_record_edit_nmse": [
+            0.018416537971818726,
+            0.008748369660036217,
+            0.001561165998908803
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.02404381572492358
+        },
+        {
+          "name": "refiner_join_36",
+          "start_seconds": 35.0,
+          "end_seconds": 39.0,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.009604155303251101,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.11525166444627023,
+          "per_query_full_record_edit_nmse": [
+            0.02119009666932698,
+            0.006085574573054534,
+            0.0015367946673717923
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.022259535743583712
+        },
+        {
+          "name": "interior_transient",
+          "start_seconds": 6.5,
+          "end_seconds": 8.5,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.004201311078528411,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.10083461696646207,
+          "per_query_full_record_edit_nmse": [
+            0.01007376800198718,
+            0.0017898233829424797,
+            0.0007403418506555717
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.011124798538425495
+        },
+        {
+          "name": "whole_recording",
+          "start_seconds": 0.0,
+          "end_seconds": 48.0,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.07638089395767912,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.07638099341209745,
+          "per_query_full_record_edit_nmse": [
+            0.09503049478637123,
+            0.12822376678094033,
+            0.00588842030572556
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.13381288762077723
+        }
+      ],
+      "backend_boundary_windows_mean_nmse": 0.19801086049992916,
+      "refiner_boundary_windows_mean_nmse": 0.7652969894347851,
+      "matched_interior_windows_mean_nmse": 0.21764655635752017
+    },
+    "fixed_0.60_gain": {
+      "per_query": [
+        {
+          "query": "clock tick",
+          "direct_waveform_sdr_db": -5.381282061550804,
+          "si_sdr_db": -31.3695953994999,
+          "gain_projection": 0.04302289813876557,
+          "edit_nmse_17_21": 0.008148208825887912
+        },
+        {
+          "query": "rain",
+          "direct_waveform_sdr_db": 3.6579836792713545,
+          "si_sdr_db": 4.570440467898462,
+          "gain_projection": 0.3842149419695582,
+          "edit_nmse_17_21": 0.01808000946026179
+        },
+        {
+          "query": "sneezing",
+          "direct_waveform_sdr_db": 6.551537565716216,
+          "si_sdr_db": 11.011254661201058,
+          "gain_projection": 0.5564965304231311,
+          "edit_nmse_17_21": 0.0050205749801682294
+        }
+      ],
+      "mean_all_query_edit_nmse_17_21": 0.010416264422105978,
+      "waveform_nmse": 0.1552370624052539,
+      "activity_power_nmse": 0.35926937760941186,
+      "activity_change_nmse": 0.18387219553055636,
+      "backend_boundary_windows": [
+        {
+          "center_seconds": 3,
+          "error_nmse": 0.44564849765024356,
+          "derivative_error_over_global_mixture_derivative_power": 0.0557783346144991,
+          "reference_power_over_mixture": 0.599181117586474
+        },
+        {
+          "center_seconds": 5,
+          "error_nmse": 0.42031347361454136,
+          "derivative_error_over_global_mixture_derivative_power": 0.05870676195656528,
+          "reference_power_over_mixture": 0.5561886762498996
+        },
+        {
+          "center_seconds": 6,
+          "error_nmse": 0.34936114210451513,
+          "derivative_error_over_global_mixture_derivative_power": 0.023209253174439632,
+          "reference_power_over_mixture": 0.42793616549235886
+        },
+        {
+          "center_seconds": 8,
+          "error_nmse": 0.072040196971946,
+          "derivative_error_over_global_mixture_derivative_power": 0.04937283669484485,
+          "reference_power_over_mixture": 0.4229748781129355
+        },
+        {
+          "center_seconds": 9,
+          "error_nmse": 0.11901956450119894,
+          "derivative_error_over_global_mixture_derivative_power": 0.07016097648722752,
+          "reference_power_over_mixture": 0.6150827575427098
+        },
+        {
+          "center_seconds": 11,
+          "error_nmse": 0.14728598331641213,
+          "derivative_error_over_global_mixture_derivative_power": 0.021687588258900325,
+          "reference_power_over_mixture": 0.17839220729776384
+        },
+        {
+          "center_seconds": 12,
+          "error_nmse": 0.36524661965681454,
+          "derivative_error_over_global_mixture_derivative_power": 0.03874717295756668,
+          "reference_power_over_mixture": 0.5221168894963198
+        },
+        {
+          "center_seconds": 14,
+          "error_nmse": 0.3186854704087397,
+          "derivative_error_over_global_mixture_derivative_power": 0.07784210728695577,
+          "reference_power_over_mixture": 0.534087215244304
+        },
+        {
+          "center_seconds": 15,
+          "error_nmse": 0.2234345243131098,
+          "derivative_error_over_global_mixture_derivative_power": 0.02238650524363785,
+          "reference_power_over_mixture": 0.22471307732552767
+        },
+        {
+          "center_seconds": 17,
+          "error_nmse": 0.07607222159156941,
+          "derivative_error_over_global_mixture_derivative_power": 0.03373137142321391,
+          "reference_power_over_mixture": 0.30941569368547334
+        },
+        {
+          "center_seconds": 18,
+          "error_nmse": 0.7140493578863484,
+          "derivative_error_over_global_mixture_derivative_power": 0.6227170258793748,
+          "reference_power_over_mixture": 1.0172466532114175
+        },
+        {
+          "center_seconds": 20,
+          "error_nmse": 0.5436549409196558,
+          "derivative_error_over_global_mixture_derivative_power": 0.4413984096370675,
+          "reference_power_over_mixture": 0.8383628710560049
+        },
+        {
+          "center_seconds": 21,
+          "error_nmse": 0.010720330991305373,
+          "derivative_error_over_global_mixture_derivative_power": 0.011122746025564569,
+          "reference_power_over_mixture": 0.06325044090290169
+        },
+        {
+          "center_seconds": 23,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 24,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 26,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 27,
+          "error_nmse": 0.009873507383311372,
+          "derivative_error_over_global_mixture_derivative_power": 0.012398439726839546,
+          "reference_power_over_mixture": 0.06106366004426371
+        },
+        {
+          "center_seconds": 29,
+          "error_nmse": 0.1491361495739275,
+          "derivative_error_over_global_mixture_derivative_power": 0.033959336189619,
+          "reference_power_over_mixture": 0.2786056915704536
+        },
+        {
+          "center_seconds": 30,
+          "error_nmse": 0.20768855050688947,
+          "derivative_error_over_global_mixture_derivative_power": 0.052071693395889386,
+          "reference_power_over_mixture": 0.3561158264680032
+        },
+        {
+          "center_seconds": 32,
+          "error_nmse": 0.1686201359029107,
+          "derivative_error_over_global_mixture_derivative_power": 0.09914097510901806,
+          "reference_power_over_mixture": 0.5562215888650146
+        },
+        {
+          "center_seconds": 33,
+          "error_nmse": 0.031126733161735434,
+          "derivative_error_over_global_mixture_derivative_power": 0.023132020073627267,
+          "reference_power_over_mixture": 0.1848708743738882
+        },
+        {
+          "center_seconds": 35,
+          "error_nmse": 0.08748082011138233,
+          "derivative_error_over_global_mixture_derivative_power": 0.050256974377008504,
+          "reference_power_over_mixture": 0.42294196549782065
+        },
+        {
+          "center_seconds": 36,
+          "error_nmse": 0.7824639328891755,
+          "derivative_error_over_global_mixture_derivative_power": 0.6525047539585535,
+          "reference_power_over_mixture": 1.245133085953262
+        },
+        {
+          "center_seconds": 38,
+          "error_nmse": 0.5595079670636096,
+          "derivative_error_over_global_mixture_derivative_power": 0.4599743408603454,
+          "reference_power_over_mixture": 0.8084425357083164
+        },
+        {
+          "center_seconds": 39,
+          "error_nmse": 0.051203586814965195,
+          "derivative_error_over_global_mixture_derivative_power": 0.0364678839376023,
+          "reference_power_over_mixture": 0.27905159837784904
+        },
+        {
+          "center_seconds": 41,
+          "error_nmse": 0.22413285857370124,
+          "derivative_error_over_global_mixture_derivative_power": 0.07690482328248593,
+          "reference_power_over_mixture": 0.534087215244304
+        },
+        {
+          "center_seconds": 42,
+          "error_nmse": 0.15441658795152421,
+          "derivative_error_over_global_mixture_derivative_power": 0.021402954935537143,
+          "reference_power_over_mixture": 0.22471307732552767
+        },
+        {
+          "center_seconds": 44,
+          "error_nmse": 0.04951269118950411,
+          "derivative_error_over_global_mixture_derivative_power": 0.03334177088958238,
+          "reference_power_over_mixture": 0.3094486063005883
+        },
+        {
+          "center_seconds": 45,
+          "error_nmse": 0.06221361955395332,
+          "derivative_error_over_global_mixture_derivative_power": 0.05783535960979993,
+          "reference_power_over_mixture": 0.38719632480086535
+        },
+        {
+          "center_seconds": 47,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        }
+      ],
+      "refiner_boundary_windows": [
+        {
+          "center_seconds": 18.0,
+          "error_nmse": 0.7140493578863484,
+          "derivative_error_over_global_mixture_derivative_power": 0.6227170258793748,
+          "reference_power_over_mixture": 1.0172466532114175
+        },
+        {
+          "center_seconds": 20.0,
+          "error_nmse": 0.5436549409196558,
+          "derivative_error_over_global_mixture_derivative_power": 0.4413984096370675,
+          "reference_power_over_mixture": 0.8383628710560049
+        },
+        {
+          "center_seconds": 36.0,
+          "error_nmse": 0.7824639328891755,
+          "derivative_error_over_global_mixture_derivative_power": 0.6525047539585535,
+          "reference_power_over_mixture": 1.245133085953262
+        },
+        {
+          "center_seconds": 38.0,
+          "error_nmse": 0.5595079670636096,
+          "derivative_error_over_global_mixture_derivative_power": 0.4599743408603454,
+          "reference_power_over_mixture": 0.8084425357083164
+        }
+      ],
+      "matched_interior_windows": [
+        {
+          "center_seconds": 1.5,
+          "error_nmse": 0.28319930305592395,
+          "derivative_error_over_global_mixture_derivative_power": 0.03320690068016206,
+          "reference_power_over_mixture": 0.38368955639956576
+        },
+        {
+          "center_seconds": 4.5,
+          "error_nmse": 0.35242977052702745,
+          "derivative_error_over_global_mixture_derivative_power": 0.08549612790913498,
+          "reference_power_over_mixture": 0.5333604750636635
+        },
+        {
+          "center_seconds": 7.5,
+          "error_nmse": 0.39011123934392156,
+          "derivative_error_over_global_mixture_derivative_power": 0.6901328335514375,
+          "reference_power_over_mixture": 0.7460638303668506
+        },
+        {
+          "center_seconds": 10.5,
+          "error_nmse": 0.13655003889551287,
+          "derivative_error_over_global_mixture_derivative_power": 0.020081486076838555,
+          "reference_power_over_mixture": 0.16846316696985247
+        },
+        {
+          "center_seconds": 13.5,
+          "error_nmse": 0.1866360997211466,
+          "derivative_error_over_global_mixture_derivative_power": 0.07095840464869514,
+          "reference_power_over_mixture": 0.35694191791953084
+        },
+        {
+          "center_seconds": 16.5,
+          "error_nmse": 0.15391127239872995,
+          "derivative_error_over_global_mixture_derivative_power": 0.02651321646535681,
+          "reference_power_over_mixture": 0.38494299235510815
+        },
+        {
+          "center_seconds": 19.5,
+          "error_nmse": 0.0839984859546979,
+          "derivative_error_over_global_mixture_derivative_power": 0.08184377067879332,
+          "reference_power_over_mixture": 0.44718495691278765
+        },
+        {
+          "center_seconds": 22.5,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 25.5,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 28.5,
+          "error_nmse": 0.308778643647592,
+          "derivative_error_over_global_mixture_derivative_power": 0.0328538116321416,
+          "reference_power_over_mixture": 0.38368955639956576
+        },
+        {
+          "center_seconds": 31.5,
+          "error_nmse": 0.49405672939442646,
+          "derivative_error_over_global_mixture_derivative_power": 0.7497647843647658,
+          "reference_power_over_mixture": 1.033217758208798
+        },
+        {
+          "center_seconds": 34.5,
+          "error_nmse": 0.07091759777575518,
+          "derivative_error_over_global_mixture_derivative_power": 0.03943943382836098,
+          "reference_power_over_mixture": 0.24620654722171617
+        },
+        {
+          "center_seconds": 37.5,
+          "error_nmse": 0.03803052447814929,
+          "derivative_error_over_global_mixture_derivative_power": 0.01983833100274998,
+          "reference_power_over_mixture": 0.1684986544479966
+        },
+        {
+          "center_seconds": 40.5,
+          "error_nmse": 0.15209682372090472,
+          "derivative_error_over_global_mixture_derivative_power": 0.0697013498679787,
+          "reference_power_over_mixture": 0.35694191791953084
+        },
+        {
+          "center_seconds": 43.5,
+          "error_nmse": 0.6842851104502169,
+          "derivative_error_over_global_mixture_derivative_power": 0.6008163673832004,
+          "reference_power_over_mixture": 1.1278655666187132
+        }
+      ],
+      "paired_transient_boundary_controls": [
+        {
+          "boundary_seconds": 3,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 3.0,
+          "matched_interior_center_seconds": 1.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 3,
+            "error_nmse": 0.44564849765024356,
+            "derivative_error_over_global_mixture_derivative_power": 0.0557783346144991,
+            "reference_power_over_mixture": 0.599181117586474
+          },
+          "interior_metrics": {
+            "center_seconds": 1.5,
+            "error_nmse": 0.28319930305592395,
+            "derivative_error_over_global_mixture_derivative_power": 0.03320690068016206,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.1624491945943196
+        },
+        {
+          "boundary_seconds": 6,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 6.0,
+          "matched_interior_center_seconds": 1.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 6,
+            "error_nmse": 0.34936114210451513,
+            "derivative_error_over_global_mixture_derivative_power": 0.023209253174439632,
+            "reference_power_over_mixture": 0.42793616549235886
+          },
+          "interior_metrics": {
+            "center_seconds": 1.5,
+            "error_nmse": 0.28319930305592395,
+            "derivative_error_over_global_mixture_derivative_power": 0.03320690068016206,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.06616183904859119
+        },
+        {
+          "boundary_seconds": 12,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 12.0,
+          "matched_interior_center_seconds": 1.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 12,
+            "error_nmse": 0.36524661965681454,
+            "derivative_error_over_global_mixture_derivative_power": 0.03874717295756668,
+            "reference_power_over_mixture": 0.5221168894963198
+          },
+          "interior_metrics": {
+            "center_seconds": 1.5,
+            "error_nmse": 0.28319930305592395,
+            "derivative_error_over_global_mixture_derivative_power": 0.03320690068016206,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.0820473166008906
+        },
+        {
+          "boundary_seconds": 18,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 18.0,
+          "matched_interior_center_seconds": 28.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 18,
+            "error_nmse": 0.7140493578863484,
+            "derivative_error_over_global_mixture_derivative_power": 0.6227170258793748,
+            "reference_power_over_mixture": 1.0172466532114175
+          },
+          "interior_metrics": {
+            "center_seconds": 28.5,
+            "error_nmse": 0.308778643647592,
+            "derivative_error_over_global_mixture_derivative_power": 0.0328538116321416,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.4052707142387564
+        },
+        {
+          "boundary_seconds": 20,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 20.0,
+          "matched_interior_center_seconds": 28.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 20,
+            "error_nmse": 0.5436549409196558,
+            "derivative_error_over_global_mixture_derivative_power": 0.4413984096370675,
+            "reference_power_over_mixture": 0.8383628710560049
+          },
+          "interior_metrics": {
+            "center_seconds": 28.5,
+            "error_nmse": 0.308778643647592,
+            "derivative_error_over_global_mixture_derivative_power": 0.0328538116321416,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.23487629727206383
+        },
+        {
+          "boundary_seconds": 36,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 36.0,
+          "matched_interior_center_seconds": 28.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 36,
+            "error_nmse": 0.7824639328891755,
+            "derivative_error_over_global_mixture_derivative_power": 0.6525047539585535,
+            "reference_power_over_mixture": 1.245133085953262
+          },
+          "interior_metrics": {
+            "center_seconds": 28.5,
+            "error_nmse": 0.308778643647592,
+            "derivative_error_over_global_mixture_derivative_power": 0.0328538116321416,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.4736852892415835
+        },
+        {
+          "boundary_seconds": 38,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 38.0,
+          "matched_interior_center_seconds": 43.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 38,
+            "error_nmse": 0.5595079670636096,
+            "derivative_error_over_global_mixture_derivative_power": 0.4599743408603454,
+            "reference_power_over_mixture": 0.8084425357083164
+          },
+          "interior_metrics": {
+            "center_seconds": 43.5,
+            "error_nmse": 0.6842851104502169,
+            "derivative_error_over_global_mixture_derivative_power": 0.6008163673832004,
+            "reference_power_over_mixture": 1.1278655666187132
+          },
+          "boundary_minus_interior_nmse": -0.12477714338660728
+        }
+      ],
+      "silence": [
+        {
+          "seconds": [
+            21.5,
+            26.5
+          ],
+          "per_query_energy_over_global_mixture": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_amplitude": 0.0
+        },
+        {
+          "seconds": [
+            46.0,
+            48.0
+          ],
+          "per_query_energy_over_global_mixture": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_amplitude": 0.0
+        }
+      ],
+      "class_attribution_windows": [
+        {
+          "start_seconds": 0.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 12.79333093617549,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.07818733354297239,
+              0.08984024702551956
+            ],
+            [
+              0.011446230278274131,
+              0.16866375764117694
+            ],
+            [
+              0.005287208491412006,
+              0.005198894877076736
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 2.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 20.532264008789234,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.08677499759681645,
+              0.07547306177244241
+            ],
+            [
+              0.002823164032545927,
+              0.22414527814810054
+            ],
+            [
+              0.0015207594661984358,
+              0.003434513459985971
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 4.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 56.17371904814589,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.04167892434161737,
+              0.1498838480150585
+            ],
+            [
+              0.1303689009948673,
+              0.2660699788369148
+            ],
+            [
+              0.0005441518692955594,
+              0.000878806776429468
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 6.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 25.728068599077506,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.006039127961976993,
+              0.034428993652501336,
+              0.5429120329178887
+            ],
+            [
+              0.01887460439970079,
+              0.43591282026312295,
+              0.038711960352623975
+            ],
+            [
+              -0.004919563375937517,
+              0.027360556353978514,
+              0.5631835141253928
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 8.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.025928686361420934
+            ],
+            [
+              0.5534552619344157
+            ],
+            [
+              0.0009026198454518407
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 10.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 30.0998809604221,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.1895286674023382,
+              0.3116193357128489
+            ],
+            [
+              0.013124885783327246,
+              0.1963872680454363
+            ],
+            [
+              0.00932184878327966,
+              0.01057168495880469
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "clock tick"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 12.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 40.435166493926474,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.16341756039900643,
+              0.12921103388053842
+            ],
+            [
+              -0.059469510997731886,
+              0.2498820554523088
+            ],
+            [
+              0.0029529459048983214,
+              0.007776539637386785
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 14.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.2921221179969271
+            ],
+            [
+              0.26249431748376006
+            ],
+            [
+              0.030417572552523753
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 16.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 40.642304262472344,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.046650458399202364,
+              0.0413872159154546,
+              0.5259514610312545
+            ],
+            [
+              0.4341278638823414,
+              0.44263281726200526,
+              0.055582161854306485
+            ],
+            [
+              0.031485662209572315,
+              0.027424667106467016,
+              0.5588660078486111
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 18.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 27.536842104554157,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.011626789031422233,
+              0.01311880914386207,
+              0.4003765417173129
+            ],
+            [
+              0.2502402525887924,
+              0.43987994607636016,
+              0.10548693830159171
+            ],
+            [
+              0.0024764419314826248,
+              0.011229336916934441,
+              0.5583037493636155
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 20.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 11.104404873744127,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.007344153988427172,
+              0.003491733083634755
+            ],
+            [
+              0.337056794342582,
+              0.5342830226566192
+            ],
+            [
+              0.0006013655441886579,
+              0.004837235949055096
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 26.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.020941977435797437
+            ],
+            [
+              0.51675948689053
+            ],
+            [
+              0.0007952639481327146
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 28.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 14.03560496176325,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.005707773484478292,
+              0.008165412235795989
+            ],
+            [
+              0.08958095206621303,
+              0.28608152171756895
+            ],
+            [
+              0.00038115225170047546,
+              0.0006964889674326086
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 30.0,
+          "active_reference_queries": [
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 3.2032489699899154,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.052275878579636614,
+              0.3299594743612059
+            ],
+            [
+              0.31231737709325313,
+              0.08763091109328146
+            ],
+            [
+              0.02824194111804923,
+              0.5365299741149602
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 32.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.013056089771728913
+            ],
+            [
+              0.5678659200011298
+            ],
+            [
+              0.0006682990157582204
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 34.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 51.19368840298966,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.017301792414035358,
+              0.022880934694578595,
+              0.5101612000378699
+            ],
+            [
+              0.2936827425680317,
+              0.4861886968733969,
+              0.05412940787629145
+            ],
+            [
+              0.005927786988862769,
+              0.020359548645015754,
+              0.5458654779768356
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 36.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 22.610279501787538,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.011380883816232566,
+              0.0157124951026827,
+              0.5410100182889603
+            ],
+            [
+              0.4197714357451822,
+              0.455184512226158,
+              0.037960292980672126
+            ],
+            [
+              0.0027882057831427266,
+              0.011385634991639288,
+              0.5674632916953357
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 38.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 26.428812111686582,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.005676998024765594,
+              0.02490307250843526
+            ],
+            [
+              0.5383240741993344,
+              0.5437103397366911
+            ],
+            [
+              -0.0001843260760101946,
+              0.0035344129576949847
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 40.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.029893923212321618
+            ],
+            [
+              0.3361721749945454
+            ],
+            [
+              0.0006835882033445861
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 42.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 13.031742648227658,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.011449701420153188,
+              0.029014075406416904,
+              0.5485517491546453
+            ],
+            [
+              0.470110825609357,
+              0.3951009743915668,
+              0.03632827347914425
+            ],
+            [
+              0.007636982018398563,
+              0.022194692173294606,
+              0.5714688786360943
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 44.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.0003930395182120955
+            ],
+            [
+              0.5942453478826216
+            ],
+            [
+              0.00024943360602625584
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        }
+      ],
+      "class_attribution_mismatches": 12,
+      "unity_resynthesis_max_error": 2.7755575615628914e-17,
+      "edit_cases": [
+        {
+          "name": "refiner_join_18",
+          "start_seconds": 17.0,
+          "end_seconds": 21.0,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.010416264422105977,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.12499712614536772,
+          "per_query_full_record_edit_nmse": [
+            0.008148208825887912,
+            0.01808000946026179,
+            0.0050205749801682294
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.017012272355017254
+        },
+        {
+          "name": "refiner_join_36",
+          "start_seconds": 35.0,
+          "end_seconds": 39.0,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.00985859128002021,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.11830494387499065,
+          "per_query_full_record_edit_nmse": [
+            0.009143825580023439,
+            0.015391726669294666,
+            0.005040221590742543
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.01433502176909305
+        },
+        {
+          "name": "interior_transient",
+          "start_seconds": 6.5,
+          "end_seconds": 8.5,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.004013944831809645,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.0963376865161351,
+          "per_query_full_record_edit_nmse": [
+            0.0036265564807153854,
+            0.005977735325092676,
+            0.0024375426896208734
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.00530159086870293
+        },
+        {
+          "name": "whole_recording",
+          "start_seconds": 0.0,
+          "end_seconds": 48.0,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.08730876659967012,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.08730888028310808,
+          "per_query_full_record_edit_nmse": [
+            0.04148836066712391,
+            0.2026928514430872,
+            0.017745087688799364
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.16081918075363172
+        }
+      ],
+      "backend_boundary_windows_mean_nmse": 0.21143031548676633,
+      "refiner_boundary_windows_mean_nmse": 0.6499190496896974,
+      "matched_interior_windows_mean_nmse": 0.222333442624267
+    },
+    "trained_v1": {
+      "per_query": [
+        {
+          "query": "clock tick",
+          "direct_waveform_sdr_db": -5.929426251221273,
+          "si_sdr_db": -23.872285943338913,
+          "gain_projection": 0.1132984073532078,
+          "edit_nmse_17_21": 0.007285536461715597
+        },
+        {
+          "query": "rain",
+          "direct_waveform_sdr_db": 5.347604963464231,
+          "si_sdr_db": 5.432302871147457,
+          "gain_projection": 0.5452503112238825,
+          "edit_nmse_17_21": 0.010319133298228568
+        },
+        {
+          "query": "sneezing",
+          "direct_waveform_sdr_db": 6.203254476541524,
+          "si_sdr_db": 9.385319930727311,
+          "gain_projection": 0.546968704783291,
+          "edit_nmse_17_21": 0.005288218192292404
+        }
+      ],
+      "mean_all_query_edit_nmse_17_21": 0.007630962650745524,
+      "waveform_nmse": 0.12070294475430078,
+      "activity_power_nmse": 0.2742849809587192,
+      "activity_change_nmse": 0.1715206926579656,
+      "backend_boundary_windows": [
+        {
+          "center_seconds": 3,
+          "error_nmse": 0.3458657486832483,
+          "derivative_error_over_global_mixture_derivative_power": 0.017333795811369644,
+          "reference_power_over_mixture": 0.599181117586474
+        },
+        {
+          "center_seconds": 5,
+          "error_nmse": 0.4246110934829933,
+          "derivative_error_over_global_mixture_derivative_power": 0.013922946225332135,
+          "reference_power_over_mixture": 0.5561886762498996
+        },
+        {
+          "center_seconds": 6,
+          "error_nmse": 0.2907548339733713,
+          "derivative_error_over_global_mixture_derivative_power": 0.005498826513644155,
+          "reference_power_over_mixture": 0.42793616549235886
+        },
+        {
+          "center_seconds": 8,
+          "error_nmse": 0.01755228433260573,
+          "derivative_error_over_global_mixture_derivative_power": 0.011219654223809036,
+          "reference_power_over_mixture": 0.4229748781129355
+        },
+        {
+          "center_seconds": 9,
+          "error_nmse": 0.03418908899254544,
+          "derivative_error_over_global_mixture_derivative_power": 0.015745665190496628,
+          "reference_power_over_mixture": 0.6150827575427098
+        },
+        {
+          "center_seconds": 11,
+          "error_nmse": 0.1532647765856113,
+          "derivative_error_over_global_mixture_derivative_power": 0.005949384628777851,
+          "reference_power_over_mixture": 0.17839220729776384
+        },
+        {
+          "center_seconds": 12,
+          "error_nmse": 0.2875982610411388,
+          "derivative_error_over_global_mixture_derivative_power": 0.010817204942945333,
+          "reference_power_over_mixture": 0.5221168894963198
+        },
+        {
+          "center_seconds": 14,
+          "error_nmse": 0.30073439176841466,
+          "derivative_error_over_global_mixture_derivative_power": 0.01865565698637354,
+          "reference_power_over_mixture": 0.534087215244304
+        },
+        {
+          "center_seconds": 15,
+          "error_nmse": 0.25069037896463414,
+          "derivative_error_over_global_mixture_derivative_power": 0.006056695459421126,
+          "reference_power_over_mixture": 0.22471307732552767
+        },
+        {
+          "center_seconds": 17,
+          "error_nmse": 0.02707055477269637,
+          "derivative_error_over_global_mixture_derivative_power": 0.007666399900573323,
+          "reference_power_over_mixture": 0.30941569368547334
+        },
+        {
+          "center_seconds": 18,
+          "error_nmse": 0.6782319255425248,
+          "derivative_error_over_global_mixture_derivative_power": 0.6105716993358785,
+          "reference_power_over_mixture": 1.0172466532114175
+        },
+        {
+          "center_seconds": 20,
+          "error_nmse": 0.5108949012371565,
+          "derivative_error_over_global_mixture_derivative_power": 0.43179459625130684,
+          "reference_power_over_mixture": 0.8383628710560049
+        },
+        {
+          "center_seconds": 21,
+          "error_nmse": 0.0026079103353211703,
+          "derivative_error_over_global_mixture_derivative_power": 0.003127293628020505,
+          "reference_power_over_mixture": 0.06325044090290169
+        },
+        {
+          "center_seconds": 23,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 24,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 26,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 27,
+          "error_nmse": 0.002287578778928882,
+          "derivative_error_over_global_mixture_derivative_power": 0.003265410217902372,
+          "reference_power_over_mixture": 0.06106366004426371
+        },
+        {
+          "center_seconds": 29,
+          "error_nmse": 0.10018181808103037,
+          "derivative_error_over_global_mixture_derivative_power": 0.008982400505137485,
+          "reference_power_over_mixture": 0.2786056915704536
+        },
+        {
+          "center_seconds": 30,
+          "error_nmse": 0.1475756438432465,
+          "derivative_error_over_global_mixture_derivative_power": 0.013133551372286592,
+          "reference_power_over_mixture": 0.3561158264680032
+        },
+        {
+          "center_seconds": 32,
+          "error_nmse": 0.07973565063272278,
+          "derivative_error_over_global_mixture_derivative_power": 0.04380582306764038,
+          "reference_power_over_mixture": 0.5562215888650146
+        },
+        {
+          "center_seconds": 33,
+          "error_nmse": 0.007599871611632285,
+          "derivative_error_over_global_mixture_derivative_power": 0.006061930410033416,
+          "reference_power_over_mixture": 0.1848708743738882
+        },
+        {
+          "center_seconds": 35,
+          "error_nmse": 0.025976116255996343,
+          "derivative_error_over_global_mixture_derivative_power": 0.01181474990913376,
+          "reference_power_over_mixture": 0.42294196549782065
+        },
+        {
+          "center_seconds": 36,
+          "error_nmse": 0.7076486759622046,
+          "derivative_error_over_global_mixture_derivative_power": 0.6285237716617531,
+          "reference_power_over_mixture": 1.245133085953262
+        },
+        {
+          "center_seconds": 38,
+          "error_nmse": 0.5983596808817369,
+          "derivative_error_over_global_mixture_derivative_power": 0.4556858611631408,
+          "reference_power_over_mixture": 0.8084425357083164
+        },
+        {
+          "center_seconds": 39,
+          "error_nmse": 0.013365777980650497,
+          "derivative_error_over_global_mixture_derivative_power": 0.008615355275333992,
+          "reference_power_over_mixture": 0.27905159837784904
+        },
+        {
+          "center_seconds": 41,
+          "error_nmse": 0.14035791063492298,
+          "derivative_error_over_global_mixture_derivative_power": 0.01788843118134808,
+          "reference_power_over_mixture": 0.534087215244304
+        },
+        {
+          "center_seconds": 42,
+          "error_nmse": 0.12488048579854283,
+          "derivative_error_over_global_mixture_derivative_power": 0.004911863850064183,
+          "reference_power_over_mixture": 0.22471307732552767
+        },
+        {
+          "center_seconds": 44,
+          "error_nmse": 0.010972566438802569,
+          "derivative_error_over_global_mixture_derivative_power": 0.007388412359503757,
+          "reference_power_over_mixture": 0.3094486063005883
+        },
+        {
+          "center_seconds": 45,
+          "error_nmse": 0.01378345195044648,
+          "derivative_error_over_global_mixture_derivative_power": 0.013067345480398252,
+          "reference_power_over_mixture": 0.38719632480086535
+        },
+        {
+          "center_seconds": 47,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        }
+      ],
+      "refiner_boundary_windows": [
+        {
+          "center_seconds": 18.0,
+          "error_nmse": 0.6782319255425248,
+          "derivative_error_over_global_mixture_derivative_power": 0.6105716993358785,
+          "reference_power_over_mixture": 1.0172466532114175
+        },
+        {
+          "center_seconds": 20.0,
+          "error_nmse": 0.5108949012371565,
+          "derivative_error_over_global_mixture_derivative_power": 0.43179459625130684,
+          "reference_power_over_mixture": 0.8383628710560049
+        },
+        {
+          "center_seconds": 36.0,
+          "error_nmse": 0.7076486759622046,
+          "derivative_error_over_global_mixture_derivative_power": 0.6285237716617531,
+          "reference_power_over_mixture": 1.245133085953262
+        },
+        {
+          "center_seconds": 38.0,
+          "error_nmse": 0.5983596808817369,
+          "derivative_error_over_global_mixture_derivative_power": 0.4556858611631408,
+          "reference_power_over_mixture": 0.8084425357083164
+        }
+      ],
+      "matched_interior_windows": [
+        {
+          "center_seconds": 1.5,
+          "error_nmse": 0.2266907405676802,
+          "derivative_error_over_global_mixture_derivative_power": 0.010363886829438514,
+          "reference_power_over_mixture": 0.38368955639956576
+        },
+        {
+          "center_seconds": 4.5,
+          "error_nmse": 0.33650354410054106,
+          "derivative_error_over_global_mixture_derivative_power": 0.020703188739403765,
+          "reference_power_over_mixture": 0.5333604750636635
+        },
+        {
+          "center_seconds": 7.5,
+          "error_nmse": 0.3714739187015661,
+          "derivative_error_over_global_mixture_derivative_power": 0.6867296467112434,
+          "reference_power_over_mixture": 0.7460638303668506
+        },
+        {
+          "center_seconds": 10.5,
+          "error_nmse": 0.1412881695871375,
+          "derivative_error_over_global_mixture_derivative_power": 0.005237427142018383,
+          "reference_power_over_mixture": 0.16846316696985247
+        },
+        {
+          "center_seconds": 13.5,
+          "error_nmse": 0.14326986705432684,
+          "derivative_error_over_global_mixture_derivative_power": 0.017420676067877464,
+          "reference_power_over_mixture": 0.35694191791953084
+        },
+        {
+          "center_seconds": 16.5,
+          "error_nmse": 0.08769209166405673,
+          "derivative_error_over_global_mixture_derivative_power": 0.006234593217337974,
+          "reference_power_over_mixture": 0.38494299235510815
+        },
+        {
+          "center_seconds": 19.5,
+          "error_nmse": 0.02379259077236285,
+          "derivative_error_over_global_mixture_derivative_power": 0.01872106285392271,
+          "reference_power_over_mixture": 0.44718495691278765
+        },
+        {
+          "center_seconds": 22.5,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 25.5,
+          "error_nmse": 0.0,
+          "derivative_error_over_global_mixture_derivative_power": 0.0,
+          "reference_power_over_mixture": 0.0
+        },
+        {
+          "center_seconds": 28.5,
+          "error_nmse": 0.2637064292007144,
+          "derivative_error_over_global_mixture_derivative_power": 0.010314951839798362,
+          "reference_power_over_mixture": 0.38368955639956576
+        },
+        {
+          "center_seconds": 31.5,
+          "error_nmse": 0.414627441218392,
+          "derivative_error_over_global_mixture_derivative_power": 0.6824663944941455,
+          "reference_power_over_mixture": 1.033217758208798
+        },
+        {
+          "center_seconds": 34.5,
+          "error_nmse": 0.02967082013750917,
+          "derivative_error_over_global_mixture_derivative_power": 0.009273414976974632,
+          "reference_power_over_mixture": 0.24620654722171617
+        },
+        {
+          "center_seconds": 37.5,
+          "error_nmse": 0.012696993999615514,
+          "derivative_error_over_global_mixture_derivative_power": 0.00496008838614444,
+          "reference_power_over_mixture": 0.1684986544479966
+        },
+        {
+          "center_seconds": 40.5,
+          "error_nmse": 0.09429574480940035,
+          "derivative_error_over_global_mixture_derivative_power": 0.016603600148722565,
+          "reference_power_over_mixture": 0.35694191791953084
+        },
+        {
+          "center_seconds": 43.5,
+          "error_nmse": 0.6757616461524485,
+          "derivative_error_over_global_mixture_derivative_power": 0.591635598864704,
+          "reference_power_over_mixture": 1.1278655666187132
+        }
+      ],
+      "paired_transient_boundary_controls": [
+        {
+          "boundary_seconds": 3,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 3.0,
+          "matched_interior_center_seconds": 1.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 3,
+            "error_nmse": 0.3458657486832483,
+            "derivative_error_over_global_mixture_derivative_power": 0.017333795811369644,
+            "reference_power_over_mixture": 0.599181117586474
+          },
+          "interior_metrics": {
+            "center_seconds": 1.5,
+            "error_nmse": 0.2266907405676802,
+            "derivative_error_over_global_mixture_derivative_power": 0.010363886829438514,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.11917500811556811
+        },
+        {
+          "boundary_seconds": 6,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 6.0,
+          "matched_interior_center_seconds": 1.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 6,
+            "error_nmse": 0.2907548339733713,
+            "derivative_error_over_global_mixture_derivative_power": 0.005498826513644155,
+            "reference_power_over_mixture": 0.42793616549235886
+          },
+          "interior_metrics": {
+            "center_seconds": 1.5,
+            "error_nmse": 0.2266907405676802,
+            "derivative_error_over_global_mixture_derivative_power": 0.010363886829438514,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.06406409340569111
+        },
+        {
+          "boundary_seconds": 12,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 12.0,
+          "matched_interior_center_seconds": 1.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 12,
+            "error_nmse": 0.2875982610411388,
+            "derivative_error_over_global_mixture_derivative_power": 0.010817204942945333,
+            "reference_power_over_mixture": 0.5221168894963198
+          },
+          "interior_metrics": {
+            "center_seconds": 1.5,
+            "error_nmse": 0.2266907405676802,
+            "derivative_error_over_global_mixture_derivative_power": 0.010363886829438514,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.06090752047345857
+        },
+        {
+          "boundary_seconds": 18,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 18.0,
+          "matched_interior_center_seconds": 28.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 18,
+            "error_nmse": 0.6782319255425248,
+            "derivative_error_over_global_mixture_derivative_power": 0.6105716993358785,
+            "reference_power_over_mixture": 1.0172466532114175
+          },
+          "interior_metrics": {
+            "center_seconds": 28.5,
+            "error_nmse": 0.2637064292007144,
+            "derivative_error_over_global_mixture_derivative_power": 0.010314951839798362,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.41452549634181035
+        },
+        {
+          "boundary_seconds": 20,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 20.0,
+          "matched_interior_center_seconds": 28.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 20,
+            "error_nmse": 0.5108949012371565,
+            "derivative_error_over_global_mixture_derivative_power": 0.43179459625130684,
+            "reference_power_over_mixture": 0.8383628710560049
+          },
+          "interior_metrics": {
+            "center_seconds": 28.5,
+            "error_nmse": 0.2637064292007144,
+            "derivative_error_over_global_mixture_derivative_power": 0.010314951839798362,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.24718847203644212
+        },
+        {
+          "boundary_seconds": 36,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 36.0,
+          "matched_interior_center_seconds": 28.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 36,
+            "error_nmse": 0.7076486759622046,
+            "derivative_error_over_global_mixture_derivative_power": 0.6285237716617531,
+            "reference_power_over_mixture": 1.245133085953262
+          },
+          "interior_metrics": {
+            "center_seconds": 28.5,
+            "error_nmse": 0.2637064292007144,
+            "derivative_error_over_global_mixture_derivative_power": 0.010314951839798362,
+            "reference_power_over_mixture": 0.38368955639956576
+          },
+          "boundary_minus_interior_nmse": 0.4439422467614902
+        },
+        {
+          "boundary_seconds": 38,
+          "transient_query": "clock tick",
+          "actual_transient_peak_seconds": 38.0,
+          "matched_interior_center_seconds": 43.5,
+          "comparison": "same excerpt and gain, equal measurement width and transient-relative phase; different background/context",
+          "boundary_metrics": {
+            "center_seconds": 38,
+            "error_nmse": 0.5983596808817369,
+            "derivative_error_over_global_mixture_derivative_power": 0.4556858611631408,
+            "reference_power_over_mixture": 0.8084425357083164
+          },
+          "interior_metrics": {
+            "center_seconds": 43.5,
+            "error_nmse": 0.6757616461524485,
+            "derivative_error_over_global_mixture_derivative_power": 0.591635598864704,
+            "reference_power_over_mixture": 1.1278655666187132
+          },
+          "boundary_minus_interior_nmse": -0.07740196527071164
+        }
+      ],
+      "silence": [
+        {
+          "seconds": [
+            21.5,
+            26.5
+          ],
+          "per_query_energy_over_global_mixture": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_amplitude": 0.0
+        },
+        {
+          "seconds": [
+            46.0,
+            48.0
+          ],
+          "per_query_energy_over_global_mixture": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum_amplitude": 0.0
+        }
+      ],
+      "class_attribution_windows": [
+        {
+          "start_seconds": 0.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 12.79333093617549,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.1829575707736524,
+              0.1740467984184455
+            ],
+            [
+              0.0831185366391411,
+              0.2766847592743236
+            ],
+            [
+              0.07986885566133861,
+              0.05621769242516241
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 2.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 20.532264008789234,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.1960171568675594,
+              0.14886799390894778
+            ],
+            [
+              0.07096454407730762,
+              0.3493509806774352
+            ],
+            [
+              0.07392672691172256,
+              0.049133107140571584
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 4.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 56.17371904814589,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.11896338353757248,
+              0.23041724424862295
+            ],
+            [
+              0.2422244995071852,
+              0.3922865138547486
+            ],
+            [
+              0.06272626866042977,
+              0.031053137887446108
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 6.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 25.728068599077506,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.092456857704913,
+              0.05797260311446766,
+              0.5132501382580433
+            ],
+            [
+              0.111480668269227,
+              0.6094063046518035,
+              -0.07247557295699374
+            ],
+            [
+              0.07619629862622114,
+              0.04848939721637159,
+              0.5383495287433284
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 8.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.03700108403909964
+            ],
+            [
+              0.7527765260673992
+            ],
+            [
+              0.004990689313849833
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 10.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 30.0998809604221,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.3266840360072379,
+              0.43092546283043226
+            ],
+            [
+              0.07671989279064903,
+              0.28181193618968825
+            ],
+            [
+              0.07534612756114248,
+              0.02879508319199547
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "clock tick"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 12.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 40.435166493926474,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.3078188184063159,
+              0.2088575952959959
+            ],
+            [
+              -0.009084618802239732,
+              0.37430507270388397
+            ],
+            [
+              0.08115823195756543,
+              0.04455694769897777
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick",
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 14.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.3841801345123824
+            ],
+            [
+              0.3577619968096248
+            ],
+            [
+              0.04078235930188368
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "clock tick"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 16.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 40.642304262472344,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.07352550235480519,
+              0.06698585977820785,
+              0.4947833054206945
+            ],
+            [
+              0.6085962321001809,
+              0.6203705005800215,
+              -0.05099611892822691
+            ],
+            [
+              0.05334513177573928,
+              0.04838331168471023,
+              0.5357439438857262
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 18.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 27.536842104554157,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.07555332263398946,
+              0.03957454701697152,
+              0.36401426582732543
+            ],
+            [
+              0.4042427720716472,
+              0.6239470992101399,
+              0.02643989157031975
+            ],
+            [
+              0.0628208180596766,
+              0.03691895841363607,
+              0.563846150833086
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 20.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 11.104404873744127,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.05604786936636391,
+              0.014853980994841354
+            ],
+            [
+              0.5073101298941283,
+              0.7373258601240733
+            ],
+            [
+              0.046557183160863505,
+              0.01648629961929668
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 26.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.03840173536887193
+            ],
+            [
+              0.7148252221470673
+            ],
+            [
+              0.012397547555801537
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 28.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 14.03560496176325,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.07934114644938248,
+              0.05522719241863078
+            ],
+            [
+              0.19623371629618663,
+              0.4397080720733444
+            ],
+            [
+              0.07146591398049566,
+              0.04513671317236338
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 30.0,
+          "active_reference_queries": [
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 3.2032489699899154,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.100486707462317,
+              0.3150715215851275
+            ],
+            [
+              0.45953788484896124,
+              0.0319452250361872
+            ],
+            [
+              0.068318442694448,
+              0.5761777318089897
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 32.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.020041824618274112
+            ],
+            [
+              0.7737376236247866
+            ],
+            [
+              0.004355276228035111
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 34.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 51.19368840298966,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.07303396551549673,
+              0.0405586309698388,
+              0.4857026507677908
+            ],
+            [
+              0.4537129334373204,
+              0.6753377023752902,
+              -0.04545953834405115
+            ],
+            [
+              0.057736550208885205,
+              0.03708565510022232,
+              0.5303395749824192
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 36.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 22.610279501787538,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.04513536161321692,
+              0.040807477924878065,
+              0.5103318387903223
+            ],
+            [
+              0.5984903657338978,
+              0.6439304865818646,
+              -0.07297679514136943
+            ],
+            [
+              0.0338105726443504,
+              0.03495816135528556,
+              0.5432915039579314
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 38.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain"
+          ],
+          "condition_number": 26.428812111686582,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.019005176434103075,
+              0.03716453479531182
+            ],
+            [
+              0.7349919087869895,
+              0.7438366999118022
+            ],
+            [
+              0.011498284038509261,
+              0.009743392265304166
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 40.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.07903189046124387
+            ],
+            [
+              0.4986262245719607
+            ],
+            [
+              0.039110810266807704
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        },
+        {
+          "start_seconds": 42.0,
+          "active_reference_queries": [
+            "clock tick",
+            "rain",
+            "sneezing"
+          ],
+          "condition_number": 13.031742648227658,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.03530512895302586,
+              0.06008678849726271,
+              0.5169991679341983
+            ],
+            [
+              0.654339251937342,
+              0.5628644540520139,
+              -0.07801914822617576
+            ],
+            [
+              0.03023854019653718,
+              0.050563810796960845,
+              0.5454925443791506
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain",
+            "rain",
+            "sneezing"
+          ],
+          "class_attribution_mismatches": 1
+        },
+        {
+          "start_seconds": 44.0,
+          "active_reference_queries": [
+            "rain"
+          ],
+          "condition_number": 1.0,
+          "attribution_coefficients_estimate_rows_reference_columns": [
+            [
+              0.0014560871285105635
+            ],
+            [
+              0.8059973221966605
+            ],
+            [
+              0.0012656387071906601
+            ]
+          ],
+          "dominant_estimate_query_for_each_reference": [
+            "rain"
+          ],
+          "class_attribution_mismatches": 0
+        }
+      ],
+      "class_attribution_mismatches": 12,
+      "unity_resynthesis_max_error": 1.3877787807814457e-17,
+      "edit_cases": [
+        {
+          "name": "refiner_join_18",
+          "start_seconds": 17.0,
+          "end_seconds": 21.0,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.0076309626507455215,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.09157298263679997,
+          "per_query_full_record_edit_nmse": [
+            0.007285536461715597,
+            0.010319133298228568,
+            0.005288218192292404
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.0053930534583041595
+        },
+        {
+          "name": "refiner_join_36",
+          "start_seconds": 35.0,
+          "end_seconds": 39.0,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.00741080378455321,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.08893103496205981,
+          "per_query_full_record_edit_nmse": [
+            0.008356261210585563,
+            0.008424424077246188,
+            0.005451726065827878
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.004109810624547362
+        },
+        {
+          "name": "interior_transient",
+          "start_seconds": 6.5,
+          "end_seconds": 8.5,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.0029801298133136146,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.0715253506867357,
+          "per_query_full_record_edit_nmse": [
+            0.0032571937803130614,
+            0.002997700923551242,
+            0.0026854947360765405
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.0014521200343997737
+        },
+        {
+          "name": "whole_recording",
+          "start_seconds": 0.0,
+          "end_seconds": 48.0,
+          "gain": 0.25,
+          "fade_seconds": 0.02,
+          "separate_all_query_mean_edit_nmse_full_record": 0.06788530690882563,
+          "separate_all_query_mean_edit_nmse_edited_samples_only": 0.06788539530126743,
+          "per_query_full_record_edit_nmse": [
+            0.04706843097781879,
+            0.13736093454353265,
+            0.019226555205125354
+          ],
+          "simultaneous_all_query_edit_nmse_full_record": 0.05947533541374569
+        }
+      ],
+      "backend_boundary_windows_mean_nmse": 0.17655971261877085,
+      "refiner_boundary_windows_mean_nmse": 0.6237837959059056,
+      "matched_interior_windows_mean_nmse": 0.18809799986438341
+    }
+  },
+  "limits": [
+    "Class-labeled recordings can include background sound; not pure physical-source truth.",
+    "Repetition of three source files, no independent-scene confidence interval.",
+    "Boundary windows have deliberately different event content; compare per-boundary matched transient examples, do not infer causal join artifacts from pooled ratios.",
+    "Class attribution via evaluator-only least-squares regression is diagnostic; it does not establish physical identity.",
+    "No natural multitrack or subjective listening-quality claim.",
+    "Source-reference report is computed only after actual inference/export completed."
+  ]
+}

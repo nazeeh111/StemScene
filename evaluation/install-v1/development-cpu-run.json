@@ -1,0 +1,134 @@
+{
+  "schema": "stemscene-portable-installed-verification/1",
+  "status": "passed",
+  "scope": "historical immutable development wheel; actual changed-input CPU inference and edits/export",
+  "package_version": "0.1.0.dev0",
+  "source_snapshot_utc": "2026-10-30T00:06:35.597401+00:00",
+  "tested_wheel": {
+    "filename": "stemscene-0.1.0.dev0-py3-none-any.whl",
+    "sha256": "0d6df52c016e21e99b6e9992b832fd0db0b6dd16effd7706e0ba566b25e623dc"
+  },
+  "tested_sdist": {
+    "filename": "stemscene-0.1.0.dev0.tar.gz",
+    "sha256": "d37df5733e8f189fdb4aa4351afb7cd1129b44a80994653bfb4bc2d1ca0dac95"
+  },
+  "runtime": {
+    "python": "3.12.13",
+    "platform": "macOS arm64",
+    "device": "cpu",
+    "configured_threads": 4,
+    "non_editable_wheel": true,
+    "site_packages_import_checked": true,
+    "fresh_environment_and_dependency_cache": true,
+    "all30_distributions_match_uv_lock": true,
+    "frozen_environment": "installed-requirements.txt",
+    "offline_transformers_and_hf_controls": true,
+    "pythonpath_removed_and_user_site_disabled": true
+  },
+  "public_model_setup": {
+    "fresh_directory": true,
+    "installed_public_downloader": true,
+    "manifest": "model-download-manifest.json",
+    "process_seconds": 40.91459745800239,
+    "checkpoint_sha256": "f8cda01bfd0ebd141eef45d41db7a3ada23a56568465840d3cff04b8010ce82c",
+    "refiner_sha256": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9"
+  },
+  "changed_input": {
+    "archive_url": "https://zenodo.org/api/records/20056072/files/test.zip/content",
+    "member": "audio/000809.wav",
+    "license": "CC0 (Public Domain Dedication), verified from fresh public metadata.csv",
+    "sha256": "4163c9933885cc72d71695d280ee56cb87b8cbf7965ed2932a32bc362dee8e53",
+    "bytes": 1507406,
+    "frames": 753664,
+    "channels": 1,
+    "sample_rate": 48000,
+    "duration_seconds": 15.701333333333332,
+    "acquisition": "fresh HTTPS byte ranges; ZIP member CRC/size and expected recording SHA verified; full archive not downloaded or full-MD5-verified",
+    "queries": [
+      "keyboard typing",
+      "footsteps",
+      "a door opening and closing"
+    ],
+    "old_models_or_proposals_reused": false,
+    "references_presence_labels_or_anchors_supplied_to_engine": false
+  },
+  "cpu_process": {
+    "started_utc": "2026-10-30T00:09:44.116696+00:00",
+    "seconds": 328.2778545829933,
+    "user_seconds": 76.019522,
+    "system_seconds": 39.088875,
+    "peak_rss_bytes": 3432841216,
+    "exit_code": 0
+  },
+  "selected_edit": {
+    "layer": "a door opening and closing",
+    "start_seconds": 5.06,
+    "end_seconds": 5.87,
+    "gain": 0.2,
+    "fade_seconds": 0.01,
+    "selection_source": "publisher mixed-recording event annotation rounded to 10 ms; no anchor/reference supplied to extraction"
+  },
+  "edit_checks": {
+    "outside_selected_span_max_abs_error": 0.0,
+    "selected_span_max_abs_delta": 0.019283673932976565,
+    "edit_replacement_count": 1,
+    "remove_edit_restores_decoded_original": true,
+    "undo_restores_edited_mix": true,
+    "all_estimate_arrays_unchanged_by_edits": true
+  },
+  "locked_estimate": "keyboard typing; samples preserved across event edits/replace/remove/undo, not a fresh fourth-query expansion in this run",
+  "standalone_replay": {
+    "engine_imported": false,
+    "models_required": false,
+    "stems": 3,
+    "frames": 753664,
+    "channels": 1,
+    "sample_rate": 48000,
+    "tolerance": 1e-12,
+    "source_sha256": "4163c9933885cc72d71695d280ee56cb87b8cbf7965ed2932a32bc362dee8e53",
+    "unity_max_abs_error": 1.3877787807814457e-17,
+    "edited_mix_max_abs_error": 0.0,
+    "envelope_recipe_max_abs_error": 0.0,
+    "original_decode_max_abs_error": 0.0
+  },
+  "actual_import_check": {
+    "stemscene": false,
+    "torch": false,
+    "transformers": false
+  },
+  "all_three_replay_outputs_equal_export_mix_decoded": true,
+  "all_three_replays": "standalone folder, standalone retained ZIP, installed CLI",
+  "preserved_export": {
+    "bytes": 25869824,
+    "sha256": "361aea4c9ea2c3f3fd6da29d10c49e0bd88490966ec1eabe6e641f54055e1ac7"
+  },
+  "core_source_sha256": {
+    "src/stemscene/audio.py": "ca93791cc4e8852ae994bce46e4610ea26f7637296233d0293520159147bd3e3",
+    "src/stemscene/backend.py": "a471e0771fe50aad22698ff4a283cdbf7c9fa1bd2a849f54d3e2d8ccc9b265d4",
+    "src/stemscene/cli.py": "2607941f5b251fe10bb19d3c835637e650f2945e90a747daa7de364cf131969a",
+    "src/stemscene/engine.py": "3026b490195b6d6e2436cd29cc9195c83b058425e7ca25295b51c642129b2527",
+    "src/stemscene/export.py": "33f8dd0e4d9cd58e4ca0cea668509bcd4d9f350c0d0f8f14e83db3be4879cfcc",
+    "src/stemscene/joint.py": "2f4ac80775563c924164686429ccd29757b1ea2a05d428f1a3f32d9895a7b40d",
+    "src/stemscene/joint_v2.py": "683e6b6b6fff04753efca9aa4a35435356ad84e65702df6c76886694ed64ac23",
+    "src/stemscene/models.py": "44b2806322cfb9d032e5150e25e41229e46c75d1077990a103d5de7a7fae4a16",
+    "src/stemscene/project.py": "22b6b40829f6713353a05e8e259797490b0a82e74f08b535a7674123ced55278",
+    "src/stemscene/_vendor/audiosep/base.py": "3b092d52a187f1e1de976b9cc88a5d8e475db735a54dd6098e73c80fb1adc3fb",
+    "src/stemscene/_vendor/audiosep/resunet.py": "a20834d5220d92ed0e0b73cbd3190e653e8aec3defb99e7b2b81c6595fd89438",
+    "src/stemscene/_vendor/audiosep/stft.py": "93b01ba32534c5ee33d9472642a00b873d184373639f5e64d8c7f92268af8201",
+    "src/stemscene/artifacts/joint-refiner-v1.pt": "ddbc872006da68440ad3f72435c3b89ecacf422f2f7265d68581f1dee879a9a9"
+  },
+  "packaging_check": {
+    "required_artifact_and_license_files": 7,
+    "exact_bytes_verified_in_wheel_and_sdist": true,
+    "fixed_initial_omission": "explicit project license-files added root MIT, notices, Apache and weight-host metadata to wheel"
+  },
+  "limitations": [
+    "Natural recording has no clean multitrack reference and lies outside the ESC-10 controlled study. This is execution and algebraic evidence, not a source-isolation quality result.",
+    "No listening panel, confirmation-data tuning, browser run, or new fourth request was performed in this independent installation run.",
+    "Only macOS arm64 Python3.12.13 CPU executed here; no Python3.11/Linux/Windows or remote CI claim.",
+    "This is a built-wheel installation, not a post-publication clean-clone uv-sync execution.",
+    "Full process timing includes model load and shared-machine effects; peak RSS is observed process memory, not a minimum RAM specification.",
+    "Optional hardware/process probes were sandbox-denied and stopped; os.wait4 supplied the exact child process timing/RSS.",
+    "The historical sdist excluded BUILD_BRIEF during source snapshot copy and contained earlier task-specific comparison-doc paths; final beta distribution audit is separate."
+  ]
+}

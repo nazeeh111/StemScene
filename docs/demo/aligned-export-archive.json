@@ -1,0 +1,11 @@
+{
+  "artifact": "stemscene-demo-export.zip",
+  "bytes": 16859044,
+  "sha256": "dc2d08cca26ea43bf18ff3b671849639086533ee13108f8edca77238cb5d25be",
+  "members_exactly_manifest_and_listed_files": true,
+  "members": 14,
+  "zip_crc_verified": true,
+  "all_file_hashes_verified": true,
+  "source_sha256": "7d85ef8b3c89bbd042d1bb340d0e029c50f3d31abaff7f15c7402ebc2dbc0f50",
+  "license": "Audio: CC0. RealDESED metadata and annotations: CC BY 4.0. Credits are in the accompanying README."
+}
