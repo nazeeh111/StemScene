@@ -15,9 +15,9 @@ A layer is an estimate of a sound class. It can contain leakage, miss a quiet ev
 With Python 3.11 or 3.12 and [uv](https://docs.astral.sh/uv/) installed, run from this checkout:
 
 ```sh
-uv sync --locked --python 3.12
-uv run --locked stemscene models download "$HOME/.local/share/stemscene/models"
-uv run --locked stemscene serve \
+uv sync --locked --extra models --python 3.12
+uv run --locked --extra models stemscene models download "$HOME/.local/share/stemscene/models"
+uv run --locked --extra models stemscene serve \
   --workspace "$HOME/.local/share/stemscene/workspace" \
   --checkpoint "$HOME/.local/share/stemscene/models/audiosep_base_4M_steps.ckpt" \
   --tokenizer-dir "$HOME/.local/share/stemscene/models/roberta" \
@@ -92,3 +92,60 @@ Correctness CI uses CPU PyTorch and exercises the installed CLI, alignment, edit
 Original STEMSCENE code is [MIT](LICENSE). Retained AudioSep and Torchlibrosa code keeps its own MIT notices. The optional FUSS adapter is [Apache-2.0](LICENSES/Apache-2.0.txt); its deposited checkpoint has separate CC BY 4.0 terms. Model-host and code licenses are recorded separately. See [third-party notices](THIRD_PARTY_NOTICES.md) before redistributing code, models or examples.
 
 The retained Apache text is byte-identical to the [official FUSS repository license](https://raw.githubusercontent.com/google-research/sound-separation/master/LICENSE), SHA-256 `cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30`.
+
+## Portable editing without a model
+
+The saved-project editor needs only NumPy, SciPy and soundfile. Install the base
+package for import, edits, undo, preview, export, replay and reopen. Install the
+`models` extra only for the existing local extraction runtime; model assets still
+require explicit setup. Missing model dependencies produce a clear extraction
+refusal and leave saved work editable. No model is run while reopening a project.
+
+```sh
+uv sync --locked --python 3.12
+uv run --locked stemscene serve --workspace /path/to/local-workspace --port 0
+stemscene export /path/to/project /path/to/new-export
+stemscene replay /path/to/new-export /path/to/new-replay.wav
+stemscene reopen /path/to/new-export /path/to/new-editable-project
+stemscene undo /path/to/new-editable-project
+```
+
+New exports contain an exact editable project alongside the existing aligned
+playback WAVs. Original recording bytes, float64 estimate arrays, layer and event
+identities, anchors, uncertainty metadata and undo history travel together. FLOAT
+playback exports keep the original FLOAT readback tolerances; their editable
+project still preserves exact estimates. Reopened rendering remains the
+pre-policy floating mix, and the recorded export peak policy is shown/restored in
+the editor. No resampling or loudness normalization is introduced. Older
+playback-only exports remain replayable; reopening them refuses rather than
+inventing history or treating quantized playback as original estimates.
+
+In the browser, **Open exported project** accepts the downloaded ZIP and creates a
+new project. **Reload saved state** recovers an out-of-date view after another tab
+or process changes the project. Every mutation and export supplies its accepted
+revision; a stale edit, undo or export refuses instead of silently applying to a
+newer revision. Extraction computes proposals outside committed state and checks
+its source revision and cancellation before one final save. Cancellation requests
+that arrive after the final atomic commit can finish as completed; undo remains
+available.
+
+Projects use a persistent `.write.lock` inode with crash-released kernel advisory
+ownership. Do not delete it: its existence does not mean a writer is active.
+macOS and Linux local filesystems with the required flock/no-replace-rename
+support are the supported writer targets; network filesystems and other platforms
+are not verified. A legacy PID-only marker converts only when that PID is
+definitely absent. Live/reused PIDs, empty or unknown legacy markers and ambiguous
+ownership refuse conservatively; preserve the marker, close older versions and
+verify the owner before manual recovery. No PID-age deletion is used. Initialized
+lock publication and migration are atomic, so interruption leaves recoverable
+ownership. A killed process can leave unreferenced arrays or owned temporary
+files; they are ignored, never guessed away or treated as a committed revision.
+
+Export/reopen publishes a fully verified new directory without replacing even a
+concurrently created empty destination. Failed writes preserve the last valid
+project; a failed ZIP does not expose a partial download. Browser bundles are
+limited to 512 MiB and exact referenced project assets to 2 GiB. Exports now also
+include the original audio and undo history: review that content before sharing.
+These are synthetic-tested persistence/audio contracts, not new separation,
+physical-source identity or listening-quality claims. The beta limitations and
+negative model results above remain unchanged.

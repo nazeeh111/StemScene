@@ -23,20 +23,22 @@ def test_extraction_admission_serializes_with_saved_project_mutations(tmp_path, 
     monkeypatch.setattr(BrowserSession, "configured", property(lambda self: True))
     # Leave the admitted job running; this checks admission, not inference.
     monkeypatch.setattr(server_module, "Thread", lambda **kwargs: type("Dormant", (), {"start": lambda self: None})())
+    project_session = session.project_session(identifier)
     loaded, release, attempted, mutated = Event(), Event(), Event(), Event()
+    begin = project_session.begin_extraction
 
-    def load_project(_identifier):
-        loaded.set()
-        assert release.wait(5)
-        return project
+    def begin_while_locked(revision=None):
+        with project_session._guard:
+            loaded.set()
+            assert release.wait(5)
+            return begin(revision)
 
-    monkeypatch.setattr(session, "project", load_project)
+    monkeypatch.setattr(project_session, "begin_extraction", begin_while_locked)
 
     def mutation_request():
         attempted.set()
-        with session.project_guard:
-            session.idle(identifier)
-            mutated.set()
+        project_session.change("undo")
+        mutated.set()
 
     with ThreadPoolExecutor(max_workers=2) as workers:
         admission = workers.submit(session.start, identifier, ["rain"])
@@ -44,7 +46,6 @@ def test_extraction_admission_serializes_with_saved_project_mutations(tmp_path, 
         mutation = workers.submit(mutation_request)
         assert attempted.wait(5)
         try:
-            # Must remain blocked until admission publishes the running job.
             assert not mutated.wait(.1)
         finally:
             release.set()

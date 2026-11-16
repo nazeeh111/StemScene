@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from dataclasses import dataclass
 from typing import Callable, Sequence
 import hashlib
 import json
@@ -20,6 +21,17 @@ from .project import Project, LockedLayerError, normalize_query, _safe_path
 
 class AnchorNeededError(AudioContractError):
     """Two indistinguishable descriptions would overlap a locked estimate."""
+
+
+@dataclass
+class EstimateProposal:
+    estimates: dict
+    metadata: dict
+    queries: tuple
+
+    def commit(self, project):
+        ids = project.add_estimates(self.estimates, metadata=self.metadata)
+        return {query: ids[normalize_query(query)] for query in self.queries}
 
 
 class SceneEngine:
@@ -82,9 +94,9 @@ class SceneEngine:
                 temporary.unlink()
         return output
 
-    def extract(self, project: Project, queries: Sequence[str], *,
+    def propose(self, project: Project, queries: Sequence[str], *,
                 cancelled: Callable[[], bool] | None = None,
-                progress: Callable[[int, int], None] | None = None) -> dict[str, str]:
+                progress: Callable[[int, int], None] | None = None) -> EstimateProposal:
         """Compute against original audio, jointly refine, commit once.
 
         Existing locked arrays are never passed back to mutation with changed
@@ -158,7 +170,7 @@ class SceneEngine:
         estimates = {q: (existing[q].samples if q in existing and existing[q].locked
                          else resample_aligned(result.samples[i], MODEL_RATE, project.sample_rate,
                                                project.original.frames)) for i, q in enumerate(canonical)}
-        ids = project.add_estimates(estimates, metadata={
+        metadata = {
             "backend": "AudioSep", "checkpoint_sha256": self.backend.checkpoint_sha256,
             "query_set": canonical,
             "refiner_sha256": getattr(self.refiner, "artifact_sha256", None),
@@ -170,5 +182,12 @@ class SceneEngine:
             "chunk_seconds": self.backend.limits.chunk_seconds,
             "overlap_seconds": self.backend.limits.overlap_seconds,
             "stereo": "unsupported by learned engine", "context": "offline full clip",
-            "locks": "locked arrays preserved byte-for-byte; residual carries unresolved energy"})
-        return {q: ids[normalize_query(q)] for q in queries}
+            "locks": "locked arrays preserved byte-for-byte; residual carries unresolved energy"}
+        return EstimateProposal(estimates, metadata, tuple(queries))
+
+    def extract(self, project: Project, queries: Sequence[str], *, cancelled=None, progress=None):
+        """Compatibility entrypoint; session callers admit/commit proposals separately."""
+        proposal = self.propose(project, queries, cancelled=cancelled, progress=progress)
+        if cancelled is not None and cancelled():
+            raise InferenceCancelled("cancelled before project mutation")
+        return proposal.commit(project)

@@ -12,8 +12,9 @@ from typing import Any, Literal
 import numpy as np
 import soundfile as sf
 
-from .audio import AudioContractError, Samples, sha256_file, validate_samples
+from .audio import AudioContractError, AudioLimits, Samples, sha256_file, validate_samples
 from .project import Project, _read_json, _safe_path, _write_json
+from .storage import project_lock, publish_directory
 
 
 def _verify_written_audio(root: Path, manifest: dict[str, Any], original: Samples,
@@ -105,7 +106,7 @@ def apply_peak_policy(project: Project, rendered: Samples, clipping: str) -> Sam
     return rendered
 
 
-def export_project(project: Project, destination: str | Path, *,
+def _export_project(project: Project, destination: str | Path, *,
                    subtype: Literal["DOUBLE", "FLOAT"] = "DOUBLE",
                    clipping: Literal["reject", "hard", "preserve"] = "reject") -> Path:
     """Export without resampling or normalization; never overwrite a destination.
@@ -181,15 +182,55 @@ def export_project(project: Project, destination: str | Path, *,
                                        "envelope_recipe": recipe, "locked": layer.locked,
                                        "anchors": [vars(anchor) for anchor in layer.anchors],
                                        "metadata": layer.metadata})
+        from .portable import include_project
+        include_project(project, temporary, manifest)
         manifest["verification"] = _verify_written_audio(temporary, manifest, project.original.samples, final)
         _write_json(temporary / "manifest.json", manifest)
         if target.exists():
             raise FileExistsError(target)
-        os.rename(temporary, target)
+        publish_directory(temporary, target)
         return target / "manifest.json"
     except BaseException:
         shutil.rmtree(temporary, ignore_errors=True)
         raise
+
+
+def export_project(project: Project, destination: str | Path, *, subtype="DOUBLE", clipping="reject"):
+    with project_lock(project.root, shared=True):
+        project.assert_current()
+        return _export_project(project, destination, subtype=subtype, clipping=clipping)
+
+
+def _source_container_assets(root, manifest):
+    """Only preserved source roles receive the independent admission cap."""
+    source = manifest["source"]["path"]
+    sources = {_safe_path(root, source)}
+    source_references = {source}
+    decoded = {_safe_path(root, name) for name in ("original-decoded.wav", "residual.wav", "mix.wav", "manifest.json")}
+    for layer in manifest["layers"]:
+        decoded.update(_safe_path(root, layer[key]) for key in ("stem", "envelope", "envelope_recipe"))
+    if "editable_project" in manifest:
+        relative = "project/project.json"
+        document_path = _safe_path(root, relative)
+        decoded.add(document_path)
+        if sha256_file(document_path, max_bytes=32 * 1024 * 1024) != manifest["files"].get(relative):
+            raise AudioContractError("Editable project manifest checksum mismatch")
+        document = _read_json(document_path)
+        portable_root = _safe_path(root, "project")
+        original = document["source"]["path"]
+        sources.add(_safe_path(portable_root, original))
+        source_references.add("project/" + original)
+        if not isinstance(document["history"], list) or len(document["history"]) > 100:
+            raise AudioContractError("Portable history exceeds replay bounds")
+        for state in [document, *document["history"]]:
+            if not isinstance(state["layers"], list) or len(state["layers"]) > 12:
+                raise AudioContractError("Portable layer count exceeds replay bounds")
+            decoded.update(_safe_path(portable_root, row["path"]) for row in state["layers"])
+    if sources & decoded:
+        raise AudioContractError("Source-container and decoded/metadata asset roles must be distinct")
+    if not source_references.issubset(manifest["files"]):
+        raise AudioContractError("Export is missing preserved source checksums")
+    return sources
 
 
 def replay_export(destination: str | Path, *, verify_hashes: bool = True) -> Samples:
@@ -208,11 +249,19 @@ def replay_export(destination: str | Path, *, verify_hashes: bool = True) -> Sam
                 or len(manifest["layers"]) > 12):
             raise AudioContractError("Export exceeds replay bounds")
         if verify_hashes:
-            if len(manifest["files"]) > 4 + 3 * len(manifest["layers"]):
+            required = {"original-decoded.wav", "residual.wav", "mix.wav", manifest["source"]["path"]}
+            for layer in manifest["layers"]:
+                required.update(layer[key] for key in ("stem", "envelope", "envelope_recipe"))
+            if not required.issubset(manifest["files"]):
+                raise AudioContractError("Export is missing required asset checksums")
+            if len(manifest["files"]) > (4 + 3 * len(manifest["layers"]) + (1214 if "editable_project" in manifest else 0)):
                 raise AudioContractError("Export contains excessive asset references")
             max_asset_bytes = max(32 * 1024 * 1024, shape[0] * shape[1] * 8 + 65536)
+            source_assets = _source_container_assets(root, manifest)
             for relative, expected in manifest["files"].items():
-                if sha256_file(_safe_path(root, relative), max_bytes=max_asset_bytes) != expected:
+                asset = _safe_path(root, relative)
+                maximum = AudioLimits().max_source_bytes if asset in source_assets else max_asset_bytes
+                if sha256_file(asset, max_bytes=maximum) != expected:
                     raise AudioContractError("Export asset checksum mismatch")
 
         def read(relative: str, expected_shape: tuple[int, int]) -> Samples:

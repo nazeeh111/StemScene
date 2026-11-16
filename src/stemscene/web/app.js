@@ -53,6 +53,8 @@ function updateControls() {
   $("import-button").disabled = busy();
   $("empty-import-button").disabled = busy();
   $("project-picker").disabled = busy();
+  $("reload-project").disabled = busy() || !hasProject;
+  $("open-export").disabled = busy();
   $("undo-button").disabled = busy() || !hasProject || ui.project.revision === 0;
   $("export-button").disabled = busy() || !hasProject;
   $("anchor-present").disabled = busy() || !hasLayer || selectedLayer()?.locked;
@@ -167,6 +169,7 @@ function renderProject(project) {
   const oldEditCount = ui.project?.edits.length || 0;
   ui.project = project;
   if (changedProject) {
+    if (["reject", "hard", "preserve"].includes(project.export_origin?.clipping)) $("clipping-policy").value = project.export_origin.clipping;
     const lastEdit = project.edits?.at(-1);
     ui.selectedId = lastEdit?.layer_id || project.layers[0]?.id || null;
     ui.editId = lastEdit?.id || null;
@@ -235,7 +238,7 @@ async function mutate(path, values, message) {
   if (!ui.project || busy()) return;
   ui.pending = true; updateControls(); clearError();
   try {
-    const project = await api(path, { method: "POST", body: { id: ui.project.id, ...values } });
+    const project = await api(path, { method: "POST", body: { id: ui.project.id, revision: ui.project.revision, ...values } });
     renderProject(project); status(message);
   } catch (error) { showError(error); }
   finally { ui.pending = false; updateControls(); }
@@ -264,7 +267,7 @@ async function compute(event) {
   if (!queries.length) { showError("Describe at least one sound to estimate."); $("queries").focus(); return; }
   ui.pending = true; updateControls(); clearError(); status("");
   try {
-    const result = await api("/api/extract", { method: "POST", body: { id: ui.project.id, queries } });
+    const result = await api("/api/extract", { method: "POST", body: { id: ui.project.id, revision: ui.project.revision, queries } });
     ui.jobId = result.job_id; ui.pending = false;
     text("job-detail", "Computing from the original recording. Existing level edits are preserved.");
     $("job-progress").removeAttribute("value"); $("cancel-button").disabled = false;
@@ -385,7 +388,7 @@ async function exportProject() {
   if (!ui.project || busy()) return;
   ui.pending = true; updateControls(); clearError(); text("export-status", "Writing and checking aligned WAVs…");
   try {
-    const result = await api("/api/export", { method: "POST", body: { id: ui.project.id, subtype: "DOUBLE", clipping: $("clipping-policy").value } });
+    const result = await api("/api/export", { method: "POST", body: { id: ui.project.id, revision: ui.project.revision, subtype: "DOUBLE", clipping: $("clipping-policy").value } });
     text("export-status", "Preparing the ZIP download…");
     const blob = await api(`/api/download?id=${encodeURIComponent(result.export_id)}`, { blob: true });
     const url = URL.createObjectURL(blob), link = document.createElement("a");
@@ -404,7 +407,7 @@ $("request-form").addEventListener("submit", compute);
 $("project-picker").addEventListener("change", async (event) => {
   if (!event.target.value || busy()) return;
   ui.pending = true; updateControls(); clearError();
-  try { renderProject(await api(`/api/state?id=${encodeURIComponent(event.target.value)}`)); status(""); }
+  try { renderProject(await api(`/api/state?id=${encodeURIComponent(event.target.value)}&reload=1`)); status(""); }
   catch (error) { showError(error); }
   finally { ui.pending = false; updateControls(); }
 });
@@ -479,3 +482,21 @@ async function initialize() {
   } catch (error) { showError(error); status("The local engine is unavailable. Keep this page open and reconnect to its local address."); }
 }
 initialize();
+
+$("reload-project").addEventListener("click", async () => {
+  if (!ui.project || busy()) return;
+  try { renderProject(await api(`/api/state?id=${encodeURIComponent(ui.project.id)}&reload=1`)); clearError(); status("Latest saved revision loaded. Review it before editing."); }
+  catch (error) { showError(error); }
+});
+$("open-export").addEventListener("click", () => $("bundle-input").click());
+$("bundle-input").addEventListener("change", async () => {
+  const file = $("bundle-input").files?.[0];
+  if (!file || busy()) return;
+  if (file.size >512*1024*1024) { showError("Export bundles must be at most512 MiB; use CLI reopen for larger projects."); return; }
+  ui.pending = true; updateControls(); clearError(); status("Checking and reopening the exact saved project…");
+  try {
+    const project = await api("/api/reopen", {method:"POST", raw:true, body:file, headers:{"Content-Type":"application/zip"}});
+    await refreshProjects(project.id); renderProject(project); status("Project reopened with exact estimates, events and undo history. No model was run.");
+  } catch (error) { showError(error); status("Reopen did not complete. Existing projects are unchanged."); }
+  finally { ui.pending=false; $("bundle-input").value=""; updateControls(); }
+});
