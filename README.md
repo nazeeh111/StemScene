@@ -4,7 +4,7 @@ STEMSCENE edits selected events in persistent **estimated sound layers**, keeps 
 
 A layer is an estimate of a sound class. It can contain leakage, miss a quiet event or share energy with another description. It is not proof that one physical source was isolated.
 
-**Experimental beta. Current source: 0.1.1b0.** The original 0.1.0b1 evaluation is retained unchanged: actual local inference, a trained 579-parameter refiner, browser editing and independent WAV replay have been exercised. On the frozen 20-scene study, trained refinement reduced mean all-request edit error by **7.25%** versus the strongest comparable non-oracle baseline. However, **29 of 60 individual edits worsened**, target gain accuracy declined and **five of six absent requests falsely extracted audio**. This is a bounded edit-integrity result, not a general separation-quality or scientific-novelty claim. See [all comparisons and failures](docs/comparisons.md).
+**Experimental beta. Current source: 0.1.1b0.** Saved-project editing below needs no model. The earlier separation study retains individual-edit failures and absent-sound false extractions; [read the full results and limits](#method-and-evidence).
 
 <picture>
   <source media="(max-width: 600px)" srcset="docs/presentation/event-mobile.png">
@@ -76,6 +76,8 @@ python examples/recombine.py /path/to/export-or.zip --output replay.wav
 ```
 
 ## Method and evidence
+
+The original 0.1.0b1 evaluation is retained unchanged: actual local inference, a trained 579-parameter refiner, browser editing and independent WAV replay have been exercised. On the frozen 20-scene study, trained refinement reduced mean all-request edit error by **7.25%** versus the strongest comparable non-oracle baseline. However, **29 of 60 individual edits worsened**, target gain accuracy declined and **five of six absent requests falsely extracted audio**. This is a bounded edit-integrity result, not a general separation-quality or scientific-novelty claim. See [all comparisons and failures](docs/comparisons.md).
 
 AudioSep supplies text-conditioned proposals from the unchanged mixed recording. A compact trained query-set refiner uses proposals, mixture features and optional user anchors. Persistent class identities, locks, explicit residuals and original-based gain edits connect those estimates to a production workflow. Text prompts, chunking, anchors and mixture consistency are established methods, not claimed inventions.
 
