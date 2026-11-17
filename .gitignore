@@ -26,3 +26,7 @@ BUILD_BRIEF.md
 !evaluation/v1/logs/confirmation-sequential-generation.log
 !evaluation/install-v1/beta-correctness.log
 
+
+# Public synthetic worked-example audio only.
+!docs/presentation/original.wav
+!docs/presentation/mix.wav

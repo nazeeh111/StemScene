@@ -1,0 +1,81 @@
+{
+  "source_parent": "bd396be42e63bfb89b84ec7773aa944609d58b62",
+  "source_tree": "9542f6f2e38411040f2fb9b420e6584c4c46db73",
+  "source_kind": "Synthetic supplied0.6\u00d7original estimate; existing fixture. No model inference/training or new separation study.",
+  "encoding": "All8000 original and revised envelope samples from actual WAVs; all401 left-channel original/mix samples in explicit0.09\u20130.14s zoom. No smoothing/normalization/resampling. Both stereo channels checked in full.",
+  "files": {
+    "README.md": {
+      "bytes": 4983,
+      "sha256": "8f203b4a633959179fbcc8daa5a01dafae8e41d0b0cfc31ec829127ef485096f"
+    },
+    "after.json": {
+      "bytes": 145589,
+      "sha256": "87ce361725d98528b4c7512babfc49f37ef6d72214b851e10d30630530eda433"
+    },
+    "audio-check.json": {
+      "bytes": 5473,
+      "sha256": "158324dc6e4d9338a9ac0ba09f32f3bdf820f7541353b972d3366799b61a7a04"
+    },
+    "before.json": {
+      "bytes": 145590,
+      "sha256": "f9c5f64ace17458a7a024dad5d452180438b481a7f033d070153e8e58b4088b5"
+    },
+    "edited-project.zip": {
+      "bytes": 970184,
+      "sha256": "5bc8069a9194d283ee4cc9160fdcaec761d444b143b3d2798f6d93d7bb8bd85d"
+    },
+    "editor-desktop.png": {
+      "bytes": 177056,
+      "sha256": "8e89c509914c5425b5f3c715de267da51dd056edd5f5c3305d856665d4a4101c"
+    },
+    "editor-mobile.png": {
+      "bytes": 44591,
+      "sha256": "3dd4804009f76b7c0e124009f943a1f946a4a2e5ed85d4501dc35c785ede6968"
+    },
+    "event-mobile.png": {
+      "bytes": 58570,
+      "sha256": "14978d88b2eef806b97358bcb76589c4e3528844f56963726183833d0b4ae64f"
+    },
+    "event-mobile.svg": {
+      "bytes": 471469,
+      "sha256": "c1e04a23e1a0cf990d30e81829f9b446dbe15123423c72f7c1618d7b51610b43"
+    },
+    "event.png": {
+      "bytes": 76819,
+      "sha256": "b20c78c33298097435d1c66b1b0127a8de0a3917b013be9bf393e83d97d66037"
+    },
+    "event.svg": {
+      "bytes": 475845,
+      "sha256": "0499cffa663346b6be4de6c21df730b93c71ea7b631e8ff6c037e8a3ac8799d1"
+    },
+    "figure.py": {
+      "bytes": 4027,
+      "sha256": "39d1ab75d6372036850b682e9386736085861f34ca84db0fc0f6ba1214da782f"
+    },
+    "mix.wav": {
+      "bytes": 128088,
+      "sha256": "b28fffae0a4f32b3e3deb5b5942cfcddacc5058894990033af882695a60239de"
+    },
+    "original.wav": {
+      "bytes": 128088,
+      "sha256": "46284612bca695d38841305ff90f181d41a55e517250aae4da1c3194657cc0fd"
+    },
+    "samples.csv": {
+      "bytes": 952060,
+      "sha256": "8f34ad80e561871fc02d5d887a89fa8f7e5b057ba39a951e9e095303fb06ed25"
+    }
+  },
+  "portable_zip_members": {
+    "manifest.json": "1cefcde41166f17ffc1b48042e36cd7bb2e30a29e90f52456f2e18e06da332b0",
+    "source.wav": "93906d48d692fe855dc458158186695454f73caba316e1f93c4a1a9c99c27433",
+    "original-decoded.wav": "46284612bca695d38841305ff90f181d41a55e517250aae4da1c3194657cc0fd",
+    "residual.wav": "c5291fa0189a3ea6ba4bde2143d59a2fc7d300f1e2c5f8666d339da11070990a",
+    "mix.wav": "b28fffae0a4f32b3e3deb5b5942cfcddacc5058894990033af882695a60239de",
+    "stems/2c6e5d4595554afcb4c073eae216a7c9.wav": "fe2bd59d69cb19661517edbac830f03b3cd09297651acb3d9c2beb17915919a8",
+    "envelopes/2c6e5d4595554afcb4c073eae216a7c9.wav": "9a4d66bc77bfbda91d1d1f2f5791afb01934687b20b346dda52a630877fad059",
+    "envelopes/2c6e5d4595554afcb4c073eae216a7c9.json": "8c5ff615aea8a964239129801bf3dc7c04f4d57a0e71fbff0378df347f59564a",
+    "project/original.wav": "93906d48d692fe855dc458158186695454f73caba316e1f93c4a1a9c99c27433",
+    "project/layers/2c6e5d4595554afcb4c073eae216a7c9-66a5bcc5dc1341f3a3373cecbb89222e.npy": "3d7572e417f08cf98e05c952a355a2903b3578251c459aecae37f0cb64d06cff",
+    "project/project.json": "4f488094b9eb9a8003ec1767e5352b4092f6c179f323af4a66908a392f90dd71"
+  }
+}
