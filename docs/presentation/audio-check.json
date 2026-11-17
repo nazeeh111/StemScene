@@ -1,0 +1,78 @@
+{
+  "source_main": "bd396be42e63bfb89b84ec7773aa944609d58b62",
+  "fixture": "Current bundled synthetic supplied0.6\u00d7original estimate, not model output",
+  "sample_rate": 8000,
+  "frames": 8000,
+  "channels": 2,
+  "event": {
+    "id": "f9cf68a4200742c4be4ecf6af5d21a3a",
+    "layer_id": "2c6e5d4595554afcb4c073eae216a7c9",
+    "start_sample": 800,
+    "end_sample": 2400,
+    "gain": 0.5,
+    "fade_samples": 160,
+    "fade_shape": "linear-amplitude-inside-span"
+  },
+  "same_saved_event_revised": true,
+  "sourceSHA256": "93906d48d692fe855dc458158186695454f73caba316e1f93c4a1a9c99c27433",
+  "outsideSpanAllBothChannelSamplesBitExact": true,
+  "all16000MixSamplesMatchIndependentEquation": true,
+  "all8000EnvelopeSamplesMatchIndependentIndexedRecipeMaxAbsError": 1.1102230246251565e-16,
+  "standaloneReplayAllSamplesBitExact": true,
+  "freshCLIReopenAndExportExact": true,
+  "portableMembersSHA256": {
+    "manifest.json": "1cefcde41166f17ffc1b48042e36cd7bb2e30a29e90f52456f2e18e06da332b0",
+    "source.wav": "93906d48d692fe855dc458158186695454f73caba316e1f93c4a1a9c99c27433",
+    "original-decoded.wav": "46284612bca695d38841305ff90f181d41a55e517250aae4da1c3194657cc0fd",
+    "residual.wav": "c5291fa0189a3ea6ba4bde2143d59a2fc7d300f1e2c5f8666d339da11070990a",
+    "mix.wav": "b28fffae0a4f32b3e3deb5b5942cfcddacc5058894990033af882695a60239de",
+    "stems/2c6e5d4595554afcb4c073eae216a7c9.wav": "fe2bd59d69cb19661517edbac830f03b3cd09297651acb3d9c2beb17915919a8",
+    "envelopes/2c6e5d4595554afcb4c073eae216a7c9.wav": "9a4d66bc77bfbda91d1d1f2f5791afb01934687b20b346dda52a630877fad059",
+    "envelopes/2c6e5d4595554afcb4c073eae216a7c9.json": "8c5ff615aea8a964239129801bf3dc7c04f4d57a0e71fbff0378df347f59564a",
+    "project/original.wav": "93906d48d692fe855dc458158186695454f73caba316e1f93c4a1a9c99c27433",
+    "project/layers/2c6e5d4595554afcb4c073eae216a7c9-66a5bcc5dc1341f3a3373cecbb89222e.npy": "3d7572e417f08cf98e05c952a355a2903b3578251c459aecae37f0cb64d06cff",
+    "project/project.json": "4f488094b9eb9a8003ec1767e5352b4092f6c179f323af4a66908a392f90dd71"
+  },
+  "runs": [
+    {
+      "command": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/StemScene-runtime/bin/python",
+        "-I",
+        "/Users/nazeeh/Documents/Codex/2026-11-17/portfolio-design/candidates/repositories/StemScene-design/source/examples/recombine.py",
+        "/Users/nazeeh/Documents/Codex/2026-11-17/portfolio-design/candidates/repositories/StemScene-design/source/docs/presentation/edited-project.zip",
+        "--output",
+        "/var/folders/ss/tml7487n205dg94kb7__tth80000gn/T/stemscene-replay-0c778521/replay.wav"
+      ],
+      "stdout": "{\n  \"engine_imported\": false,\n  \"models_required\": false,\n  \"stems\": 1,\n  \"frames\": 8000,\n  \"channels\": 2,\n  \"sample_rate\": 8000,\n  \"tolerance\": 1e-12,\n  \"source_sha256\": \"93906d48d692fe855dc458158186695454f73caba316e1f93c4a1a9c99c27433\",\n  \"unity_max_abs_error\": 0.0,\n  \"edited_mix_max_abs_error\": 0.0,\n  \"envelope_recipe_max_abs_error\": 0.0,\n  \"original_decode_max_abs_error\": 0.0\n}\n",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "command": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/StemScene-runtime/bin/python",
+        "-m",
+        "stemscene",
+        "reopen",
+        "/var/folders/ss/tml7487n205dg94kb7__tth80000gn/T/stemscene-replay-0c778521/export",
+        "/var/folders/ss/tml7487n205dg94kb7__tth80000gn/T/stemscene-replay-0c778521/reopened"
+      ],
+      "stdout": "{\n  \"project\": \"/private/var/folders/ss/tml7487n205dg94kb7__tth80000gn/T/stemscene-replay-0c778521/reopened\",\n  \"revision\": 7,\n  \"export_origin\": {\n    \"manifest_sha256\": \"1cefcde41166f17ffc1b48042e36cd7bb2e30a29e90f52456f2e18e06da332b0\",\n    \"clipping\": \"reject\",\n    \"subtype\": \"DOUBLE\",\n    \"note\": \"Edits preserve the pre-policy floating mix; select the recorded peak policy on subsequent export\"\n  },\n  \"source\": {\n    \"frames\": 8000,\n    \"channels\": 2,\n    \"sample_rate\": 8000,\n    \"sha256\": \"93906d48d692fe855dc458158186695454f73caba316e1f93c4a1a9c99c27433\",\n    \"format\": \"WAV\",\n    \"subtype\": \"DOUBLE\",\n    \"bytes\": 128088\n  },\n  \"duration_seconds\": 1.0,\n  \"layers\": [\n    {\n      \"id\": \"2c6e5d4595554afcb4c073eae216a7c9\",\n      \"query\": \"Supplied synthetic tone\",\n      \"locked\": false,\n      \"anchors\": [],\n      \"interpretation\": \"estimated sound class; isolation is uncertain\"\n    }\n  ],\n  \"edits\": [\n    {\n      \"id\": \"f9cf68a4200742c4be4ecf6af5d21a3a\",\n      \"layer_id\": \"2c6e5d4595554afcb4c073eae216a7c9\",\n      \"start_sample\": 800,\n      \"end_sample\": 2400,\n      \"gain\": 0.5,\n      \"fade_samples\": 160,\n      \"fade_shape\": \"linear-amplitude-inside-span\"\n    }\n  ],\n  \"undo_steps\": 3\n}\n",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "command": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/StemScene-runtime/bin/python",
+        "-m",
+        "stemscene",
+        "export",
+        "/var/folders/ss/tml7487n205dg94kb7__tth80000gn/T/stemscene-replay-0c778521/reopened",
+        "/var/folders/ss/tml7487n205dg94kb7__tth80000gn/T/stemscene-replay-0c778521/new-export"
+      ],
+      "stdout": "{\n  \"manifest\": \"/var/folders/ss/tml7487n205dg94kb7__tth80000gn/T/stemscene-replay-0c778521/new-export/manifest.json\"\n}\n",
+      "stderr": "",
+      "code": 0
+    }
+  ],
+  "roundtrip": {}
+}

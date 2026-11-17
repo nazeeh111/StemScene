@@ -1,0 +1,4 @@
+# Exact exported audio records and source-derived presentation.
+docs/presentation/*.json -text
+docs/presentation/*.csv -text
+docs/presentation/*.svg -text

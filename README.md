@@ -1,4 +1,4 @@
-# STEMSCENE
+# StemScene
 
 STEMSCENE edits selected events in persistent **estimated sound layers**, keeps the original recording intact, and exports aligned WAVs with an independently reproducible mix. The browser mixer, Python API and CLI share one installed local engine. New estimates use the optional local extractor; saved projects can be edited without it.
 
@@ -6,11 +6,16 @@ A layer is an estimate of a sound class. It can contain leakage, miss a quiet ev
 
 **Experimental beta. Current source: 0.1.1b0.** The original 0.1.0b1 evaluation is retained unchanged: actual local inference, a trained 579-parameter refiner, browser editing and independent WAV replay have been exercised. On the frozen 20-scene study, trained refinement reduced mean all-request edit error by **7.25%** versus the strongest comparable non-oracle baseline. However, **29 of 60 individual edits worsened**, target gain accuracy declined and **five of six absent requests falsely extracted audio**. This is a bounded edit-integrity result, not a general separation-quality or scientific-novelty claim. See [all comparisons and failures](docs/comparisons.md).
 
-![Current installed editor: a supplied synthetic layer and saved event reopened without model setup](docs/demo/assets/editor-current.png)
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/presentation/event-mobile.png">
+  <img src="docs/presentation/event.png" alt="Actual synthetic saved-event revision from 25 to 50 percent layer gain, with full gain envelope and a labeled left-channel waveform zoom. Both channels retain every sample outside the selected 800 to 2400 sample span. Supplied 0.6 times original estimate, not separator output.">
+</picture>
 
-[Current capture provenance](docs/demo/assets/current-capture.json).
+**Revise one event. Keep the original.** The actual editor changed one saved 0.10–0.30 s event from 25% to 50%, undid it, and exported the revised project. Independent replay matched all 16,000 channel samples; the samples outside that span stayed exactly unchanged. The supplied synthetic layer is `0.6 × original`, demonstrating editing and handoff rather than separation.
 
-[Watch the earlier 0.1.0b1 actual-session walkthrough (23 seconds)](docs/demo/assets/stemscene-walkthrough.mp4) or open the [audio comparison and credits](docs/demo/index.html). The walkthrough uses captured session states and actual original/edited audio; inference waiting is omitted.
+[Reopen the actual editable project](docs/presentation/edited-project.zip) · [Inspect the samples, equation and limits](docs/presentation/README.md) · [Original WAV](docs/presentation/original.wav) · [Edited WAV](docs/presentation/mix.wav).
+
+[Earlier installed editor capture](docs/demo/assets/editor-current.png) and its [provenance](docs/demo/assets/current-capture.json) remain separate. [Earlier actual-session walkthrough](docs/demo/assets/stemscene-walkthrough.mp4) · [audio comparison and credits](docs/demo/index.html). No inference or native model cancellation was rerun for this new synthetic editing case.
 
 ## Use it
 
