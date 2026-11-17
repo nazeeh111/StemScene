@@ -10,6 +10,7 @@ import sys
 import numpy as np
 import soundfile as sf
 
+from stemscene import __version__
 from stemscene.project import Project
 
 
@@ -109,7 +110,7 @@ def test_model_setup_refuses_existing_directory_before_network(tmp_path: Path) -
 
 def test_help_and_version_do_not_require_model_artifacts() -> None:
     result = invoke('--version')
-    assert result.returncode == 0 and 'stemscene 0.1.0b1' in result.stdout
+    assert result.returncode == 0 and f'stemscene {__version__}' in result.stdout
     result = invoke('--help')
     assert result.returncode == 0 and 'extract' in result.stdout and 'replay' in result.stdout
     result = invoke('models', 'download', '--help')

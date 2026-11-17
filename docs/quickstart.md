@@ -13,7 +13,7 @@ versions, measurements and remaining platform limits are in
 Python 3.11 and 3.12 are admitted; the local executed runtime is Python 3.12.13. From the repository root, with uv installed:
 
 ```sh
-uv sync --locked --python 3.12
+uv sync --locked --extra models --python 3.12
 ```
 
 `uv.lock` pins transitive distributions and hashes. It was generated with uv 0.11.20. Installation uses public package indexes; extraction later stays offline. Do not run `uv sync` in another project's environment.
@@ -24,7 +24,7 @@ On Linux, the default PyPI PyTorch distribution can bring GPU runtime packages e
 python3.12 -m venv .venv-cpu
 . .venv-cpu/bin/activate
 python -m pip install "torch==2.6.0" --index-url https://download.pytorch.org/whl/cpu
-python -m pip install .
+python -m pip install ".[models]"
 ```
 
 This alternative honors the directly pinned project dependencies and uses the official CPU wheel. It is distinct from the universal uv lock route. CI exercises the CPU route on Linux; remote CI status must be checked for the actual revision.
@@ -34,7 +34,7 @@ This alternative honors the directly pinned project dependencies and uses the of
 Choose a new directory. The downloader verifies exact byte counts and SHA-256 values before promoting the directory. It retains verified files and partial bytes in a clearly named sibling folder if setup fails.
 
 ```sh
-uv run --locked stemscene models download "$HOME/.local/share/stemscene/models"
+uv run --locked --extra models stemscene models download "$HOME/.local/share/stemscene/models"
 ```
 
 The approximately 1.27 GB download contains the official AudioSep checkpoint, its already included CLAP text weights, RoBERTa tokenizer/config files and license evidence. It does not need a model API key, Hugging Face sign-in, a separate RoBERTa weight download, SAM Audio access or CUDA. See [attribution](../THIRD_PARTY_NOTICES.md) for the distinction between AudioSep code MIT and the weight host's MIT metadata declaration.
@@ -58,7 +58,7 @@ The following commands use `uv run --locked`. If you selected the activated Linu
 ## Use the browser mixer
 
 ```sh
-uv run --locked stemscene serve \
+uv run --locked --extra models stemscene serve \
   --workspace "$HOME/.local/share/stemscene/browser-workspace" \
   --checkpoint "$STEMSCENE_MODELS/audiosep_base_4M_steps.ckpt" \
   --tokenizer-dir "$STEMSCENE_MODELS/roberta" \
@@ -81,15 +81,15 @@ The player uses FLOAT WAV and the browser/device playback path. Auditioning is n
 Create a project and compute three queries from its unchanged original:
 
 ```sh
-uv run --locked stemscene init "$STEMSCENE_SOURCE" "$STEMSCENE_PROJECT"
-uv run --locked stemscene extract "$STEMSCENE_PROJECT" \
+uv run --locked --extra models stemscene init "$STEMSCENE_SOURCE" "$STEMSCENE_PROJECT"
+uv run --locked --extra models stemscene extract "$STEMSCENE_PROJECT" \
   --checkpoint "$STEMSCENE_MODELS/audiosep_base_4M_steps.ckpt" \
   --tokenizer-dir "$STEMSCENE_MODELS/roberta" \
   --refiner "$STEMSCENE_REFINER" \
   --query "doorbell ringing" \
   --query "a door opening and closing" \
   --query "keys jangling"
-uv run --locked stemscene inspect "$STEMSCENE_PROJECT"
+uv run --locked --extra models stemscene inspect "$STEMSCENE_PROJECT"
 ```
 
 Descriptions are requests, not assertions that those targets exist in your recording. The domestic-scene example above demonstrates a workflow; its classes are outside the ESC-10 controlled refiner study. General speech, wind and vehicle quality requires separate evaluation.
@@ -98,9 +98,9 @@ Copy the desired persistent layer ID from `inspect`, then edit it:
 
 ```sh
 STEMSCENE_LAYER="paste-layer-id-here"
-uv run --locked stemscene edit "$STEMSCENE_PROJECT" "$STEMSCENE_LAYER" \
+uv run --locked --extra models stemscene edit "$STEMSCENE_PROJECT" "$STEMSCENE_LAYER" \
   --start 4.65 --end 6.29 --gain 0.25 --fade 0.02
-uv run --locked stemscene lock "$STEMSCENE_PROJECT" "$STEMSCENE_LAYER"
+uv run --locked --extra models stemscene lock "$STEMSCENE_PROJECT" "$STEMSCENE_LAYER"
 ```
 
 A gain of `0.25` is 25% linear amplitude; `0` removes the selected estimate, not a guaranteed clean physical source. Fades stay inside the selected span. Choose spans within your own recording; the times here are illustrative.
@@ -109,16 +109,16 @@ A new `edit` command adds another multiplicative gain operation. To revise a sav
 
 ```sh
 STEMSCENE_EVENT="paste-event-id-here"
-uv run --locked stemscene edit "$STEMSCENE_PROJECT" "$STEMSCENE_LAYER" \
+uv run --locked --extra models stemscene edit "$STEMSCENE_PROJECT" "$STEMSCENE_LAYER" \
   --replace "$STEMSCENE_EVENT" --start 4.65 --end 6.29 --gain 0.50 --fade 0.02
-uv run --locked stemscene remove-edit "$STEMSCENE_PROJECT" "$STEMSCENE_EVENT"
-uv run --locked stemscene undo "$STEMSCENE_PROJECT"
+uv run --locked --extra models stemscene remove-edit "$STEMSCENE_PROJECT" "$STEMSCENE_EVENT"
+uv run --locked --extra models stemscene undo "$STEMSCENE_PROJECT"
 ```
 
 Adding another request jointly refines unlocked estimates while retaining the locked stem's samples:
 
 ```sh
-uv run --locked stemscene extract "$STEMSCENE_PROJECT" \
+uv run --locked --extra models stemscene extract "$STEMSCENE_PROJECT" \
   --checkpoint "$STEMSCENE_MODELS/audiosep_base_4M_steps.ckpt" \
   --tokenizer-dir "$STEMSCENE_MODELS/roberta" \
   --refiner "$STEMSCENE_REFINER" \
@@ -132,15 +132,15 @@ A new query can be absent or ambiguous. Review the output; never treat extracted
 Anchors are seconds in the **mixed original**, not clean references. The command replaces that layer's anchor list. Unlock the stem first when its saved separation anchors will change, then re-estimate:
 
 ```sh
-uv run --locked stemscene unlock "$STEMSCENE_PROJECT" "$STEMSCENE_LAYER"
-uv run --locked stemscene anchors "$STEMSCENE_PROJECT" "$STEMSCENE_LAYER" \
+uv run --locked --extra models stemscene unlock "$STEMSCENE_PROJECT" "$STEMSCENE_LAYER"
+uv run --locked --extra models stemscene anchors "$STEMSCENE_PROJECT" "$STEMSCENE_LAYER" \
   --present 4.65 6.29 --absent 0 0.50
-uv run --locked stemscene extract "$STEMSCENE_PROJECT" \
+uv run --locked --extra models stemscene extract "$STEMSCENE_PROJECT" \
   --checkpoint "$STEMSCENE_MODELS/audiosep_base_4M_steps.ckpt" \
   --tokenizer-dir "$STEMSCENE_MODELS/roberta" \
   --refiner "$STEMSCENE_REFINER" \
   --query "doorbell ringing"
-uv run --locked stemscene undo "$STEMSCENE_PROJECT"
+uv run --locked --extra models stemscene undo "$STEMSCENE_PROJECT"
 ```
 
 Choose anchors by inspecting your own mixed recording. The illustrative spans are not valid for every input. A conflicting lock or overlapping present/absent anchors causes an error rather than silent reassignment. Undo restores one preceding persistent revision, including the prior gains, lock state or layer set. Project history is bounded.
@@ -148,9 +148,9 @@ Choose anchors by inspecting your own mixed recording. The illustrative spans ar
 ## Export and verify elsewhere
 
 ```sh
-uv run --locked stemscene render "$STEMSCENE_PROJECT" edited-mix.wav
-uv run --locked stemscene export "$STEMSCENE_PROJECT" exported-scene
-uv run --locked stemscene replay exported-scene replayed-mix.wav
+uv run --locked --extra models stemscene render "$STEMSCENE_PROJECT" edited-mix.wav
+uv run --locked --extra models stemscene export "$STEMSCENE_PROJECT" exported-scene
+uv run --locked --extra models stemscene replay exported-scene replayed-mix.wav
 uv run --locked python examples/recombine.py exported-scene --output independently-replayed.wav
 ```
 
@@ -163,7 +163,7 @@ Default output is DOUBLE WAV. `--subtype FLOAT` explicitly quantizes export arra
 CLI extraction defaults to CPU and four CPU threads. On the tested Apple Silicon Mac, prefix the process with `PYTORCH_ENABLE_MPS_FALLBACK=1` and add `--device mps` to extraction or `serve`. For example:
 
 ```sh
-PYTORCH_ENABLE_MPS_FALLBACK=1 uv run --locked stemscene serve \
+PYTORCH_ENABLE_MPS_FALLBACK=1 uv run --locked --extra models stemscene serve \
   --workspace "$HOME/.local/share/stemscene/browser-workspace" \
   --checkpoint "$STEMSCENE_MODELS/audiosep_base_4M_steps.ckpt" \
   --tokenizer-dir "$STEMSCENE_MODELS/roberta" --device mps --port 0

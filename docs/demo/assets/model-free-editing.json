@@ -1,0 +1,19 @@
+{
+  "kind": "Synthetic editable recording fixture, not separator output",
+  "archive_sha256": "b150e611c50f125cc16eca548196232cfada051eb3105a4ebf6b4d40d4966f8d",
+  "source_sha256": "93906d48d692fe855dc458158186695454f73caba316e1f93c4a1a9c99c27433",
+  "sample_rate": 8000,
+  "frames": 8000,
+  "channels": 2,
+  "supplied_estimate": "0.6 times the original samples; no trained extractor used",
+  "native_workflow": "Actual installed browser created0.1\u20130.3s25%event, updated50%, undid25%, and downloadedthisZIP; native reopen retainedexactsource/layer/event/history andcontinued40% separately",
+  "event_gain": 0.25,
+  "event_span_seconds": [
+    0.1,
+    0.3
+  ],
+  "public_source_base": "7d568cc580512fdef04b5331500705258fb11984",
+  "accepted_lifecycle_patch_sha256": "8985a432bf22ddc34de7d211348ff6fe15164dc332e9f99d853222cd6e76593c",
+  "capture_package_version": "0.1.0b1 current-source baseline, separate from original taggedreleasewheel",
+  "scope": "Editing/export/replay demonstration only. No physical source isolation, listening quality, model inference or new scientific result is claimed."
+}

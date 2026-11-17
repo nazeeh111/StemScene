@@ -8,12 +8,15 @@ from threading import Event, Lock, Thread
 from typing import Any
 from urllib.parse import parse_qs, unquote, urlsplit
 import hmac
+import os
+import stat
 import io
 import json
 import secrets
 import shutil
 import tempfile
 from uuid import uuid4
+from weakref import WeakValueDictionary
 import zipfile
 
 import numpy as np
@@ -21,10 +24,10 @@ import soundfile as sf
 
 from .audio import AudioContractError, AudioLimits
 from .backend import AudioSepBackend, BackendLimits, InferenceCancelled
-from .engine import SceneEngine
 from .export import export_project
-from .joint import JointRefiner
 from .project import Anchor, Project, _safe_path
+from .session import ProjectSession
+from .portable import reopen_export
 
 
 @dataclass
@@ -37,9 +40,9 @@ class BrowserSession:
     token: str = field(default_factory=lambda: secrets.token_urlsafe(32))
     jobs: dict[str, dict[str, Any]] = field(default_factory=dict)
     exports: dict[str, Path] = field(default_factory=dict)
-    engine: SceneEngine | None = None
+    engine: Any = None
+    sessions: WeakValueDictionary[str, ProjectSession] = field(default_factory=WeakValueDictionary)
     guard: Lock = field(default_factory=Lock)
-    project_guard: Lock = field(default_factory=Lock)
 
     def __post_init__(self) -> None:
         self.workspace = self.workspace.resolve()
@@ -53,18 +56,21 @@ class BrowserSession:
                     and self.tokenizer_directory and self.tokenizer_directory.is_dir()
                     and self.refiner_path and self.refiner_path.is_file())
 
-    def project(self, identifier: str) -> Project:
+    def project_session(self, identifier: str) -> ProjectSession:
         if len(identifier) != 32 or any(c not in "0123456789abcdef" for c in identifier):
             raise AudioContractError("Unknown project")
-        return Project.load(_safe_path(self.workspace, "projects/"+identifier))
-
-    def idle(self, identifier: str) -> None:
-        if any(job["status"] == "running" and job["project_id"] == identifier
-               for job in self.jobs.values()):
-            raise AudioContractError("Wait for extraction to finish or cancel it before changing this project")
+        with self.guard:
+            owner = self.sessions.get(identifier)
+            if owner is None:
+                owner = ProjectSession(_safe_path(self.workspace, "projects/" + identifier))
+                self.sessions[identifier] = owner
+            return owner
 
     def state(self, identifier: str) -> dict[str, Any]:
-        project = self.project(identifier)
+        with self.project_session(identifier).read() as project:
+            return self._state(identifier, project)
+
+    def _state(self, identifier, project):
         x = project.original.samples
         edges = np.linspace(0, len(x), min(1800, len(x))+1, dtype=int)
         peaks = [{"min": float(x[a:b].min()), "max": float(x[a:b].max())}
@@ -74,50 +80,60 @@ class BrowserSession:
         if title_path.is_file() and title_path.stat().st_size < 2048:
             title = str(json.loads(title_path.read_text()).get("title", title))[:200]
         return {"id": identifier, "title": title, "revision": project.revision,
-                "sample_rate": project.sample_rate, "frames": project.original.frames,
+                "export_origin": project.export_origin, "sample_rate": project.sample_rate, "frames": project.original.frames,
                 "channels": project.original.channels, "duration": project.original.duration,
                 "waveform": peaks, "layers": [
                     {"id": layer.id, "query": layer.query, "locked": layer.locked,
                      "anchors": [vars(a) for a in layer.anchors], "metadata": layer.metadata}
                     for layer in project.layers], "edits": project.edits}
 
-    def start(self, identifier: str, queries: list[str]) -> str:
+    def start(self, identifier: str, queries: list[str], expected_revision=None) -> str:
         if not self.configured:
             raise AudioContractError("Configure a local separator and trained refiner before extracting layers")
-        # Publish admission under the same lock as saved-state mutations. A
-        # second tab must not edit between loading the worker's revision and
-        # registering its running job, or the eventual commit could lose edits.
-        with self.project_guard, self.guard:
-            if any(job["status"] == "running" for job in self.jobs.values()):
-                raise AudioContractError("Another local extraction is running; cancel it or wait")
-            # Validate source and input before allocating a worker/model.
-            project = self.project(identifier)
-            if (not isinstance(queries, list) or not queries or len(queries) > 8
-                    or any(not isinstance(q, str) or not q.strip() or len(q) > 512 for q in queries)):
-                raise AudioContractError("Request one to eight sound descriptions, at most 512 characters each")
+        if (not isinstance(queries, list) or not queries or len(queries) > 8
+                or any(not isinstance(q, str) or not q.strip() or len(q) > 512 for q in queries)):
+            raise AudioContractError("Request one to eight sound descriptions, at most512 characters each")
+        project_session = self.project_session(identifier)
+        with project_session.read(expected_revision) as project:
             if project.original.channels != 1:
                 raise AudioContractError("Learned extraction currently supports mono recordings only")
+        with self.guard:
+            if any(job["status"] == "running" for job in self.jobs.values()):
+                raise AudioContractError("Another local extraction is running; cancel it or wait")
+            token = project_session.begin_extraction(expected_revision)
             while len(self.jobs) >= 32:
                 self.jobs.pop(next(iter(self.jobs)))
             key = uuid4().hex
             self.jobs[key] = {"status": "running", "completed": 0, "total": len(queries),
-                              "project_id": identifier, "cancel": Event(), "error": None}
+                              "project_id": identifier, "operation": token, "error": None}
 
         def run() -> None:
             try:
                 if self.engine is None:
+                    try:
+                        from .engine import SceneEngine
+                        from .joint import JointRefiner
+                    except ImportError as exc:
+                        raise AudioContractError("Extraction needs the optional local model runtime; saved-project editing and replay remain available") from exc
                     backend = AudioSepBackend(self.checkpoint, self.tokenizer_directory,
                                               limits=BackendLimits(threads=4), device=self.device)
                     self.engine = SceneEngine(backend, JointRefiner.load(self.refiner_path))
                 job = self.jobs[key]
-                self.engine.extract(project, queries, cancelled=job["cancel"].is_set,
-                                    progress=lambda done, total: job.update(completed=done, total=total))
+                project_session.compute(token, self.engine, queries,
+                                        progress=lambda done, total: job.update(completed=done, total=total))
                 job["status"] = "done"
             except InferenceCancelled:
                 self.jobs[key]["status"] = "cancelled"
             except Exception as error:
                 self.jobs[key].update(status="error", error=str(error)[:2000])
-        Thread(target=run, name="stemscene-inference", daemon=True).start()
+            finally:
+                project_session.abandon(token)
+        try:
+            Thread(target=run, name="stemscene-inference", daemon=True).start()
+        except BaseException:
+            project_session.abandon(token)
+            self.jobs[key].update(status="error", error="Could not start the local worker")
+            raise
         return key
 
 
@@ -200,7 +216,7 @@ def make_server(session: BrowserSession, port: int = 8765) -> ThreadingHTTPServe
                                            "text/javascript; charset=utf-8" if path.path.endswith(".js") else "text/css; charset=utf-8")
                 if path.path == "/api/config":
                     return self.send_json({"model_ready": session.configured,
-                        "model_message": "Local files configured. First extraction loads the model." if session.configured else "Set the local AudioSep and trained refiner paths when starting STEMSCENE.",
+                        "model_message": "Local files configured. First extraction loads the model." if session.configured else "Saved editing and export are ready. New layer estimates need local AudioSep and trained refiner paths.",
                         "limits": {"max_seconds": 600, "max_queries": 8, "inference_channels": 1,
                                    "max_source_bytes": AudioLimits().max_source_bytes,
                                    "processing": "offline; CPU or tested MPS with CPU fallback"}})
@@ -215,6 +231,8 @@ def make_server(session: BrowserSession, port: int = 8765) -> ThreadingHTTPServe
                                 continue
                     return self.send_json({"projects": rows})
                 if path.path == "/api/state":
+                    if query.get("reload", [""])[0] == "1":
+                        session.project_session(identifier).reload()
                     return self.send_json(session.state(identifier))
                 if path.path == "/api/job":
                     job = session.jobs.get(identifier)
@@ -222,24 +240,8 @@ def make_server(session: BrowserSession, port: int = 8765) -> ThreadingHTTPServe
                         raise AudioContractError("Unknown extraction")
                     return self.send_json({k: v for k, v in job.items() if k != "cancel"})
                 if path.path == "/api/audio":
-                    project = session.project(identifier)
-                    kind = query.get("kind", ["mix"])[0]
-                    if kind == "original":
-                        audio = project.original.samples
-                    elif kind == "mix":
-                        audio = project.render()
-                    elif kind == "stem":
-                        layer_id = query.get("layer_id", [""])[0]
-                        matches = [layer.samples for layer in project.layers if layer.id == layer_id]
-                        if not matches:
-                            raise AudioContractError("Unknown layer")
-                        audio = matches[0]
-                    else:
-                        raise AudioContractError("Unknown playback source")
-                    if audio.nbytes > 256*1024*1024:
-                        raise AudioContractError("Recording exceeds browser preview size; use CLI export")
-                    buffer = io.BytesIO(); sf.write(buffer, audio, project.sample_rate, format="WAV", subtype="FLOAT")
-                    return self.send_bytes(buffer.getvalue(), "audio/wav")
+                    with session.project_session(identifier).read() as project:
+                        return self.send_audio(project, query)
                 if path.path == "/api/download":
                     archive = session.exports.get(identifier)
                     if archive is None:
@@ -251,9 +253,27 @@ def make_server(session: BrowserSession, port: int = 8765) -> ThreadingHTTPServe
                         shutil.copyfileobj(stream, self.wfile, length=65536)
                     return
                 self.send_json({"error": "Not found"}, 404)
-            except (ValueError, OSError, KeyError, TypeError) as error:
+            except (ValueError, OSError, KeyError, TypeError, zipfile.BadZipFile, RuntimeError) as error:
                 self.send_json({"error": str(error)[:2000]}, 400)
 
+        def send_audio(self, project, query):
+            kind = query.get("kind", ["mix"])[0]
+            if kind == "original":
+                audio = project.original.samples
+            elif kind == "mix":
+                audio = project.render()
+            elif kind == "stem":
+                layer_id = query.get("layer_id", [""])[0]
+                matches = [layer.samples for layer in project.layers if layer.id == layer_id]
+                if not matches:
+                    raise AudioContractError("Unknown layer")
+                audio = matches[0]
+            else:
+                raise AudioContractError("Unknown playback source")
+            if audio.nbytes > 256*1024*1024:
+                raise AudioContractError("Recording exceeds browser preview size; use CLI export")
+            buffer = io.BytesIO(); sf.write(buffer, audio, project.sample_rate, format="WAV", subtype="FLOAT")
+            return self.send_bytes(buffer.getvalue(), "audio/wav")
         def do_POST(self) -> None:
             if not self.allowed(api=True):
                 return
@@ -280,51 +300,98 @@ def make_server(session: BrowserSession, port: int = 8765) -> ThreadingHTTPServe
                         project = Project.create(source, session.workspace/"projects"/identifier)
                         (project.root/"browser-title.json").write_text(json.dumps({"title": name}))
                     return self.send_json(session.state(identifier))
+                if path == "/api/reopen":
+                    if self.headers.get_content_type() != "application/zip":
+                        raise AudioContractError("Reopen expects an exported ZIP bundle")
+                    length = self.body_length(512 * 1024 * 1024)
+                    identifier = uuid4().hex
+                    with tempfile.TemporaryDirectory(prefix="stemscene-reopen-") as folder:
+                        root = Path(folder)
+                        archive = root / "bundle.zip"
+                        with archive.open("xb") as stream:
+                            remaining = length
+                            while remaining:
+                                block = self.rfile.read(min(65536, remaining))
+                                if not block:
+                                    raise AudioContractError("Incomplete bundle upload")
+                                stream.write(block)
+                                remaining -= len(block)
+                        unpacked = root / "unpacked"
+                        unpacked.mkdir()
+                        with zipfile.ZipFile(archive) as bundle:
+                            entries = bundle.infolist()
+                            if len(entries) > 1300 or sum(item.file_size for item in entries) > 512 * 1024 * 1024:
+                                raise AudioContractError("Portable bundle exceeds browser bounds")
+                            seen = set()
+                            for item in entries:
+                                if item.filename in seen or item.is_dir() or "\\" in item.filename or stat.S_IFMT(item.external_attr >> 16) not in (0, stat.S_IFREG):
+                                    raise AudioContractError("Bundle entries must be unique ordinary files")
+                                seen.add(item.filename)
+                                target = _safe_path(unpacked, item.filename)
+                                target.parent.mkdir(parents=True, exist_ok=True)
+                                count = 0
+                                with bundle.open(item) as incoming, target.open("xb") as output:
+                                    while block := incoming.read(65536):
+                                        count += len(block)
+                                        if count > item.file_size:
+                                            raise AudioContractError("Bundle entry exceeds declared size")
+                                        output.write(block)
+                        reopened = reopen_export(unpacked, session.workspace / "projects" / identifier)
+                        (reopened.root / "browser-title.json").write_text(json.dumps({"title": "Reopened export " + identifier[:8]}))
+                    return self.send_json(session.state(identifier))
                 body = self.read_json()
                 identifier = body.get("id", "")
                 if path == "/api/extract":
-                    return self.send_json({"job_id": session.start(identifier, body.get("queries", []))})
+                    if type(body.get("revision")) is not int:
+                        raise AudioContractError("Reload the project; a current revision is required")
+                    return self.send_json({"job_id": session.start(identifier, body.get("queries", []), body.get("revision"))})
                 if path == "/api/cancel":
                     job = session.jobs.get(body.get("job_id", ""))
                     if job is None:
                         raise AudioContractError("Unknown extraction")
-                    job["cancel"].set()
-                    return self.send_json({"status": "cancellation_requested"})
-                with session.project_guard:
-                    session.idle(identifier)
-                    project = session.project(identifier)
-                    if path == "/api/edit":
-                        project.edit(body["layer_id"], float(body["start"]), float(body["end"]),
-                                     float(body["gain"]), float(body.get("fade_seconds", 0.005)),
-                                     edit_id=body.get("edit_id"))
-                    elif path == "/api/remove-edit":
-                        project.remove_edit(body["edit_id"])
-                    elif path == "/api/lock":
-                        project.set_locked(body["layer_id"], body["locked"])
-                    elif path == "/api/anchors":
-                        project.set_anchors(body["layer_id"], [Anchor(**a) for a in body["anchors"]])
-                    elif path == "/api/undo":
-                        project.undo()
-                    elif path == "/api/export":
-                        key = uuid4().hex
-                        target = session.workspace/"exports"/key
-                        manifest = export_project(project, target, subtype=body.get("subtype", "DOUBLE"),
-                                                  clipping=body.get("clipping", "reject"))
-                        document = json.loads(manifest.read_text())
-                        members = ["manifest.json", *document["files"]]
-                        total = sum(_safe_path(target, member).stat().st_size for member in members)
-                        if total > 512*1024*1024:
-                            raise AudioContractError("Export is saved locally but exceeds the browser's 512 MiB download limit; use CLI export")
-                        archive = target.with_suffix(".zip")
-                        with zipfile.ZipFile(archive, "x", compression=zipfile.ZIP_STORED) as bundle:
+                    if job["status"] == "running":
+                        session.project_session(job["project_id"]).cancel(job["operation"])
+                    return self.send_json({"status": "cancellation_requested" if job["status"] == "running" else job["status"]})
+                project_session = session.project_session(identifier)
+                if type(body.get("revision")) is not int:
+                    raise AudioContractError("Reload the project; a current revision is required")
+                revision = body["revision"]
+                if path == "/api/edit":
+                    project_session.change("edit", body["layer_id"], float(body["start"]), float(body["end"]),
+                                           float(body["gain"]), float(body.get("fade_seconds", .005)),
+                                           edit_id=body.get("edit_id"), expected_revision=revision)
+                elif path == "/api/remove-edit":
+                    project_session.change("remove_edit", body["edit_id"], expected_revision=revision)
+                elif path == "/api/lock":
+                    project_session.change("set_locked", body["layer_id"], body["locked"], expected_revision=revision)
+                elif path == "/api/anchors":
+                    project_session.change("set_anchors", body["layer_id"], [Anchor(**a) for a in body["anchors"]], expected_revision=revision)
+                elif path == "/api/undo":
+                    project_session.change("undo", expected_revision=revision)
+                elif path == "/api/export":
+                    key = uuid4().hex
+                    target = session.workspace / "exports" / key
+                    manifest = project_session.export(target, expected_revision=revision,
+                                                      subtype=body.get("subtype", "DOUBLE"), clipping=body.get("clipping", "reject"))
+                    document = json.loads(manifest.read_text())
+                    members = ["manifest.json", *document["files"]]
+                    if sum(_safe_path(target, member).stat().st_size for member in members) > 512 * 1024 * 1024:
+                        raise AudioContractError("Export is saved locally but exceeds the browser512 MiB limit; use CLI export")
+                    archive = target.with_suffix(".zip")
+                    staged = archive.with_name("." + archive.name + ".tmp")
+                    try:
+                        with zipfile.ZipFile(staged, "x", compression=zipfile.ZIP_STORED) as bundle:
                             for member in members:
                                 bundle.write(_safe_path(target, member), arcname=member)
-                        session.exports[key] = archive
-                        return self.send_json({"export_id": key, "filename": f"stemscene-{key}.zip"})
-                    else:
-                        return self.send_json({"error": "Not found"}, 404)
+                        os.link(staged, archive)
+                    finally:
+                        staged.unlink(missing_ok=True)
+                    session.exports[key] = archive
+                    return self.send_json({"export_id": key, "filename": f"stemscene-{key}.zip", "revision": document["revision"]})
+                else:
+                    return self.send_json({"error": "Not found"}, 404)
                 self.send_json(session.state(identifier))
-            except (ValueError, OSError, KeyError, TypeError) as error:
+            except (ValueError, OSError, KeyError, TypeError, zipfile.BadZipFile, RuntimeError) as error:
                 self.send_json({"error": str(error)[:2000]}, 400)
 
     return ThreadingHTTPServer(("127.0.0.1", port), Handler)
@@ -336,12 +403,12 @@ def serve(workspace: Path, checkpoint: Path | None = None,
     session = BrowserSession(workspace, checkpoint, tokenizer_directory, refiner_path, device)
     server = make_server(session, port)
     print(f"STEMSCENE local mixer: http://127.0.0.1:{server.server_port}/", flush=True)
-    print("Only this Mac. Recording bytes stay in the selected workspace.", flush=True)
+    print("Only this computer. Recording bytes stay in the selected workspace.", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
         pass
     finally:
         for job in session.jobs.values():
-            job["cancel"].set()
+            session.project_session(job["project_id"]).cancel(job["operation"])
         server.server_close()

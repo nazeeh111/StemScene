@@ -17,6 +17,8 @@ from . import __version__
 from .audio import AudioContractError, Samples
 from .export import export_project, replay_export
 from .project import Anchor, Project
+from .session import ProjectSession
+from .portable import reopen_export
 from .models import DownloadCancelled
 
 
@@ -27,6 +29,9 @@ def _parser() -> argparse.ArgumentParser:
     init = commands.add_parser("init", help="Preserve an authorized WAV/FLAC recording in a new project")
     init.add_argument("source", type=Path)
     init.add_argument("project", type=Path)
+    reopen = commands.add_parser("reopen", help="Reopen an exact portable export as a new editable project")
+    reopen.add_argument("export", type=Path)
+    reopen.add_argument("project", type=Path)
     inspect = commands.add_parser("inspect", help="Print project timing, layers, anchors and edits as JSON")
     inspect.add_argument("project", type=Path)
     extract = commands.add_parser("extract", help="Compute local AudioSep proposals and apply the trained joint refiner")
@@ -93,7 +98,7 @@ def _print(payload: Any) -> None:
 
 def _inspect(project: Project) -> dict[str, Any]:
     return {"project": str(project.root), "revision": project.revision,
-            "source": project.original.metadata(), "duration_seconds": project.original.duration,
+            "export_origin": project.export_origin, "source": project.original.metadata(), "duration_seconds": project.original.duration,
             "layers": [{"id": layer.id, "query": layer.query, "locked": layer.locked,
                         "anchors": [asdict(anchor) for anchor in layer.anchors],
                         "interpretation": "estimated sound class; isolation is uncertain"}
@@ -163,45 +168,55 @@ def main(argv: Sequence[str] | None = None) -> int:
             _write_new_wav(args.output, replay_export(args.export), manifest["sample_rate"])
             _print({"output": str(args.output.absolute()), "sample_rate": manifest["sample_rate"]})
             return 0
-        project = Project.load(args.project)
+        if args.command == "reopen":
+            _print(_inspect(reopen_export(args.export, args.project)))
+            return 0
+        session = ProjectSession(args.project)
+        with session.read() as project:
+            summary = _inspect(project)
         if args.command == "inspect":
-            _print(_inspect(project))
+            _print(summary)
         elif args.command == "extract":
             artifact = _refiner_path(args.refiner)
-            from .backend import AudioSepBackend, BackendLimits
-            from .engine import SceneEngine
-            from .joint import JointRefiner
+            try:
+                from .backend import AudioSepBackend, BackendLimits
+                from .engine import SceneEngine
+                from .joint import JointRefiner
+            except ImportError as exc:
+                raise AudioContractError("Extraction needs the optional local model runtime; saved-project editing and replay remain available") from exc
             refiner = JointRefiner.load(artifact)
             backend = AudioSepBackend(args.checkpoint, args.tokenizer_dir,
                                       device=args.device, limits=BackendLimits(threads=args.threads))
             engine = SceneEngine(backend, refiner)
-            layers = engine.extract(project, args.query, progress=lambda done, total:
-                                    print(f"Computed proposal {done}/{total}", file=sys.stderr, flush=True))
+            admission = session.begin_extraction()
+            layers = session.compute(admission, engine, args.query, progress=lambda done, total:
+                                     print(f"Computed proposal {done}/{total}", file=sys.stderr, flush=True))
             _print({"project": str(project.root), "revision": project.revision, "layers": layers})
         elif args.command == "edit":
-            project.edit(args.layer_id, args.start, args.end, args.gain, args.fade, edit_id=args.replace)
+            session.change("edit", args.layer_id, args.start, args.end, args.gain, args.fade, edit_id=args.replace)
             _print({"revision": project.revision, "layer_id": args.layer_id})
         elif args.command == "remove-edit":
-            project.remove_edit(args.edit_id)
+            session.change("remove_edit", args.edit_id)
             _print({"revision": project.revision, "removed_edit": args.edit_id})
         elif args.command in {"lock", "unlock"}:
-            project.set_locked(args.layer_id, args.command == "lock")
+            session.change("set_locked", args.layer_id, args.command == "lock")
             _print({"revision": project.revision, "layer_id": args.layer_id, "locked": args.command == "lock"})
         elif args.command == "anchors":
             anchors = [Anchor(start, end, True) for start, end in args.present]
             anchors += [Anchor(start, end, False) for start, end in args.absent]
-            project.set_anchors(args.layer_id, anchors)
+            session.change("set_anchors", args.layer_id, anchors)
             _print({"revision": project.revision, "layer_id": args.layer_id,
                     "anchors": [asdict(anchor) for anchor in anchors]})
         elif args.command == "undo":
-            changed = project.undo()
+            changed = session.change("undo")
             _print({"revision": project.revision, "changed": changed})
         elif args.command == "render":
             from .export import apply_peak_policy
-            _write_new_wav(args.output, apply_peak_policy(project, project.render(), args.clipping), project.sample_rate)
+            with session.read() as project:
+                _write_new_wav(args.output, apply_peak_policy(project, project.render(), args.clipping), project.sample_rate)
             _print({"output": str(args.output.absolute()), "sample_rate": project.sample_rate})
         elif args.command == "export":
-            manifest = export_project(project, args.destination, subtype=args.subtype, clipping=args.clipping)
+            manifest = session.export(args.destination, subtype=args.subtype, clipping=args.clipping)
             _print({"manifest": str(manifest)})
         return 0
     except DownloadCancelled as exc:

@@ -17,6 +17,7 @@ import numpy as np
 import numpy.typing as npt
 
 from .audio import AudioContractError, AudioData, AudioLimits, Samples, sha256_file, validate_samples
+from .storage import project_lock, publish_directory
 
 
 class LockedLayerError(AudioContractError):
@@ -121,6 +122,10 @@ class Project:
         self._arrays: dict[str, Samples] = {}
 
     @property
+    def export_origin(self):
+        return deepcopy(self._manifest.get("reopened_from_export", {}))
+
+    @property
     def sample_rate(self) -> int:
         return self.original.sample_rate
 
@@ -181,7 +186,7 @@ class Project:
             # Rename to a destination which must remain absent; never replace an existing project.
             if destination.exists():
                 raise FileExistsError(destination)
-            os.rename(temporary, destination)
+            publish_directory(temporary, destination)
             return cls(destination, manifest, original)
         except BaseException:
             shutil.rmtree(temporary, ignore_errors=True)
@@ -213,6 +218,8 @@ class Project:
             raise AudioContractError("Malformed project manifest") from exc
 
     def _validate_state(self, state: dict[str, Any]) -> None:
+        if type(state["revision"]) is not int or state["revision"] < 0:
+            raise AudioContractError("Project revisions must be nonnegative integers")
         rows, edits = state["layers"], state["edits"]
         if not isinstance(rows, list) or len(rows) > self.limits.max_layers:
             raise AudioContractError("Invalid layer count")
@@ -272,24 +279,13 @@ class Project:
 
     def _persist(self, candidate: dict[str, Any]) -> None:
         """Refuse concurrent/stale writers rather than lose another process's edits."""
-        lock_path = self.root / ".write.lock"
-        try:
-            lock = lock_path.open("x")
-        except FileExistsError as exc:
-            raise AudioContractError("Project is being written; retry after reloading") from exc
-        try:
-            with lock:
-                lock.write(str(os.getpid()))
-                lock.flush()
-                path = self.root / "project.json"
-                if path.stat().st_size > 32 * 1024 * 1024:
-                    raise AudioContractError("Project manifest exceeds 32 MiB")
-                current = _read_json(path)
-                if current != self._manifest:
-                    raise AudioContractError("Project changed in another process; reload before editing")
-                _write_json(path, candidate)
-        finally:
-            lock_path.unlink(missing_ok=True)
+        with project_lock(self.root):
+            self.assert_current()
+            _write_json(self.root / "project.json", candidate)
+
+    def assert_current(self) -> None:
+        if json.dumps(_read_json(self.root / "project.json"), sort_keys=True, allow_nan=False) != json.dumps(self._manifest, sort_keys=True, allow_nan=False):
+            raise AudioContractError("Project changed in another process; reload before editing, undo, preview or export")
 
     def save(self) -> None:
         """Mutations already save; explicitly revalidate assets and write current state."""
