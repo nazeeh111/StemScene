@@ -44,20 +44,22 @@
         <div class="empty-recording-symbol" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         <h2>Start with the original.</h2><p>Import audio, estimate the sounds you need, then change a selected event while keeping the rest of the decoded recording.</p>
         <button id="empty-import-button" class="button primary">Import WAV or FLAC <span aria-hidden="true">↗</span></button>
+        <button id="empty-open-export" type="button" class="button secondary">Open exported project</button>
         <p class="small muted">Processing stays local. Use audio you are authorized to edit.</p>
       </section>
       <div id="recording-content" hidden>
+        <div class="playback-panel">
+          <div class="playback-heading"><span class="eyebrow">LISTEN</span><span id="playback-label" class="small muted">Choose original, mix, or a layer.</span></div>
+          <div class="playback-actions"><button id="listen-original-span" class="button secondary">Original selection</button><button id="listen-mix-span" class="button secondary">Edited selection</button><button id="listen-original" class="button secondary">Full original</button><button id="listen-mix" class="button secondary">Full mix</button><button id="stop-button" class="button quiet" disabled>Stop</button></div>
+          <p class="small muted">Selection buttons play only the highlighted samples. Choose a saved event or select a time span below.</p>
+          <audio id="audio-player" controls preload="none" aria-label="Recording playback" hidden></audio>
+        </div>
         <section class="timeline-panel" aria-labelledby="timeline-heading">
           <div class="timeline-toolbar"><h2 id="timeline-heading"><span class="source-dot" aria-hidden="true"></span> Original recording</h2><span id="duration-label" class="mono muted"></span></div>
           <div id="waveform-wrap" class="waveform-wrap"><canvas id="waveform" role="img" aria-label="Original recording waveform. Drag to select a time span, or use the start and end fields."></canvas><div id="waveform-empty" class="small muted" hidden>No waveform bins are available for this recording.</div></div>
           <div id="timeline-ticks" class="timeline-ticks mono" aria-hidden="true"></div>
           <div class="selection-summary"><span class="selection-key" aria-hidden="true"></span><span id="selection-summary">Select a time span to edit.</span><span class="small muted">Drag on the waveform or enter times.</span></div>
         </section>
-        <div class="playback-panel">
-          <div class="playback-heading"><span class="eyebrow">LISTEN</span><span id="playback-label" class="small muted">Choose original, mix, or a layer.</span></div>
-          <div class="playback-actions"><button id="listen-original" class="button secondary">Original</button><button id="listen-mix" class="button secondary">Edited mix</button><button id="stop-button" class="button quiet" disabled>Stop</button></div>
-          <audio id="audio-player" controls preload="none" aria-label="Recording playback" hidden></audio>
-        </div>
         <section class="saved-events" aria-labelledby="events-heading"><div class="section-heading"><h2 id="events-heading">Saved events</h2><span id="event-count" class="count">0</span></div><p id="events-empty" class="small muted">Level changes appear here. Select a saved event to update it.</p><div id="event-list"></div><p id="events-limit" class="small muted" hidden>Showing the 100 most recent events. Every saved operation remains in the export manifest and API.</p><p class="small muted event-note">Updating an event replaces its gain. Separate events multiply where their spans overlap.</p></section>
         <section id="job-panel" class="job-panel" aria-labelledby="job-heading" hidden>
           <div><h2 id="job-heading">Estimating sound layers</h2><p id="job-detail" class="small muted">The engine is computing from your original recording.</p></div>
