@@ -40,6 +40,20 @@ def test_real_http_edit_undo_export_reopen_concurrency_and_failed_zip(tmp_path):
         state=request('GET','/api/state?id='+identifier)[1]
         code,state=request('POST','/api/edit',{'id':identifier,'revision':state['revision'],'layer_id':layer,'start':.02,'end':.06,'gain':.2})
         assert code==200 and state['revision']==2
+        # Selected previews are exact sample slices, with no timing leakage.
+        for kind in ('original', 'mix'):
+            full_code, full = request('GET', '/api/audio?id='+identifier+'&kind='+kind)
+            clip_code, clip = request('GET', '/api/audio?id='+identifier+'&kind='+kind+'&start_sample=160&end_sample=480')
+            assert full_code == clip_code == 200
+            full_values, full_rate = sf.read(io.BytesIO(full), always_2d=True)
+            clip_values, clip_rate = sf.read(io.BytesIO(clip), always_2d=True)
+            assert full_rate == clip_rate == 8000
+            assert np.array_equal(clip_values, full_values[160:480])
+        for suffix in ('&start_sample=1', '&start_sample=0&end_sample=0',
+                       '&start_sample=4&end_sample=900', '&start_sample=-1&end_sample=2',
+                       '&start_sample=&end_sample=',
+                       '&start_sample=0&start_sample=1&end_sample=2'):
+            assert request('GET', '/api/audio?id='+identifier+'&kind=mix'+suffix)[0] == 400
         event=state['edits'][0]['id']
         for path in ('/api/undo','/api/export'):
             assert request('POST',path,{'id':identifier,'revision':1})[0]==400

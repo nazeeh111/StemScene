@@ -205,7 +205,7 @@ def make_server(session: BrowserSession, port: int = 8765) -> ThreadingHTTPServe
             path = urlsplit(self.path)
             if not self.allowed(api=path.path.startswith("/api/")):
                 return
-            query = parse_qs(path.query)
+            query = parse_qs(path.query, keep_blank_values=path.path == "/api/audio")
             identifier = query.get("id", [""])[0]
             try:
                 if path.path == "/":
@@ -270,6 +270,15 @@ def make_server(session: BrowserSession, port: int = 8765) -> ThreadingHTTPServe
                 audio = matches[0]
             else:
                 raise AudioContractError("Unknown playback source")
+            bounds = (query.get("start_sample"), query.get("end_sample"))
+            if any(value is not None for value in bounds):
+                if any(value is None or len(value) != 1 or not value[0].isascii()
+                       or not value[0].isdecimal() or len(value[0]) > 20 for value in bounds):
+                    raise AudioContractError("Selection requires two nonnegative sample indices")
+                start, end = (int(value[0]) for value in bounds)
+                if not 0 <= start < end <= len(audio):
+                    raise AudioContractError("Selection must contain samples within the recording")
+                audio = audio[start:end]
             if audio.nbytes > 256*1024*1024:
                 raise AudioContractError("Recording exceeds browser preview size; use CLI export")
             buffer = io.BytesIO(); sf.write(buffer, audio, project.sample_rate, format="WAV", subtype="FLOAT")

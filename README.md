@@ -15,6 +15,8 @@ A layer is an estimate of a sound class. It can contain leakage, miss a quiet ev
 
 [Reopen the actual editable project](docs/presentation/edited-project.zip) · [Inspect the samples, equation and limits](docs/presentation/README.md) · [Original WAV](docs/presentation/original.wav) · [Edited WAV](docs/presentation/mix.wav).
 
+Recorded doorbell event, source 5–7 s: [download original WAV](docs/demo/assets/event-original.wav?raw=1) · [download edited WAV](docs/demo/assets/event-edited.wav?raw=1) · [credits and scope](docs/demo/event-preview-provenance.md). The separate [demo page](docs/demo/index.html) plays these files when opened with the repository downloaded.
+
 [Earlier installed editor capture](docs/demo/assets/editor-current.png) and its [provenance](docs/demo/assets/current-capture.json) remain separate. [Earlier actual-session walkthrough](docs/demo/assets/stemscene-walkthrough.mp4) · [audio comparison and credits](docs/demo/index.html). No inference or native model cancellation was rerun for this new synthetic editing case.
 
 ## Use it
@@ -32,7 +34,7 @@ uv run --locked stemscene serve \
   --port 0
 ```
 
-Open the printed loopback URL. Choose **Open exported project** and select [the synthetic editable example](docs/demo/assets/model-free-editing.zip). It supplies one deterministic layer and a saved 0.10–0.30 s event at 25%. Select that event, change its level, choose **Update event**, then **Undo**. Export a new bundle and reopen it to keep editing. [Fixture provenance](docs/demo/assets/model-free-editing.json).
+Open the printed loopback URL. Choose **Open exported project** and select [the synthetic editable example](docs/demo/assets/model-free-editing.zip). It supplies one deterministic layer and a saved 0.10–0.30 s event at 25%. Select that event, use **Original selection** and **Edited selection** to compare its exact sample span, change its level, choose **Update event**, then **Undo**. Export a new bundle and reopen it to keep editing. [Fixture provenance](docs/demo/assets/model-free-editing.json).
 
 This route installs NumPy, SciPy and soundfile, and downloads no model weights. The supplied layer is 0.6 times the synthetic recording, demonstrating editing and handoff rather than source separation. Existing exports carry original audio and undo history; review them before sharing. The tagged 0.1.0b1 release retains its original command set; use current source for portable project reopen.
 

@@ -4,7 +4,7 @@ const $ = (id) => document.getElementById(id);
 const token = document.querySelector('meta[name="stemscene-token"]').content;
 const colors = ["#b6cba0", "#b5b3df", "#d7b28b", "#8bc5c4", "#d19eb0", "#c2c88e", "#8eb6dc", "#cba5d7"];
 const ui = { project: null, selectedId: null, editId: null, config: { model_ready: false }, pending: false,
-  jobId: null, pollTimer: null, span: [0, 0], playbackUrl: null, playbackKey: null, audioRequest: 0 };
+  jobId: null, pollTimer: null, span: [0, 0], playbackUrl: null, playbackKey: null, audioRequest: 0, playbackStart: 0, playbackSelection: false };
 
 function text(id, value) { $(id).textContent = value; }
 function showError(error) {
@@ -52,6 +52,7 @@ function updateControls() {
   $("edit-fields").disabled = busy() || !hasLayer;
   $("import-button").disabled = busy();
   $("empty-import-button").disabled = busy();
+  $("empty-open-export").disabled = busy();
   $("project-picker").disabled = busy();
   $("reload-project").disabled = busy() || !hasProject;
   $("open-export").disabled = busy();
@@ -63,6 +64,8 @@ function updateControls() {
   document.querySelectorAll(".event-button").forEach((button) => { button.disabled = busy(); });
   $("listen-original").disabled = !hasProject;
   $("listen-mix").disabled = !hasProject;
+  $("listen-original-span").disabled = !hasProject;
+  $("listen-mix-span").disabled = !hasProject;
   document.querySelectorAll(".lock-button").forEach((button) => { button.disabled = busy(); });
   document.querySelectorAll(".anchor-remove").forEach((button) => { button.disabled = busy() || selectedLayer()?.locked; });
   $("job-panel").hidden = !ui.jobId;
@@ -159,7 +162,9 @@ function syncTimeFields() {
 function setSpan(start, end) {
   if (!ui.project) return;
   const duration = ui.project.duration;
-  ui.span = [Math.max(0, Math.min(start, duration)), Math.max(0, Math.min(end, duration))].sort((a, b) => a - b);
+  const next = [Math.max(0, Math.min(start, duration)), Math.max(0, Math.min(end, duration))].sort((a, b) => a - b);
+  if (ui.playbackSelection && (ui.span[0] !== next[0] || ui.span[1] !== next[1])) resetPlayback();
+  ui.span = next;
   syncTimeFields();
 }
 
@@ -214,7 +219,7 @@ function renderEvents() {
     const name = document.createElement("strong"); name.textContent=layer.query;
     const detail = document.createElement("span"); detail.textContent=`${time(event.start_sample/ui.project.sample_rate)}–${time(event.end_sample/ui.project.sample_rate)} · ${Math.round(event.gain*100)}% gain`;
     edit.append(name,detail); edit.setAttribute("aria-label",`Edit saved ${layer.query} event`);
-    edit.addEventListener("click",()=>{ui.selectedId=layer.id;ui.editId=event.id;ui.span=[event.start_sample/ui.project.sample_rate,event.end_sample/ui.project.sample_rate];renderLayers();renderInspector();renderEvents();updateControls();});
+    edit.addEventListener("click",()=>{ui.selectedId=layer.id;ui.editId=event.id;setSpan(event.start_sample/ui.project.sample_rate,event.end_sample/ui.project.sample_rate);renderLayers();renderInspector();renderEvents();updateControls();});
     const remove=document.createElement("button");remove.type="button";remove.className="event-button event-remove";remove.textContent="Remove";
     remove.setAttribute("aria-label",`Remove saved ${layer.query} event`);
     remove.addEventListener("click",()=>mutate("/api/remove-edit",{edit_id:event.id},"Event removed. Undo can restore it."));
@@ -305,26 +310,44 @@ function resetPlayback() {
   const audio = $("audio-player"); audio.pause(); audio.removeAttribute("src"); audio.load();
   audio.hidden = true;
   if (ui.playbackUrl) URL.revokeObjectURL(ui.playbackUrl);
-  ui.playbackUrl = null; ui.playbackKey = null; ui.audioRequest += 1;
+  ui.playbackUrl = null; ui.playbackKey = null; ui.playbackStart = 0; ui.playbackSelection = false; ui.audioRequest += 1;
   text("playback-label", "Choose original, mix, or a layer."); $("stop-button").disabled = true;
-  $("listen-original").classList.remove("active"); $("listen-mix").classList.remove("active");
+  for (const id of ["listen-original", "listen-mix", "listen-original-span", "listen-mix-span"]) $(id).classList.remove("active");
 }
 
-async function listenTo(kind, layerId = "", query = "") {
+async function listenTo(kind, layerId = "", query = "", selection = false) {
   if (!ui.project) return;
   const projectId = ui.project.id;
+  let span = null;
+  if (selection) {
+    try { span = validateSpan(); setSpan(...span); }
+    catch (error) { showError(error); return; }
+  }
   const requestId = ++ui.audioRequest;
+  const startSample = span ? Math.round(span[0] * ui.project.sample_rate) : 0;
+  const endSample = span ? Math.round(span[1] * ui.project.sample_rate) : 0;
+  if (span && (startSample < 0 || startSample >= endSample || endSample > ui.project.frames)) {
+    showError("Select a nonempty time span within the recording."); return;
+  }
   const label = kind === "original" ? "Original recording" : kind === "mix" ? "Edited mix" : `Estimated ${query}`;
+  $("audio-player").pause();
   clearError(); text("playback-label", `Loading ${label.toLowerCase()}…`);
   try {
-    const blob = await api(`/api/audio?id=${encodeURIComponent(projectId)}&kind=${kind}&layer_id=${encodeURIComponent(layerId)}`, { blob: true });
+    const bounds = span ? `&start_sample=${startSample}&end_sample=${endSample}` : "";
+    const blob = await api(`/api/audio?id=${encodeURIComponent(projectId)}&kind=${kind}&layer_id=${encodeURIComponent(layerId)}${bounds}`, { blob: true });
     if (requestId !== ui.audioRequest || projectId !== ui.project?.id) return;
+    if (span && (ui.span[0] !== span[0] || ui.span[1] !== span[1])) {
+      text("playback-label", "Selection changed. Choose a source to listen."); return;
+    }
     const audio = $("audio-player"); audio.pause();
     if (ui.playbackUrl) URL.revokeObjectURL(ui.playbackUrl);
     ui.playbackUrl = URL.createObjectURL(blob); ui.playbackKey = `${kind}:${layerId}`;
-    audio.src = ui.playbackUrl; audio.hidden = false; text("playback-label", label); $("stop-button").disabled = false;
-    $("listen-original").classList.toggle("active", kind === "original");
-    $("listen-mix").classList.toggle("active", kind === "mix");
+    ui.playbackStart = span ? startSample / ui.project.sample_rate : 0; ui.playbackSelection = Boolean(span);
+    audio.src = ui.playbackUrl; audio.hidden = false; text("playback-label", span ? `${label} · selection ${time(span[0])}–${time(span[1])}` : label); $("stop-button").disabled = false;
+    $("listen-original").classList.toggle("active", kind === "original" && !span);
+    $("listen-mix").classList.toggle("active", kind === "mix" && !span);
+    $("listen-original-span").classList.toggle("active", kind === "original" && Boolean(span));
+    $("listen-mix-span").classList.toggle("active", kind === "mix" && Boolean(span));
     try { await audio.play(); }
     catch (_) { status("Audio is ready. Use the playback control to listen."); }
   } catch (error) { if (requestId === ui.audioRequest) { showError(error); text("playback-label", "Audio could not load. Try again."); } }
@@ -360,7 +383,7 @@ function drawWaveform() {
     for (const x of [start, end]) { context.beginPath(); context.moveTo(x, 0); context.lineTo(x, height); context.stroke(); }
     const audio = $("audio-player");
     if (ui.playbackUrl && Number.isFinite(audio.currentTime)) {
-      const cursor = audio.currentTime / ui.project.duration * width;
+      const cursor = (ui.playbackStart + audio.currentTime) / ui.project.duration * width;
       context.strokeStyle = "#a2d1be"; context.beginPath(); context.moveTo(cursor, 0); context.lineTo(cursor, height); context.stroke();
     }
   }
@@ -402,6 +425,7 @@ async function exportProject() {
 $("dismiss-error").addEventListener("click", clearError);
 $("import-button").addEventListener("click", () => $("file-input").click());
 $("empty-import-button").addEventListener("click", () => $("file-input").click());
+$("empty-open-export").addEventListener("click", () => $("bundle-input").click());
 $("file-input").addEventListener("change", (event) => importFile(event.target.files[0]));
 $("request-form").addEventListener("submit", compute);
 $("project-picker").addEventListener("change", async (event) => {
@@ -414,7 +438,9 @@ $("project-picker").addEventListener("change", async (event) => {
 $("undo-button").addEventListener("click", () => mutate("/api/undo", {}, "Previous session state restored."));
 $("listen-original").addEventListener("click", () => listenTo("original"));
 $("listen-mix").addEventListener("click", () => listenTo("mix"));
-$("stop-button").addEventListener("click", () => { $("audio-player").pause(); $("audio-player").currentTime = 0; drawWaveform(); });
+$("listen-original-span").addEventListener("click", () => listenTo("original", "", "", true));
+$("listen-mix-span").addEventListener("click", () => listenTo("mix", "", "", true));
+$("stop-button").addEventListener("click", () => { ui.audioRequest += 1; $("audio-player").pause(); $("audio-player").currentTime = 0; text("playback-label", "Playback stopped."); drawWaveform(); });
 $("audio-player").addEventListener("timeupdate", drawWaveform);
 $("gain-range").addEventListener("input", (event) => { text("gain-output", `${Math.round(Number(event.target.value) * 100)}%`); });
 for (const id of ["start-time", "end-time"]) $(id).addEventListener("change", () => {
@@ -422,7 +448,9 @@ for (const id of ["start-time", "end-time"]) $(id).addEventListener("change", ()
 });
 for (const id of ["start-time", "end-time"]) $(id).addEventListener("input", () => {
   try {
-    ui.span = validateSpan();
+    const next = validateSpan();
+    if (ui.playbackSelection && (ui.span[0] !== next[0] || ui.span[1] !== next[1])) resetPlayback();
+    ui.span = next;
     text("selection-summary", `${time(ui.span[0])}–${time(ui.span[1])} selected`);
     drawWaveform();
   } catch (_) { /* Leave partially typed numbers untouched until submission. */ }
