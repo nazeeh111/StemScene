@@ -15,7 +15,7 @@ A layer is an estimate of a sound class. It can contain leakage, miss a quiet ev
 
 [Reopen the actual editable project](docs/presentation/edited-project.zip) · [Inspect the samples, equation and limits](docs/presentation/README.md) · [Original WAV](docs/presentation/original.wav) · [Edited WAV](docs/presentation/mix.wav).
 
-Recorded doorbell event, source 5–7 s: [download original WAV](docs/demo/assets/event-original.wav?raw=1) · [download edited WAV](docs/demo/assets/event-edited.wav?raw=1) · [credits and scope](docs/demo/event-preview-provenance.md). The separate [demo page](docs/demo/index.html) plays these files when opened with the repository downloaded.
+Recorded doorbell event, source 5–7 s: [download original WAV](https://raw.githubusercontent.com/nazeeh111/StemScene/1ba5b0847d614f44117d3fb5c378d6c8e678a529/docs/demo/assets/event-original.wav) · [download edited WAV](https://raw.githubusercontent.com/nazeeh111/StemScene/1ba5b0847d614f44117d3fb5c378d6c8e678a529/docs/demo/assets/event-edited.wav) · [credits and scope](docs/demo/event-preview-provenance.md). The separate [demo page](docs/demo/index.html) plays these files when opened with the repository downloaded.
 
 [Earlier installed editor capture](docs/demo/assets/editor-current.png) and its [provenance](docs/demo/assets/current-capture.json) remain separate. [Earlier actual-session walkthrough](docs/demo/assets/stemscene-walkthrough.mp4) · [audio comparison and credits](docs/demo/index.html). No inference or native model cancellation was rerun for this new synthetic editing case.
 
