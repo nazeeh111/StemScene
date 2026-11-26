@@ -337,6 +337,20 @@ class Project:
             row = existing.get(key)
             if row is not None and np.array_equal(self._load_array(row), array):
                 result[query] = row["id"]
+                # Equal samples can still come from a new anchored extraction.
+                # Keep the asset/identity while saving its current provenance.
+                # A locked estimate retains the provenance of its saved samples.
+                if not row["locked"]:
+                    updated = deepcopy(row)
+                    if key in normalized_anchors:
+                        updated["anchors"] = [asdict(a) for a in normalized_anchors[key]]
+                    if metadata is not None:
+                        updated["metadata"] = {
+                            "identity_scope": "estimated sound class, not a guaranteed physical source",
+                            "uncertainty": "not independently verified", **proposal_metadata}
+                    if json.dumps(updated, sort_keys=True, allow_nan=False) != json.dumps(row, sort_keys=True, allow_nan=False):
+                        state["layers"][state["layers"].index(row)] = updated
+                        changed = True
                 continue
             identifier = row["id"] if row else uuid4().hex
             relative = f"layers/{identifier}-{uuid4().hex}.npy"
