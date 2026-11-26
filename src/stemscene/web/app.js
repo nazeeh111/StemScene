@@ -4,7 +4,7 @@ const $ = (id) => document.getElementById(id);
 const token = document.querySelector('meta[name="stemscene-token"]').content;
 const colors = ["#b6cba0", "#b5b3df", "#d7b28b", "#8bc5c4", "#d19eb0", "#c2c88e", "#8eb6dc", "#cba5d7"];
 const ui = { project: null, selectedId: null, editId: null, config: { model_ready: false }, pending: false,
-  jobId: null, pollTimer: null, span: [0, 0], playbackUrl: null, playbackKey: null, audioRequest: 0, playbackStart: 0, playbackSelection: false };
+  jobId: null, pollTimer: null, span: [0, 0], pendingPlayback: null, loadedPlayback: null };
 
 function text(id, value) { $(id).textContent = value; }
 function showError(error) {
@@ -155,17 +155,30 @@ function syncTimeFields() {
   const inputTime = (value) => String(Math.min(ui.project.duration, Math.max(0, Math.round(value*1e6)/1e6)));
   $("start-time").value = inputTime(ui.span[0]);
   $("end-time").value = inputTime(ui.span[1]);
+  renderSpan();
+}
+
+function renderSpan() {
   text("selection-summary", `${time(ui.span[0])}–${time(ui.span[1])} selected`);
   drawWaveform();
 }
 
-function setSpan(start, end) {
+function setSpan(start, end, { syncFields = true } = {}) {
   if (!ui.project) return;
   const duration = ui.project.duration;
   const next = [Math.max(0, Math.min(start, duration)), Math.max(0, Math.min(end, duration))].sort((a, b) => a - b);
-  if (ui.playbackSelection && (ui.span[0] !== next[0] || ui.span[1] !== next[1])) resetPlayback();
+  if (ui.span[0] !== next[0] || ui.span[1] !== next[1]) {
+    const pendingSelection = ui.pendingPlayback?.span;
+    const loadedSelection = ui.loadedPlayback?.span;
+    if (pendingSelection) ui.pendingPlayback = null;
+    if (loadedSelection) releaseLoadedPlayback();
+    if (!ui.pendingPlayback && (pendingSelection || loadedSelection)) {
+      showPlayback(ui.loadedPlayback?.label || "Selection changed. Choose a source to listen.");
+    }
+  }
   ui.span = next;
-  syncTimeFields();
+  if (syncFields) syncTimeFields();
+  else renderSpan();
 }
 
 function renderProject(project) {
@@ -306,13 +319,30 @@ async function pollJob() {
   }
 }
 
-function resetPlayback() {
-  const audio = $("audio-player"); audio.pause(); audio.removeAttribute("src"); audio.load();
+function showPlayback(label) {
+  text("playback-label", label);
+  $("stop-button").disabled = !ui.pendingPlayback && !ui.loadedPlayback;
+  for (const id of ["listen-original", "listen-mix", "listen-original-span", "listen-mix-span"]) {
+    $(id).classList.toggle("active", ui.loadedPlayback?.button === id);
+  }
+}
+
+function releaseLoadedPlayback() {
+  const loaded = ui.loadedPlayback;
+  if (!loaded) return;
+  ui.loadedPlayback = null;
+  const audio = $("audio-player");
+  audio.pause();
+  audio.removeAttribute("src");
+  audio.load();
   audio.hidden = true;
-  if (ui.playbackUrl) URL.revokeObjectURL(ui.playbackUrl);
-  ui.playbackUrl = null; ui.playbackKey = null; ui.playbackStart = 0; ui.playbackSelection = false; ui.audioRequest += 1;
-  text("playback-label", "Choose original, mix, or a layer."); $("stop-button").disabled = true;
-  for (const id of ["listen-original", "listen-mix", "listen-original-span", "listen-mix-span"]) $(id).classList.remove("active");
+  URL.revokeObjectURL(loaded.url);
+}
+
+function resetPlayback() {
+  ui.pendingPlayback = null;
+  releaseLoadedPlayback();
+  showPlayback("Choose original, mix, or a layer.");
 }
 
 async function listenTo(kind, layerId = "", query = "", selection = false) {
@@ -323,34 +353,51 @@ async function listenTo(kind, layerId = "", query = "", selection = false) {
     try { span = validateSpan(); setSpan(...span); }
     catch (error) { showError(error); return; }
   }
-  const requestId = ++ui.audioRequest;
   const startSample = span ? Math.round(span[0] * ui.project.sample_rate) : 0;
   const endSample = span ? Math.round(span[1] * ui.project.sample_rate) : 0;
   if (span && (startSample < 0 || startSample >= endSample || endSample > ui.project.frames)) {
     showError("Select a nonempty time span within the recording."); return;
   }
   const label = kind === "original" ? "Original recording" : kind === "mix" ? "Edited mix" : `Estimated ${query}`;
-  $("audio-player").pause();
-  clearError(); text("playback-label", `Loading ${label.toLowerCase()}…`);
+  const pending = { span };
+  ui.pendingPlayback = pending;
+  const audio = $("audio-player");
+  if (ui.loadedPlayback) {
+    ui.loadedPlayback.allowPlayNotice = false;
+    audio.pause();
+  }
+  showPlayback(`Loading ${label.toLowerCase()}…`);
+  clearError();
   try {
     const bounds = span ? `&start_sample=${startSample}&end_sample=${endSample}` : "";
     const blob = await api(`/api/audio?id=${encodeURIComponent(projectId)}&kind=${kind}&layer_id=${encodeURIComponent(layerId)}${bounds}`, { blob: true });
-    if (requestId !== ui.audioRequest || projectId !== ui.project?.id) return;
-    if (span && (ui.span[0] !== span[0] || ui.span[1] !== span[1])) {
-      text("playback-label", "Selection changed. Choose a source to listen."); return;
-    }
-    const audio = $("audio-player"); audio.pause();
-    if (ui.playbackUrl) URL.revokeObjectURL(ui.playbackUrl);
-    ui.playbackUrl = URL.createObjectURL(blob); ui.playbackKey = `${kind}:${layerId}`;
-    ui.playbackStart = span ? startSample / ui.project.sample_rate : 0; ui.playbackSelection = Boolean(span);
-    audio.src = ui.playbackUrl; audio.hidden = false; text("playback-label", span ? `${label} · selection ${time(span[0])}–${time(span[1])}` : label); $("stop-button").disabled = false;
-    $("listen-original").classList.toggle("active", kind === "original" && !span);
-    $("listen-mix").classList.toggle("active", kind === "mix" && !span);
-    $("listen-original-span").classList.toggle("active", kind === "original" && Boolean(span));
-    $("listen-mix-span").classList.toggle("active", kind === "mix" && Boolean(span));
+    if (ui.pendingPlayback !== pending) return;
+    const loaded = {
+      span,
+      start: startSample / ui.project.sample_rate,
+      url: URL.createObjectURL(blob),
+      label: span ? `${label} · selection ${time(span[0])}–${time(span[1])}` : label,
+      button: kind === "stem" ? null : `listen-${kind}${span ? "-span" : ""}`,
+      allowPlayNotice: true,
+    };
+    releaseLoadedPlayback();
+    ui.pendingPlayback = null;
+    ui.loadedPlayback = loaded;
+    audio.src = loaded.url;
+    audio.hidden = false;
+    showPlayback(loaded.label);
+    drawWaveform();
     try { await audio.play(); }
-    catch (_) { status("Audio is ready. Use the playback control to listen."); }
-  } catch (error) { if (requestId === ui.audioRequest) { showError(error); text("playback-label", "Audio could not load. Try again."); } }
+    catch (_) {
+      if (loaded.allowPlayNotice && ui.loadedPlayback === loaded) status("Audio is ready. Use the playback control to listen.");
+    }
+  } catch (error) {
+    if (ui.pendingPlayback === pending) {
+      ui.pendingPlayback = null;
+      showPlayback(ui.loadedPlayback?.label || "Audio could not load. Try again.");
+      showError(error);
+    }
+  }
 }
 
 function drawWaveform() {
@@ -382,8 +429,8 @@ function drawWaveform() {
     context.strokeStyle = "#e8ca78"; context.lineWidth = 1;
     for (const x of [start, end]) { context.beginPath(); context.moveTo(x, 0); context.lineTo(x, height); context.stroke(); }
     const audio = $("audio-player");
-    if (ui.playbackUrl && Number.isFinite(audio.currentTime)) {
-      const cursor = (ui.playbackStart + audio.currentTime) / ui.project.duration * width;
+    if (ui.loadedPlayback && Number.isFinite(audio.currentTime)) {
+      const cursor = (ui.loadedPlayback.start + audio.currentTime) / ui.project.duration * width;
       context.strokeStyle = "#a2d1be"; context.beginPath(); context.moveTo(cursor, 0); context.lineTo(cursor, height); context.stroke();
     }
   }
@@ -440,19 +487,26 @@ $("listen-original").addEventListener("click", () => listenTo("original"));
 $("listen-mix").addEventListener("click", () => listenTo("mix"));
 $("listen-original-span").addEventListener("click", () => listenTo("original", "", "", true));
 $("listen-mix-span").addEventListener("click", () => listenTo("mix", "", "", true));
-$("stop-button").addEventListener("click", () => { ui.audioRequest += 1; $("audio-player").pause(); $("audio-player").currentTime = 0; text("playback-label", "Playback stopped."); drawWaveform(); });
+$("stop-button").addEventListener("click", () => {
+  ui.pendingPlayback = null;
+  if (ui.loadedPlayback) {
+    ui.loadedPlayback.allowPlayNotice = false;
+    const audio = $("audio-player");
+    audio.pause();
+    audio.currentTime = 0;
+  }
+  showPlayback("Playback stopped.");
+  drawWaveform();
+});
 $("audio-player").addEventListener("timeupdate", drawWaveform);
 $("gain-range").addEventListener("input", (event) => { text("gain-output", `${Math.round(Number(event.target.value) * 100)}%`); });
 for (const id of ["start-time", "end-time"]) $(id).addEventListener("change", () => {
-  try { const span = validateSpan(); ui.span = span; syncTimeFields(); } catch (error) { showError(error); }
+  try { setSpan(...validateSpan()); } catch (error) { showError(error); }
 });
 for (const id of ["start-time", "end-time"]) $(id).addEventListener("input", () => {
   try {
-    const next = validateSpan();
-    if (ui.playbackSelection && (ui.span[0] !== next[0] || ui.span[1] !== next[1])) resetPlayback();
-    ui.span = next;
-    text("selection-summary", `${time(ui.span[0])}–${time(ui.span[1])} selected`);
-    drawWaveform();
+    const [start, end] = validateSpan();
+    setSpan(start, end, { syncFields: false });
   } catch (_) { /* Leave partially typed numbers untouched until submission. */ }
 });
 $("edit-form").addEventListener("submit", async (event) => {
