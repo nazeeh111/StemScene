@@ -37,6 +37,12 @@ The explicit artifact must match the loader's supported architecture; do not int
 
 `Project.create` copies the original bytes into a fresh folder. `Project.load(path)` checks saved metadata and arrays before returning a persistent project. Mutations persist automatically and reject stale concurrent writers. `project.layers` contains `Layer` objects with stable IDs, query text, read-only sample arrays, lock state, anchors and uncertainty metadata. `project.edits` contains the sample-based edit operations.
 
+For an unlocked estimate, changed explicit metadata or anchors save a new revision
+even when its sample array is unchanged. Its layer ID and array asset are reused,
+and undo restores the preceding provenance. Omitting metadata or anchors retains
+the existing values for an unchanged array; identical complete state saves no new
+revision. Locked estimates retain the provenance of their protected samples.
+
 ## Revise a saved event
 
 `edit` returns its persistent event ID. Supplying it again replaces that event rather than multiplying a second operation on top:
